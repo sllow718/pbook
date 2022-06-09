@@ -1,0 +1,102 @@
+.stall-title-banner {
+}
+
+.stall-show-grid-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-gap: 16px;
+  .div1 {
+  }
+  .div2 {
+  }
+}
+
+.stall-write-up {
+  #stalltitle {
+    margin-left: 5%;
+    margin-right: 40px;
+    text-align: justify;
+  }
+
+  #writeuptext {
+    margin-left: 5%;
+    margin-right: 40px;
+    text-align: justify;
+  }
+}
+.featured-dish-card {
+  .featured-dish-image {
+    width: 420px;
+    background-size: cover;
+  }
+  #foodtitle {
+    margin-left: 5%;
+    margin-right: 40px;
+    text-align: justify;
+  }
+
+  #foodwriteuptext {
+    margin-left: 5%;
+    margin-right: 40px;
+    text-align: justify;
+  }
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .stall-show-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .stall-show-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .stall-show-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .stall-show-grid-container {
+    grid-template-columns: 2fr 3fr;
+  }
+}
+
+.sidefoodcards {
+  flex: auto;
+  position: relative;
+  background-color: beige;
+
+  .bookmark {
+    position: absolute;
+    margin-left: 90%;
+    margin-top: 15px;
+  }
+
+  .stars-rank {
+    position: absolute;
+    margin-left: 70%;
+    margin-top: 30px;
+  }
+
+  .rank {
+    position: absolute;
+    margin-left: 75%;
+    margin-top: 5px;
+  }
+}
+
+.sidefood-image {
+  #image {
+    width: 300px;
+    height: 200px;
+  }
+}

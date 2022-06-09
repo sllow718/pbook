@@ -1,0 +1,34 @@
+    <% @dishes.each do |dish| %>
+             <div class="sidefoodcards d-flex my-4 flex-grow">
+          <div class="sidefood-image">
+            <img src=<%= dish.description  %> alt="" id="image">
+          </div>
+            <div class="rank">
+            <p>Rank</p>
+            </div>
+            <div class="bookmark">
+              <i class="fa-regular fa-bookmark fa-xl mx-2"></i>
+              <i class="fa-regular fa-comment-lines fa-xl"></i>
+            </div>
+            <div class="stars-rank">
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+            </div>
+          <div class="sidefood-content p-2">
+            <p class="text-justify" style="margin-right:25%;font-size:20px;margin-left:5px">
+            <strong><%= dish.name %></strong>
+            </p>
+            <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+            </div>
+            <p class="my-2 text-justify" style="margin-left:5px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ducimus, maiores aut magnam est nostrum quis. Doloribus debitis, quisquam quibusdam, eum, error dolorum omnis alias provident natus nostrum quos ratione.</p>
+
+
+          </div>
+        </div>
+    <% end %>
