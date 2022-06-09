@@ -11,3 +11,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Defining Colour Palette
+$red: #FF3757;
+$dark-red: #FF3757 brightness(30%);
+$darkest-red: #660011 brightness(20%);
+$dark-pink: #F08899 brightness(20%);
