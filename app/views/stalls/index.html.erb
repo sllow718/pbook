@@ -1,1 +1,72 @@
-<%= render '/shared/stall_dish_show_card' %>
+<div class="py-5">
+  <h1>Top Rated Hawker Dishes in Singapore</h1>
+</div>
+
+<div class="stall-show-grid-container">
+  <div class="div1">
+
+        <div class="featured-dish-card bg-light">
+        <p id="stalltitle" style="margin-left:5%;"><%= @topstalls.first.name %></p>
+        <h5 id="foodtitle"><%= @topdish.name[0..40] rescue "Delicious Dish!" %></h5>
+        <div class="d-flex flex-column justify-content-center">
+          <img src="<%= @topdish.description rescue "" %>" alt="" style="width:420px;border-radius:20px;" class="p-1 mx-auto">
+          <div style="list-style-type: none" class="d-flex flex-row flex-grow justify-content-around">
+            <p class="px-3 btn btn-success" style="border-radius:20px">flavour</p>
+            <p class="px-3 btn btn-success" style="border-radius:20px">flavour</p>
+            <p class="px-3 btn btn-success" style="border-radius:20px">flavour</p>
+          </div>
+        <p id="foodwriteuptext" class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi labore sed doloribus ab? Reiciendis odit sunt, voluptatibus veritatis molestiae suscipit est aspernatur, nulla, possimus odio ipsum nobis quia quasi commodi.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="div2">
+        <% @topdishes.each do |dish| %>
+             <div class="sidefoodcards d-flex my-4 flex-grow">
+          <div class="sidefood-image">
+            <img src=<%= dish.description  %> alt="" id="image">
+          </div>
+            <div class="rank">
+            <p>Rank</p>
+            </div>
+            <div class="bookmark">
+              <i class="fa-regular fa-bookmark fa-xl mx-2"></i>
+              <i class="fa-regular fa-comment-lines fa-xl"></i>
+            </div>
+            <div class="stars-rank">
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+                <i class="fa-light fa-star"></i>
+            </div>
+          <div class="sidefood-content p-2">
+            <p class="text-justify" style="margin-right:50%;font-size:20px;margin-left:5px">
+            <strong><%= dish.name[0..30] %></strong>
+            </p>
+            <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+            </div>
+            <p class="my-2 text-justify" style="margin-left:5px;font-size:15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ducimus, maiores aut magnam est nostrum quis. Doloribus debitis, quisquam quibusdam, eum, error dolorum omnis alias provident natus nostrum quos ratione.</p>
+
+
+          </div>
+        </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="four-column-card">
+
+    <% @dishes.each do |dish| %>
+      <div class="container">
+      <p><%= dish.name[0..30] %></p>
+      <img src="<%= dish.description  %>" alt="" style="height:200px">
+      </div>
+    <% end %>
+
+</div>
