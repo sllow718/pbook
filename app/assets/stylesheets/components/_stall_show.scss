@@ -1,6 +1,12 @@
 .stall-title-banner {
 }
 
+#small-card-title {
+  margin-right: 25%;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
 .stall-show-grid-container {
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -13,6 +19,7 @@
 
 .stall-write-up {
   #stalltitle {
+    margin-top: 2%;
     margin-left: 5%;
     margin-right: 40px;
     text-align: justify;
@@ -42,34 +49,6 @@
   }
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .stall-show-grid-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .stall-show-grid-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .stall-show-grid-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .stall-show-grid-container {
-    grid-template-columns: 2fr 3fr;
-  }
-}
-
 .sidefoodcards {
   flex: auto;
   position: relative;
@@ -96,7 +75,94 @@
 
 .sidefood-image {
   #image {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .stall-show-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  #small-card-title {
+    margin-right: 0%;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  #main-image {
     width: 300px;
-    height: 200px;
+  }
+
+  #repeated-text {
+    font-size: 12px;
+  }
+  .div2 {
+    margin-right: 18px;
+  }
+  .sidefood-image {
+    #image {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  .sidefoodcards {
+    .bookmark {
+      margin-left: 40%;
+      margin-top: 2%;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .buttons {
+      position: absolute;
+      margin-left: -57%;
+      margin-top: 69%;
+    }
+
+    .stars-rank {
+      position: absolute;
+      margin-left: 12%;
+      margin-top: 64%;
+    }
+
+    .rank {
+      margin-left: 23%;
+      margin-top: 58%;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .stall-show-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidefoodcards {
+    .bookmark {
+      margin-left: 90%;
+      margin-top: 3%;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .stall-show-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .sidefoodcards {
+    .bookmark {
+      margin-left: 90%;
+      margin-top: 3%;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .stall-show-grid-container {
+    grid-template-columns: 2fr 3fr;
   }
 }
