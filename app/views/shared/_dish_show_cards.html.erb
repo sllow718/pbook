@@ -7,10 +7,15 @@
             <p>Rank</p>
             </div>
             <div class="bookmark">
+            <%# adding data controller %>
+            <%= link_to "bookmark", dish_bookmarks_path(dish) %>
+            <%= link_to "unbookmark", dish_bookmarks_path(dish) %>
               <i class="fa-regular fa-bookmark fa-xl mx-1"
-              data-bookmark-target="bookmarkIcon"
+              <%# data-bookmark-target="bookmarkIcon"
               data-controller="bookmark"
-        data-action="click->bookmark#bookmark"></i>
+              data-action="click->bookmark#bookmark" %>
+              >
+              </i>
               <i class="fa-regular fa-comment-lines fa-xl"></i>
             </div>
             <div class="stars-rank">

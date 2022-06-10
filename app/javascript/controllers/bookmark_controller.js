@@ -10,8 +10,7 @@ export default class extends Controller {
 
 
   bookmark() {
-    this.bookmarkIconTarget.innerText = "Bingo!"
-    console.log('k')
+    this.bookmarkIconTarget.style.color = '#FF3757';
     // get the item that has been clicked
     // get the user who clicked
     // change the favourited status of the item
