@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :stalls
   resources :dishes do
     get 'bookmarks', to: 'bookmarks#bookmark'
-    get 'bookmarks', to: 'bookmarks#unbookmark'
   end
+  delete "bookmarks/:id", to: "bookmarks#destroy"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

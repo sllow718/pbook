@@ -8,8 +8,13 @@
             </div>
             <div class="bookmark">
             <%# adding data controller %>
-            <%= link_to "bookmark", dish_bookmarks_path(dish) %>
-            <%= link_to "unbookmark", dish_bookmarks_path(dish) %>
+            <%= link_to "bookmark",
+            dish_bookmarks_path(dish),
+            notice: "Bookmark added to your library" %>
+            <%= link_to "unbookmark",
+            dish_bookmarks_path(dish),
+            method: :delete,
+            notice: "Bookmark removed from your library" %>
               <i class="fa-regular fa-bookmark fa-xl mx-1"
               <%# data-bookmark-target="bookmarkIcon"
               data-controller="bookmark"
