@@ -9,6 +9,11 @@ class StallsController < ApplicationController
   end
 
   def new
+    @stall = Stall.new
+    @hawker_center_names = []
+    HawkerCenter.all.each do |hawker_center|
+      @hawker_center_names << hawker_center.name
+    end
   end
 
   def create
