@@ -5,40 +5,10 @@ $dark-pink: #C06D7A;
 
 .flavour-label {
   // color: $red;
-  color: $dark-pink;
+  color: $red;
   padding: 4px;
   margin: 4px;
   font-size: 24px;
   border-style: solid;
-  border-color: $dark-pink;
-}
-
-.flavour-label-small {
-/* Flavour */
-box-sizing: border-box;
-/* Main red */
-border: 2.4px solid #FF3757;
-border-radius: 120px;
-/* This is a Secondary Title */
-position: absolute;
-left: 26.09%;
-right: 26.09%;
-top: 26.67%;
-bottom: 28.33%;
-/* This is a Secondary Title */
-position: absolute;
-left: 0%;
-right: -1.01%;
-top: 0%;
-bottom: -11.11%;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 14.9559px;
-line-height: 18px;
-/* Main red */
-color: #FF3757;
-
-
+  border-color: $red;
 }
