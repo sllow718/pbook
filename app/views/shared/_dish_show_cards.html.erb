@@ -7,22 +7,15 @@
             <p>Rank</p>
             </div>
             <div class="bookmark">
-            <%# adding data controller %>
-            <%= link_to "bookmark",
-            dish_bookmarks_path(dish),
-            notice: "Bookmark added to your library" %>
-            <%=
-            # link_to "unbookmark",
-            # bookmark_path(@bookmark),
-            # method: :delete,
-            # notice: "Bookmark removed from your library"
-            %>
-              <i class="fa-regular fa-bookmark fa-xl mx-1"
-              <%# data-bookmark-target="bookmarkIcon"
-              data-controller="bookmark"
-              data-action="click->bookmark#bookmark" %>
-              >
-              </i>
+            <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
+            <%= link_to dish_bookmarks_path(dish) do %>
+              <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
+              <% if Bookmark.where(user_id: current_user.id, dish_id: dish.id).first.present? %>
+                <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
+              <% else %>
+                <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
+              <% end %>
+            <% end %>
               <i class="fa-regular fa-comment-lines fa-xl"></i>
             </div>
             <div class="stars-rank">
