@@ -1,0 +1,66 @@
+.add-dish-container {
+  height: 1002px;
+  width: 1642px;
+  display: flex;
+  align-items: center;
+}
+
+.stall-card-container {
+  height: 836px;
+  width: 650px;
+  padding-right: 20px;
+  margin: 20px;
+  box-shadow: 5px 5px #888888;
+  border-radius: 25px;
+  border-color: black;
+}
+
+.stall-title {
+  background-color: #b3263d;
+  width: 650px;
+  height: 113px;
+  border-radius: 25px;
+  font-family: grandstander;
+  font-size: 36;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.stall-address {
+  color: white;
+  font-size: 20;
+}
+
+.stall-photo {
+  display: flex;
+  justify-content: center;
+  height: 286px;
+  margin-top: 40px;
+}
+
+.stall-description {
+  background-color: lightgray;
+  height: 140px;
+  width: 550;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  align-items: center;
+}
+
+.form-container {
+  height: 836px;
+  width: 650px;
+  padding-left: 20px;
+  margin: 20px;
+  box-shadow: 5px 5px #888888;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b3263d;
+  color: white;
+}

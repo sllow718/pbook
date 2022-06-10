@@ -1,0 +1,20 @@
+<div class = "add-dish-container">
+  <div class = "stall-card-container">
+      <div class = "stall-title">
+      <h2>Hill Street Kway Teow</h2>
+         <div class = "stall-address">
+            <h3>Stall Address</h3>
+          </div>
+      </div>
+        <div class="stall-photo">
+         <%= image_tag "https://danielfooddiary.com/wp-content/uploads/2019/04/hillstreet7.jpg", class:"img-fluid", style:"height:286px;width:453; p-40; crop: :fill"%>
+         </div>
+         <div class="stall-description">
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+         </div>
+    </div>
+
+  <div class = "form-container">
+   <%= render 'shared/dish_form', dish: @dish %>
+  </div>
+</div>
