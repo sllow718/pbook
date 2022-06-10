@@ -11,10 +11,12 @@
             <%= link_to "bookmark",
             dish_bookmarks_path(dish),
             notice: "Bookmark added to your library" %>
-            <%= link_to "unbookmark",
-            dish_bookmarks_path(dish),
-            method: :delete,
-            notice: "Bookmark removed from your library" %>
+            <%=
+            # link_to "unbookmark",
+            # bookmark_path(@bookmark),
+            # method: :delete,
+            # notice: "Bookmark removed from your library"
+            %>
               <i class="fa-regular fa-bookmark fa-xl mx-1"
               <%# data-bookmark-target="bookmarkIcon"
               data-controller="bookmark"
