@@ -60,13 +60,31 @@
   </div>
 </div>
 
-<div class="four-column-card">
 
-    <% @dishes.each do |dish| %>
-      <div class="container">
-      <p><%= dish.name[0..30] %></p>
-      <img src="<%= dish.description  %>" alt="" style="height:200px">
+  <div class="four-column-card">
+
+      <% @dishes.each do |dish| %>
+      <div class="col-12" style="position:relative;">
+
+          <p style="font-size:20px"><strong><%= dish.name[0..30] %></strong></p>
+          <img src="<%= dish.description  %>" alt="" style="height:230px;width:330px;border-radius:20px;padding:10px">
+          <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+                <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+                <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+                <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
+          </div>
+          <div class="stars-rank" style="position:absolute;margin-top:-67%;">
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+          </div>
+          <div class="rank" style="position:absolute;margin-top:-67%;margin-left:61%;">
+          <p>Rank #?</p>
+          </div>
+
       </div>
-    <% end %>
+      <% end %>
 
-</div>
+  </div>
