@@ -1,0 +1,18 @@
+<h2>Begin here!</h2>
+
+<%= simple_form_for(@stall) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :hawker_center_id, label: "Hawker Center", collection: @hawkers %>
+    <%= f.input :name, autofocus: true, label: "Stall Name" %>
+    <div class="d-flex gap-3">
+      <%= f.input :unit, label: "Stall Unit Number" %>
+      <%= f.input :photo, as: :file, label: "Upload Stall Photo" %>
+    </div>
+    <%= f.input :description, label: "Stall Description",
+      input_html: { style: 'height: 200px'  } %>
+
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "List stall", class: "btn btn-primary" %>
+  </div>
+<% end %>
