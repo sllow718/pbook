@@ -1,10 +1,32 @@
-    <% @dishes.each do |dish| %>
+<div class="stall-show-grid-container">
+  <div class="div1">
+
+        <div class="featured-dish-card bg-white p-2">
+        <p id="stalltitle" style="margin-left:5%;"><%= @topstalls.first.name %></p>
+        <h5 id="foodtitle"><strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong></h5>
+        <div class="d-flex flex-column justify-content-center">
+          <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" style="width:420px;border-radius:20px;" class="p-1 mx-auto">
+        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
+                <span class="px-1 mx-1 btn pink-button">flavour</span>
+                <span class="px-1 mx-1 btn pink-button">flavour</span>
+                <span class="px-1 mx-1 btn pink-button">flavour</span>
+        </div>
+        <p id="foodwriteuptext" class="text-justify">
+        <%= Review.where(dish: @topdish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="div2">
+    <% @topdishes.each do |dish| %>
       <div class="sidefoodcards d-flex my-4 flex-grow">
           <div class="sidefood-image">
                 <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
           </div>
 
-          <div class="sidefood-content pl-2 py-4 pr-4">
+          <div class="sidefood-content pl-2 py-4 pr-4" style="flex-grow:inherit">
             <div class="sidefood-header d-flex flex-row justify-content-between">
               <div class="rank">
                 <div class="d-flex flex-column" style="margin-left:5px">
@@ -37,8 +59,11 @@
             </div>
 
             <p class="my-2 text-justify" style="margin-left:5px;font-size:15px;">
-            <%= Review.where(dish: dish)[0].comment[0..350] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
+            <%= Review.where(dish: dish)[0].comment[0..200] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
             </p>
           </div>
       </div>
     <% end %>
+
+  </div>
+</div>
