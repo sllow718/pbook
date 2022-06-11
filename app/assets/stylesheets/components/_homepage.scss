@@ -24,11 +24,17 @@
     grid-template-columns: 1fr;
   }
 
+  .div2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
   #homepagetop1 {
     width: 80%;
   }
   .featured-dish-card {
     width: 95%;
+    margin-left: auto;
+    margin-right: auto;
 
     #foodwriteuptext {
       font-size: 15px;
@@ -39,8 +45,10 @@
   }
 
   .sidefoodcards {
-    width: 100%;
+    width: 95%;
     flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
     .sidefood-content {
       padding-left: 2rem;
     }
