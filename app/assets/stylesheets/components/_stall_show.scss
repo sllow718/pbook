@@ -32,11 +32,15 @@
   }
 }
 .featured-dish-card {
+  border: 3px solid #fa3757;
+  margin-top: 2rem;
+  border-radius: 20px;
   .featured-dish-image {
     width: 420px;
     background-size: cover;
   }
   #foodtitle {
+    margin-top: 1rem;
     margin-left: 5%;
     margin-right: 40px;
     text-align: justify;
@@ -46,37 +50,35 @@
     margin-left: 5%;
     margin-right: 40px;
     text-align: justify;
+    margin-top: 1rem;
   }
 }
 
 .sidefoodcards {
   flex: auto;
-  position: relative;
-  background-color: beige;
-
-  .bookmark {
-    position: absolute;
-    margin-left: 90%;
-    margin-top: 15px;
-  }
-
-  .stars-rank {
-    position: absolute;
-    margin-left: 70%;
-    margin-top: 30px;
-  }
+  border: 3px solid #fa3757;
+  border-radius: 30px;
+  background-color: white;
 
   .rank {
-    position: absolute;
-    margin-left: 75%;
-    margin-top: 5px;
+    position: relative;
+
+    .stars-rank {
+      margin-top: -4%;
+    }
+    .bookmark {
+    }
   }
 }
-
+.sidefood-content {
+  padding-right: 2rem;
+}
 .sidefood-image {
   #image {
     width: 250px;
     height: 250px;
+    padding: 20px;
+    border-radius: 20px;
   }
 }
 
@@ -109,26 +111,15 @@
   }
   .sidefoodcards {
     .bookmark {
-      margin-left: 40%;
-      margin-top: 2%;
-      background-color: rgba(255, 255, 255, 0.6);
     }
 
     .buttons {
-      position: absolute;
-      margin-left: -57%;
-      margin-top: 69%;
     }
 
     .stars-rank {
-      position: absolute;
-      margin-left: 12%;
-      margin-top: 64%;
     }
 
     .rank {
-      margin-left: 23%;
-      margin-top: 58%;
     }
   }
 }
@@ -141,8 +132,6 @@
 
   .sidefoodcards {
     .bookmark {
-      margin-left: 90%;
-      margin-top: 3%;
     }
   }
 }
@@ -154,8 +143,6 @@
   }
   .sidefoodcards {
     .bookmark {
-      margin-left: 90%;
-      margin-top: 3%;
     }
   }
 }

@@ -1,46 +1,54 @@
     <% @dishes.each do |dish| %>
-        <div class="sidefoodcards d-flex my-4 flex-grow">
+      <div class="sidefoodcards d-flex my-4 flex-grow">
           <div class="sidefood-image">
-            <img src=<%= dish.description  %> alt="" id="image">
+                <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
           </div>
-            <div class="rank">
-            <p>Rank</p>
-            </div>
-            <div class="bookmark">
-            <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
-            <%= link_to dish_bookmarks_path(dish) do %>
-              <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
-              <% if Bookmark.where(user_id: current_user.id, dish_id: dish.id).first.present? %>
-                <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
-              <% else %>
-                <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
-              <% end %>
-            <% end %>
-              <i class="fa-regular fa-comment-lines fa-xl"></i>
-            </div>
-            <div class="stars-rank">
-                <i class="fa-light fa-star"></i>
-                <i class="fa-light fa-star"></i>
-                <i class="fa-light fa-star"></i>
-                <i class="fa-light fa-star"></i>
-                <i class="fa-light fa-star"></i>
-            </div>
-          <div class="sidefood-content p-2">
 
-            <p class="text-justify" style="margin-right:50%;font-size:20px;margin-left:5px">
-            <strong><%= dish.name[0..30] %></strong>
+          <div class="sidefood-content pl-2 py-4 pr-4">
+            <div class="sidefood-header d-flex flex-row justify-content-between">
+              <div class="rank">
+                <div class="d-flex flex-column" style="margin-left:5px">
+                  <div class="rank-text">
+                  <span>Rank</span>
+                  </div>
+                  <div class="stars-rank">
+                    <i class="fa-light fa-star"></i>
+                    <i class="fa-light fa-star"></i>
+                    <i class="fa-light fa-star"></i>
+                    <i class="fa-light fa-star"></i>
+                    <i class="fa-light fa-star"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bookmark">
+                
+                <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
+                <%= link_to dish_bookmarks_path(dish) do %>
+                  <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
+                  <% if Bookmark.where(user_id: current_user.id, dish_id: dish.id).first.present? %>
+                    <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
+                  <% else %>
+                    <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
+                  <% end %>
+                <% end %>
+                  <i class="fa-regular fa-comment-lines fa-xl"></i>
+                
+              </div>
+            </div>
+            <span class="text-justify" style="font-size:20px;margin-left:5px">
+            <strong><%= dish.name[0..30].strip rescue "Goreng Pisang Ala Carte" %></strong>
+            </span>
+
+            <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+            </div>
+
+            <p class="my-2 text-justify" style="margin-left:5px;font-size:15px;">
+            <%= Review.where(dish: dish)[0].comment[0..350] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
             </p>
-
-            <div style="list-style-type: none" class="d-flex flex-row justify-content-left buttons">
-
-              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn btn-success" style="border-radius:20px;font-size:12px;">flavour</span>
-            </div>
-
-            <p class="my-2 text-justify" style="margin-left:5px;font-size:15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ducimus, maiores aut magnam est nostrum quis. Doloribus debitis, quisquam quibusdam, eum, error dolorum omnis alias provident natus nostrum quos ratione.</p>
-
-
           </div>
-        </div>
+      </div>
     <% end %>
