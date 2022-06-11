@@ -6,6 +6,11 @@
   }
 }
 
+#homepagetop1 {
+  width: 420px;
+  border-radius: 20px;
+}
+
 .column-headers {
   .rankandstar {
     margin-top: -1rem;
@@ -19,15 +24,45 @@
     grid-template-columns: 1fr;
   }
 
+  #homepagetop1 {
+    width: 80%;
+  }
+  .featured-dish-card {
+    width: 95%;
+
+    #foodwriteuptext {
+      font-size: 15px;
+    }
+  }
   .card {
+    width: 80%;
+  }
+
+  .sidefoodcards {
     width: 100%;
+    flex-wrap: wrap;
+    .sidefood-content {
+      padding-left: 2rem;
+    }
+
+    .sidefood-image {
+      margin-left: auto;
+      margin-right: auto;
+
+      #image {
+        width: 300px;
+        height: 250px;
+        padding: 1rem;
+        align-content: center;
+      }
+    }
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .card {
-    width: 100%;
+    width: 80%;
   }
 }
 

@@ -5,7 +5,7 @@
         <p id="stalltitle" style="margin-left:5%;"><%= @topstalls.first.name %></p>
         <h5 id="foodtitle"><strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong></h5>
         <div class="d-flex flex-column justify-content-center">
-          <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" style="width:420px;border-radius:20px;" class="p-1 mx-auto">
+          <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
         <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
