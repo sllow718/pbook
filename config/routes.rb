@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'stalls#index'
 
   resources :stalls
-  resources :dishes
+  resources :dishes do
+    get 'bookmarks', to: 'bookmarks#bookmark'
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
