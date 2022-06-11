@@ -1,6 +1,11 @@
-<div class="stall-show-grid-container">
-  <div class="div1">
 
+
+<% if params[:query].present? %>
+  <div class="stall-show-grid-container d-none" data-search-food-target="topgrid">
+<% else %>
+  <div class="stall-show-grid-container" data-search-food-target="topgrid">
+<% end %>
+  <div class="div1">
         <div class="featured-dish-card bg-white p-2">
         <p id="stalltitle" style="margin-left:5%;"><%= @topstalls.first.name %></p>
         <h5 id="foodtitle"><strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong></h5>

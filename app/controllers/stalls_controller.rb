@@ -9,7 +9,13 @@ class StallsController < ApplicationController
       @topdishes.push(Dish.where(stall_id:stall.id).sample)
     end
 
-    @dishes = Dish.all
+    if params[:query].present?
+      @dishes = Dish.global_search(params[:query])
+    else
+      @dishes = Dish.all
+    end
+
+
   end
 
   def show
