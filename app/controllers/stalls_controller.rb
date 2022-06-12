@@ -37,7 +37,7 @@ class StallsController < ApplicationController
     @stall.user_id = current_user.id
 
     if @stall.save
-      redirect_to root_path
+      redirect_to new_dish_path(@stall)
     else
       render 'new'
     end

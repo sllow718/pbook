@@ -7,17 +7,18 @@
 
 .stall-card-container {
   height: 836px;
-  width: 650px;
+  width: 700px;
   padding-right: 20px;
   margin: 20px;
   box-shadow: 5px 5px #888888;
   border-radius: 25px;
   border-color: black;
+  justify-content: center;
 }
 
 .stall-title {
   background-color: #b3263d;
-  width: 650px;
+  width: 700px;
   height: 113px;
   border-radius: 25px;
   font-family: grandstander;
@@ -47,13 +48,43 @@
   border-radius: 25px;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin: 40px;
+  margin-right: 10px;
   align-items: center;
+}
+
+.stall-dish-pictures {
+  height: 140px;
+  width: 550;
+  border-radius: 25px;
+  display: flex;
+  margin: 40px;
+  margin-right: 10px;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .stall-dish-picture-card {
+    flex: 0 0 auto;
+  }
+}
+
+.stall-dish-picture-card {
+  height: 130px;
+  width: 150;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.stall-dish-picture-header {
+  display: inline-block;
 }
 
 .form-container {
   height: 836px;
-  width: 650px;
+  width: 700px;
   padding-left: 20px;
   margin: 20px;
   box-shadow: 5px 5px #888888;

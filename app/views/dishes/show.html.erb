@@ -1,0 +1,93 @@
+<div class="dish-show-container">
+  <div class="left-side-container">
+    <div class = "description-box">
+      <div class = "dish-title">
+        <h2><%=@dish.name%></h2>
+      </div>
+      <div class = "dish-description-text">
+        <%=@dish.description%>
+      </div>
+    </div>
+    <div class = "dish-individual-card">
+      <div class = "dish-header">
+      <div class ="dish-rank">
+      <h5>Rank #</h5>
+      </div>
+      <div class ="dish-name-and-rating-card">
+        <div class ="dish-name-card">
+          <h5><%=@dish.name%></h5>
+        </div>
+        <div class = "dish-rating-card">
+           <i class="fa-light fa-star"></i>
+           <i class="fa-light fa-star"></i>
+           <i class="fa-light fa-star"></i>
+           <i class="fa-light fa-star"></i>
+           <i class="fa-light fa-star"></i>
+        </div>
+      </div>
+      </div>
+      <div class ="dish-photo-card">
+         <img src=<%= @dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
+          </div>
+           <div class = "dish-flavor-mark">
+        <div class = "dish-flavor-card">
+          <div style="list-style-type: none" class="d-flex flex-row justify-content-center p-2">
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+                <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
+                <%= link_to dish_bookmarks_path(@dish) do %>
+                  <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
+                   <div class ="bookmark">
+              <% if Bookmark.where(user_id: (current_user.id rescue false ? current_user.id : nil) , dish_id: @dish.id).first.present? %>
+                    <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
+                  <% else %>
+                    <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
+                  <% end %>
+                <% end %>
+              </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="right-side-container">
+    <h2>Reviews</h2>
+    <div class ="review-container">
+      <div id = "reviews">
+      <% if @dish.reviews.blank? %>
+        Be the first to leave a review for <%= @dish.name %>
+      <% else %>
+        <% @dish.reviews.each do |review| %>
+        <div class = "review-cards">
+            <div class = "upload-photo">
+              <%= image_tag 'https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg', class:'img-fluid', style:'height:250px;width:250px;crop:fill;border-radius:15px' %>
+            </div>
+          <div class ="comment">
+          <p><%=review.user.username%>   <%=review.created_at%></p>
+          <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
+           <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+              <div class = "dish-rating-card">
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+              <i class="fa-light fa-star"></i>
+        </div>
+          </div>
+          <p id="review-<%= review.id %>"><%= review.comment %></p>
+        </div>
+        </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <%= simple_form_for([ @dish, @review ], remote: true) do |f| %>
+  <%= f.input :comment, as: :text %>
+  <%= f.button :submit %>
+<% end %>
+  </div>
+</div>

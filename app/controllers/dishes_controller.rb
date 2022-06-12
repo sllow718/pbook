@@ -4,21 +4,31 @@ class DishesController < ApplicationController
   end
 
   def show
+    @dish = Dish.find(params[:id])
+    @stall = @dish.stall
+    @review = Review.new
   end
 
   def new
-    @dish = Dish.new
     @user = current_user
+    @dish = Dish.new
+    @stalls = Stall.all
+    @dish.stall_id = @user.stalls.last.id
+    @stall = @user.stalls.last
   end
 
   def create
     @user = current_user
     @dish = Dish.new(dish_params)
+    @dish.stall_id = @user.stalls.last.id
+    @stall = @user.stalls.last
 
-    if @item.save
-      redirect_ to @user, notice: "Dish has successfully been saved."
+    if @dish.save
+      flash[:success] = "Dish created successfully."
+      redirect_back(fallback_location: root_path)
     else
-      render 'dishes/new'
+      flash[:error] = "Dish not created successfully."
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -29,6 +39,6 @@ class DishesController < ApplicationController
     end
 
     def dish_params
-      params.require(:dish).permit(:name, :price, :description, :dish_type, :stall_id)
+      params.require(:dish).permit(:name, :price, :description, :dish_type, :stall_id, :photo, :flavor)
     end
 end
