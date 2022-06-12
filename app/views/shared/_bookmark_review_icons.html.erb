@@ -1,0 +1,10 @@
+<%# Letting font awesome icon lead to creation/destruction of a bookmark %>
+<%= link_to (dish_bookmarks_path(dish) rescue false ? dish_bookmarks_path(dish) : root_path) do %>
+<%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
+  <% if Bookmark.where(user_id: (current_user.id rescue false ? current_user.id : nil) , dish_id: (dish.id rescue false ? dish.id : nil) ).first.present? %>
+    <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
+  <% else %>
+    <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
+  <% end %>
+<% end %>
+<i class="fa-regular fa-comment-lines fa-xl"></i>
