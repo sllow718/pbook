@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_140635) do
+ActiveRecord::Schema.define(version: 2022_06_10_065258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_140635) do
     t.bigint "stall_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "flavor_id"
-    t.index ["flavor_id"], name: "index_dishes_on_flavor_id"
     t.index ["stall_id"], name: "index_dishes_on_stall_id"
   end
 
@@ -127,7 +125,6 @@ ActiveRecord::Schema.define(version: 2022_06_11_140635) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "dishes"
   add_foreign_key "bookmarks", "users"
-  add_foreign_key "dishes", "flavors"
   add_foreign_key "dishes", "stalls"
   add_foreign_key "review_flavors", "flavors"
   add_foreign_key "review_flavors", "reviews"

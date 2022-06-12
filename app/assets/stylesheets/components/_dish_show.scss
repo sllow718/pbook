@@ -1,0 +1,111 @@
+.dish-show-container {
+  margin-top: 40px;
+  display: flex;
+  width: 500px;
+}
+
+.description-box {
+  height: 200px;
+  width: 500px;
+  color: white;
+  background: #d39ba3;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dish-description-text {
+  width: 500px;
+  height: 208px;
+  justify-content: center;
+  overflow-wrap: break-word;
+  padding: 10px;
+}
+
+.dish-individual-card {
+  display: flex;
+  height: max-content;
+  width: 500px;
+  flex-direction: column;
+  margin-top: 20px;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #891c2d;
+}
+
+.dish-header {
+  background-color: #891c2d;
+  color: white;
+  border-radius: 11px;
+  border-style: solid;
+  border-color: #891c2d;
+  margin-bottom: 20px;
+}
+
+.dish-rank {
+  height: max-content;
+  width: max-content;
+  margin-left: auto;
+}
+
+.dish-name-and-rating-card {
+  display: flex;
+}
+
+.dish-rating-card {
+  height: max-content;
+  width: max-content;
+  margin-left: auto;
+}
+
+.dish-photo-card {
+  height: 300px;
+  width: 500;
+  display: flex;
+  justify-content: center;
+}
+.dish-photo-card img {
+  height: 300px;
+  width: 400px;
+  border-radius: 15px;
+}
+
+.dish-flavor-card {
+  display: flex;
+  justify-content: center;
+}
+
+.right-side-container {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 800px;
+  margin-left: 20px;
+}
+
+.review-container {
+  display: flex;
+  width: 800px;
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+.review-cards {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+
+.comment {
+  height: 250px;
+  width: 800px;
+  text-overflow: ellipsis;
+  display: inline-block;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.reviewer-details {
+  display: flex;
+}

@@ -19,7 +19,9 @@
       <% if params[:controller] == "stalls"  && params[:action] == "index" %>
       <%= render 'shared/main_banner' %>
     <% elsif params[:controller] == "stalls" && params[:action] == "show" %>
-
+      <% end %>
+        <% if params[:controller] == "dishes"  && params[:action] == "show" %>
+      <%= render 'shared/dish_banner' %>
       <% end %>
       <div class="background">
        <div class="container">
