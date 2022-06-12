@@ -84,11 +84,17 @@
   height: 800px;
   margin-left: 20px;
 }
-
+.reviews-header {
+  color: white;
+  background-color: #891c2d;
+  border-radius: 15px;
+  justify-content: center;
+  display: flex;
+}
 .review-container {
   display: flex;
   width: 800px;
-  height: 600px;
+  height: 625px;
   overflow-y: scroll;
   overflow-x: scroll;
 }
