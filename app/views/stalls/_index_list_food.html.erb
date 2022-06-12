@@ -31,10 +31,11 @@
 
         <img src="<%= dish.description  %>" alt="" class="img-fluid p-2" style="border-radius:20px">
 
-        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-2">
-                <span class="px-1 mx-1 btn pink-button">flavour</span>
-                <span class="px-1 mx-1 btn pink-button">flavour</span>
-                <span class="px-1 mx-1 btn pink-button">flavour</span>
+        <div style="list-style-type: none" class="d-flex flex-row flex-wrap aligh-items-center px-2">
+                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
+                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
+                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
+                <%= render 'shared/bookmark_review_icons', dish: dish %>
         </div>
 
       </div>
