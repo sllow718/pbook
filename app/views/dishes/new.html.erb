@@ -1,17 +1,38 @@
 <div class = "add-dish-container">
   <div class = "stall-card-container">
       <div class = "stall-title">
-      <h2>Hill Street Kway Teow</h2>
+      <h2><%=current_user.stalls.last.name%></h2>
          <div class = "stall-address">
-            <h3>Stall Address</h3>
+            <h4><%=current_user.stalls.last.hawker_center.name%>, <%=current_user.stalls.last.unit%></h4>
           </div>
       </div>
         <div class="stall-photo">
+         <% if @current_user.stalls.last.photo.attached? %>
+      <%= cl_image_tag(@current_user.stalls.last.photo.key, class:'img-fluid', style:'height:286px;width:453px,crop:fill,gravity:auto,p-40') %>
+       <% else %>
          <%= image_tag "https://danielfooddiary.com/wp-content/uploads/2019/04/hillstreet7.jpg", class:"img-fluid", style:"height:286px;width:453; p-40; crop: :fill"%>
+      <% end %>
+
          </div>
          <div class="stall-description">
-         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+           <%= @current_user.stalls.last.description%>
          </div>
+
+      <div class="stall-dish-pictures">
+        <% @stall.dishes.each do |dish|%>
+          <div class = "stall-dish-picture-card">
+                <div class = "stall-dish-picture-name">
+                    <p><%=dish.name%><p>
+                </div>
+                <div class = "stall-dish-picture">
+                <%= image_tag "https://c1.staticflickr.com/1/762/20845130191_4637728609_b.jpg", class:"img-fluid", style:"height:77px;width:133px; p-40; crop: :fill"%>
+                </div>
+
+        </div>
+        <%end%>
+      </div>
+
+
     </div>
 
   <div class = "form-container">
