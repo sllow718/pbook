@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   def bookmark
     dish = Dish.find(params[:dish_id])
     user = current_user
-    raise
+    # raise
     bookmark = Bookmark.where(user_id: user.id, dish_id: dish.id).first if user.id rescue false
     if bookmark.present?
       Bookmark.destroy(bookmark.id)
