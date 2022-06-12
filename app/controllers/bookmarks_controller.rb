@@ -11,6 +11,7 @@ class BookmarksController < ApplicationController
       new_bookmark.dish_id = dish.id
       new_bookmark.user_id = user.id
       new_bookmark.save!
+      raise
       redirect_to stall_path(dish.stall.id)
     else
       redirect_to stall_path(dish.stall.id), alert: "You must be logged in to bookmark"
