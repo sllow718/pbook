@@ -74,6 +74,12 @@
   padding-right: 0px;
 }
 .sidefood-image {
+  position: relative;
+  .bookmark{
+    position: absolute;
+    left: 4%;
+    top: 4%;
+  }
   #image {
     width: 180px;
     height: 180px;
