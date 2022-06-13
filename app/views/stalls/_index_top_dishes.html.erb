@@ -36,12 +36,15 @@
           </div>
 
           <%# sidefood-content = everything except for the image %>
+
           <div class="sidefood-content pl-2 py-4 pr-4" style="flex-grow:inherit">
-            <div class="sidefood-header d-flex flex-row justify-content-between">
+
+
+            <%# <div class="sidefood-header d-flex flex-row justify-content-between"> %>
 
               <%# div holding ranking, name, icons %>
-              <div class="rank">
-                <div class="d-flex" style="margin-left:5px">
+              <%# <div class="rank"> %>
+                <div class="d-flex justify-content-between" style="margin-left:5px">
 
                   <%# ranking %>
                   <div class="rank-text">
@@ -59,13 +62,13 @@
                   <div class="bookmark">
                     <%= render 'shared/bookmark_review_icons', dish: dish %>
                   </div>
-                </div>
+                <%# </div> %>
               </div>
 
 
 
               <%# div holding flavours + stars %>
-              <div class="flavour-stars-bookmark-review d-flex align-items-center">
+              <div class="flavour-stars-bookmark-review d-flex align-items-center justify-content-between">
 
                 <%# flavours %>
                 <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
@@ -91,6 +94,7 @@
                 </p>
               </div>
 
+          </div>
 
       </div>
     <% end %>
