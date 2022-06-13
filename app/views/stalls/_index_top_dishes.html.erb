@@ -15,6 +15,7 @@
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
+                <%= render 'shared/bookmark_review_icons', dish: @topdish %>
         </div>
         <p id="foodwriteuptext" class="text-justify">
         <%= Review.where(dish: @topdish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
@@ -49,18 +50,7 @@
               </div>
 
               <div class="bookmark">
-
-                <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
-      <%= link_to (dish_bookmarks_path(dish) rescue false ? dish_bookmarks_path(dish) : root_path) do %>
-                    <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
-                    <% if Bookmark.where(user_id: (current_user.id rescue false ? current_user.id : nil) , dish_id: (dish.id rescue false ? dish.id : nil) ).first.present? %>
-                    <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
-                  <% else %>
-                    <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
-                  <% end %>
-                <% end %>
-                  <i class="fa-regular fa-comment-lines fa-xl"></i>
-
+                <%= render 'shared/bookmark_review_icons', dish: dish %>
               </div>
             </div>
             <span class="text-justify" style="font-size:20px;margin-left:5px">
