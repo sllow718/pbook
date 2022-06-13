@@ -11,3 +11,17 @@
   border: 2px solid #fa3757;
   color: #fa3757;
 }
+
+.red-nav-button {
+  padding: 8px;
+  color: white;
+  font-weight: bolder;
+  background-color: #fa3757;
+  border-radius: 16px;
+  text-decoration: none;
+}
+
+.red-nav-button:hover {
+  color: white;
+  background-color: #52000E;
+}
