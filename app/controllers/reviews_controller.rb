@@ -15,6 +15,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def new
+    @dish = Dish.find(params[:dish_id])
+    @review = Review.new
+  end
+
+
   private
 
   def review_params

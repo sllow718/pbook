@@ -2,13 +2,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  border-radius: 30px;
   .img-fluid {
   }
 }
 
 #homepagetop1 {
   width: 420px;
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 .column-headers {
@@ -30,6 +31,7 @@
   }
   #homepagetop1 {
     width: 80%;
+    border-radius: 25px;
   }
   .featured-dish-card {
     width: 95%;
@@ -62,6 +64,7 @@
         height: 250px;
         padding: 1rem;
         align-content: center;
+        border-radius: 25px;
       }
     }
   }

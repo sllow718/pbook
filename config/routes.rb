@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'bookmarks', to: 'bookmarks#bookmark'
   end
     resources :dishes, only: [ :index, :show ] do
-    resources :reviews, only: [:create, :new, :show]
+    resources :reviews, only: [:create, :new]
   end
 
   end
