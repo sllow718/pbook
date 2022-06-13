@@ -32,53 +32,7 @@
   </div>
 
   <div class="div2">
-    <% @topdishes.each do |dish| %>
-      <div class="sidefoodcards d-flex my-4 flex-grow">
-          <div class="sidefood-image">
-                <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
-          </div>
-
-          <div class="sidefood-content pl-2 py-4 pr-4" style="flex-grow:inherit">
-
-          <%= link_to dish, style:"text-decoration:none;color:black;" do %>
-            <span class="text-justify" style="font-size:20px;margin-left:5px;">
-            <strong><%= dish.name[0..30].strip rescue "Goreng Pisang Ala Carte" %></strong>
-          </span>
-            <% end %>
-            <div class="sidefood-header d-flex flex-row justify-content-between">
-              <div class="rank">
-                <div class="d-flex flex-column" style="margin-left:5px">
-                  <div class="rank-text my-1">
-                  <span>👑 Top Pick</span>
-                  </div>
-                  <div class="stars-rank p-1">
-                    <i class="fa-solid fa-star" style="color:gold;"></i>
-                    <i class="fa-solid fa-star" style="color:gold;"></i>
-                    <i class="fa-solid fa-star" style="color:gold;"></i>
-                    <i class="fa-solid fa-star" style="color:gold;"></i>
-                    <i class="fa-solid fa-star" style="color:gold;"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div class="bookmark mt-2">
-                <%= render 'shared/bookmark_review_icons', dish: dish %>
-              </div>
-            </div>
-
-
-            <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-            </div>
-
-            <p class="my-2 text-justify" style="margin-left:5px;font-size:15px;">
-            <%= Review.where(dish: dish)[0].comment[0..200] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
-            </p>
-          </div>
-      </div>
-    <% end %>
+    <%= render 'shared/long_card', dishes: @topdishes %>
 
   </div>
 </div>
