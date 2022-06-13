@@ -85,13 +85,17 @@
               <i class="fa-light fa-star"></i>
         </div>
           </div>
-          <p id="review-<%= review.id %>"><%= review.comment %></p>
         </div>
         </div>
         <% end %>
       <% end %>
     </div>
     </div>
+      <div class = "leave-a-review">
+      <%=link_to "Have you tried the dish? Leave a Review!", new_dish_review_path(@dish)%>
+    </div>
   </div>
+
+
 </div>
 </div>

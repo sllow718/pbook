@@ -52,16 +52,19 @@
       </div>
     </div>
 
-  <div class="right-side-container">
+  <div class="review-right-side-container">
     <div class="review-submit-container">
-      <h2>Add your review</h2>
-      <%= simple_form_for(@dish) do |f| %>
+        <div class="review-plea">
+          <p>Enjoyed the Dish? Leave a review to show our hawkers your appreciation!<p>
+        </div>
+      <%= simple_form_for([@dish, @review]) do |f| %>
         <div class="form-inputs">
-          <%= f.input :name, autofocus: true, label: "Flavour" %>
+        <p>Rating<p>
+        <%=f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last%>
           <div class="d-flex gap-3">
             <%= f.input :photo, as: :file, label: "Upload An Image" %>
           </div>
-          <%= f.input :description, label: "Comment",
+          <%= f.input :comment, label: "Comment",
             input_html: { style: 'height: 200px'  } %>
         </div>
         <div class="form-actions">
