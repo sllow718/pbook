@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   resources :stalls
   resources :dishes do
     get 'bookmarks', to: 'bookmarks#bookmark'
+    resources :reviews
   end
-    resources :dishes, only: [ :index, :show ] do
-    resources :reviews, only: [:create, :new]
-  end
+
 
   end
 
