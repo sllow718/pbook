@@ -25,7 +25,11 @@
                     <p><%=dish.name%><p>
                 </div>
                 <div class = "stall-dish-picture">
-                <%= image_tag "https://c1.staticflickr.com/1/762/20845130191_4637728609_b.jpg", class:"img-fluid", style:"height:77px;width:133px; p-40; crop: :fill"%>
+                <% if dish.photo.attached? %>
+                  <%= cl_image_tag(dish.photo.key, class:'img-fluid', style:"height:77px;width:133px; p-40; crop: :fill") %>
+                <% else %>
+                  <%= image_tag 'https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg',  class:"img-fluid", style:"height:77px;width:133px; p-40; crop: :fill" %>
+                <% end %>
                 </div>
 
         </div>
