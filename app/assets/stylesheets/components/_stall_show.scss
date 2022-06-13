@@ -57,8 +57,8 @@
 .sidefoodcards {
   flex: auto;
   padding: 0.5em;
-  border: 3px solid #ffffff;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   .rank {
     position: relative;
@@ -71,10 +71,11 @@
   }
 }
 .sidefood-content {
-  padding-right: 0px;
+  padding-right: 2%;
 }
 .sidefood-image {
   position: relative;
+  margin-right: 2%;
   .bookmark{
     position: absolute;
     left: 4%;
