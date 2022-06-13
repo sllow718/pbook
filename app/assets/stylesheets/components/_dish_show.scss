@@ -1,7 +1,7 @@
 .dish-show-container {
-  margin-top: 40px;
   display: flex;
   width: 500px;
+  padding-top: 20px;
 }
 
 .description-box {
@@ -9,7 +9,6 @@
   width: 500px;
   color: white;
   background: #d39ba3;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,18 +29,15 @@
   width: 500px;
   flex-direction: column;
   margin-top: 20px;
-  border-radius: 15px;
-  border-style: solid;
-  border-color: #891c2d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .dish-header {
-  background-color: #891c2d;
-  color: white;
-  border-radius: 11px;
-  border-style: solid;
-  border-color: #891c2d;
+  color: black;
   margin-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .dish-rank {
@@ -81,16 +77,11 @@
   display: flex;
   flex-direction: column;
   width: 800px;
-  height: 800px;
+  height: 625px;
   margin-left: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
-.reviews-header {
-  color: white;
-  background-color: #891c2d;
-  border-radius: 15px;
-  justify-content: center;
-  display: flex;
-}
+
 .review-container {
   display: flex;
   width: 800px;
@@ -102,6 +93,7 @@
 .review-cards {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
+  padding: 20px;
 }
 
 .comment {
@@ -110,6 +102,8 @@
   text-overflow: ellipsis;
   display: inline-block;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-size: 14px;
 }
 
 .reviewer-details {
