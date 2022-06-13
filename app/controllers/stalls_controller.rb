@@ -1,12 +1,12 @@
 class StallsController < ApplicationController
   def index
     @stalls = Stall.all
-    @topstalls = @stalls.sample(4)
-    @topdish = Dish.where(stall_id:@topstalls.first.id).sample
+    @topstalls = @stalls[6..9]
+    @topdish = Dish.where(stall_id:@topstalls.first.id).first
     @secondtopstalls = @topstalls[1..3]
     @topdishes = []
     @secondtopstalls.each do |stall|
-      @topdishes.push(Dish.where(stall_id:stall.id).sample)
+      @topdishes.push(Dish.where(stall_id:stall.id).first)
     end
 
     if params[:query].present?

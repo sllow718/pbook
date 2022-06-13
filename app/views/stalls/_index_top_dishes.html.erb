@@ -8,14 +8,19 @@
   <div class="div1">
         <div class="featured-dish-card bg-white p-2 mt-4">
         <p id="stalltitle" style="margin-left:5%;"><%= @topstalls.first.name %></p>
-        <h5 id="foodtitle"><strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong></h5>
+        <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
+        <h5 id="foodtitle">
+        👑
+        <strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+        </h5>
+        <% end %>
         <div class="d-flex flex-column justify-content-center">
           <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
         <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
                 <span class="px-1 mx-1 btn pink-button">flavour</span>
-               <div class="featured-bookmark mt-3"> <%= render 'shared/bookmark_review_icons', dish: @topdish %>
+               <div class="featured-bookmark mt-2"> <%= render 'shared/bookmark_review_icons', dish: @topdish %>
                </div>
         </div>
         <p id="foodwriteuptext" class="text-justify">
@@ -34,29 +39,33 @@
           </div>
 
           <div class="sidefood-content pl-2 py-4 pr-4" style="flex-grow:inherit">
+
+          <%= link_to dish, style:"text-decoration:none;color:black;" do %>
+            <span class="text-justify" style="font-size:20px;margin-left:5px;">
+            <strong><%= dish.name[0..30].strip rescue "Goreng Pisang Ala Carte" %></strong>
+          </span>
+            <% end %>
             <div class="sidefood-header d-flex flex-row justify-content-between">
               <div class="rank">
                 <div class="d-flex flex-column" style="margin-left:5px">
-                  <div class="rank-text">
-                  <span>Rank</span>
+                  <div class="rank-text my-1">
+                  <span>👑 Top Pick</span>
                   </div>
-                  <div class="stars-rank">
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
+                  <div class="stars-rank p-1">
+                    <i class="fa-solid fa-star" style="color:gold;"></i>
+                    <i class="fa-solid fa-star" style="color:gold;"></i>
+                    <i class="fa-solid fa-star" style="color:gold;"></i>
+                    <i class="fa-solid fa-star" style="color:gold;"></i>
+                    <i class="fa-solid fa-star" style="color:gold;"></i>
                   </div>
                 </div>
               </div>
 
-              <div class="bookmark mt-5">
+              <div class="bookmark mt-2">
                 <%= render 'shared/bookmark_review_icons', dish: dish %>
               </div>
             </div>
-            <span class="text-justify" style="font-size:20px;margin-left:5px">
-            <strong><%= dish.name[0..30].strip rescue "Goreng Pisang Ala Carte" %></strong>
-            </span>
+
 
             <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
               <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
