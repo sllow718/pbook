@@ -55,9 +55,10 @@
 }
 
 .sidefoodcards {
-  // flex: auto;
-  border: 3px solid #ffffff;
+  flex: auto;
+  padding: 0.5em;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
   // .rank {
   //   position: relative;
@@ -70,13 +71,20 @@
   // }
 }
 .sidefood-content {
-  padding-right: 2rem;
+  padding-right: 2%;
 }
 .sidefood-image {
+  position: relative;
+  margin-right: 2%;
+  .bookmark{
+    position: absolute;
+    left: 4%;
+    top: 4%;
+  }
   #image {
-    width: 250px;
-    height: 250px;
-    padding: 20px;
+    width: 180px;
+    height: 180px;
+    padding: 0px;
     border-radius: 20px;
   }
 }

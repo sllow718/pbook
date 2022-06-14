@@ -1,0 +1,65 @@
+<% dishes.each do |dish| %>
+  <div class="sidefoodcards d-flex my-4 flex-grow">
+
+    <%# dish image + review & bookmark icons %>
+    <div class="sidefood-image">
+      <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
+      <div class="bookmark mt-2">
+        <%= render 'shared/bookmark_review_icons', dish: dish %>
+      </div>
+    </div>
+
+    <%# div holds everything else APART from picture %>
+    <%# pl-2 py-4 pr-4 %>
+    <div class="sidefood-content" style="flex-grow:inherit">
+      <%# <div class="d-flex justify-content-between"> %>
+      <%# </div> %>
+
+      <%# holds top pick, dish name, rank %>
+      <div class='d-flex justify-content-between align-items-center'>
+        <%# div holding top pick & name of dish %>
+        <div>
+          <%# rank %>
+          <div class="rank-text"> <%# my-1 %>
+            <span>👑 Top Pick</span>
+          </div>
+          <%# name of dish %>
+          <%= link_to dish, style:"text-decoration:none;color:black;" do %>
+            <span class="text-justify" style="font-size:20px;margin-left:5px;">
+            <strong><%= dish.name[0..30].strip rescue "Goreng Pisang Ala Carte" %></strong>
+            </span>
+          <% end %>
+        </div>
+        <%# rank %>
+        <div>
+          <h3 class='m-0'>#?</h3>
+        </div>
+
+      </div>
+
+      <%# div holding flavours and stars %>
+      <div class='d-flex justify-content-between align-items-center'>
+        <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+          <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+          <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+          <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+        </div>
+        <div class="stars-rank p-1">
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+        </div>
+      </div>
+
+      <%# dish description %>
+      <div>
+        <p class="my-2 text-justify" style="margin-left:5px;font-size:12px;">
+          <%= Review.where(dish: dish)[0].comment[0..200] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
+        </p>
+      </div>
+    </div>
+
+  </div>
+<% end %>
