@@ -7,8 +7,7 @@ Rails.application.routes.draw do
     get 'bookmarks', to: 'bookmarks#bookmark'
     resources :reviews
   end
-
-
-  end
+  get 'dashboard', to: 'dashboards#dashboard'
+end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
