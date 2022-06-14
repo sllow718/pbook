@@ -1,0 +1,14 @@
+<%# Overall div holding the sidebar + Analytics content %>
+<div class='d-flex'>
+  <div class='sidebar'>
+    <div class='sidebar-box'>
+      <h3>Select Dish</h3>
+    </div>
+    <% @dishes.each do |dish| %>
+      <div class="sidebar-box">
+        <h3><%= dish.name %></h3>
+      </div>
+    <% end %>
+  </div>
+
+</div>
