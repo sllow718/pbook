@@ -1,6 +1,8 @@
 puts "destroying database..."
-User.destroy_all
-HawkerCenter.destroy_all
-Stall.destroy_all
+
+print `rails db:drop`
+print `rails db:create`
+print `rails db:migrate`
+
 puts "destruction completed"
 puts "proceeding to seed now!"
