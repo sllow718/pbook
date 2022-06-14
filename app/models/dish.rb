@@ -6,7 +6,6 @@ class Dish < ApplicationRecord
   has_one_attached :photo
   has_many :flavors, :through => :review_flavor, :through => :review
 
-
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [ :name ],
@@ -17,4 +16,5 @@ class Dish < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
 end
