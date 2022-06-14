@@ -65,7 +65,7 @@
             <%= f.input :photo, as: :file, label: "Upload An Image" %>
           </div>
              <%=f.simple_fields_for ([@review_flavor]) do |e|%>
-            <%=  e.input :flavor_id, collection: @flavors %>
+             <%=  e.collection_check_boxes :flavor_id, Flavor.all, :id, :name %>
             <%end%>
           <%= f.input :comment, label: "Comment",
             input_html: { style: 'height: 200px'  } %>

@@ -15,22 +15,21 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.dish = @dish
     if @review.save
-      new_review_flavor_params =  review_params["review_flavor"]
-      new_review_flavor_params["review_id"] = @review.id
-      @review_flavor = ReviewFlavor.new(new_review_flavor_params)
-      if @review_flavor.save
-        redirect_to @dish
-      else
-        render @review
+
+      flavors =  review_params["review_flavor"]["flavor_id"]
+      flavors[1..].each do |flavor|
+        new_review_flavor=ReviewFlavor.new(review: @review, flavor_id: flavor)
+        new_review_flavor.save!
       end
+      redirect_to @dish
     else
-      render @review
+        render "reviews/new"
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:comment, :photo, :rating, :review_flavor => [:flavor_id])
+    params.require(:review).permit(:comment, :photo, :rating, :review_flavor=> {} )
   end
 end
