@@ -7,18 +7,30 @@
     </h5>
     <% end %>
 
+
     <%# div holding image, flavours, description  %>
     <div class="d-flex flex-column justify-content-center">
-      <img src="<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
+      <div class="featured-dish-image">
+        <img src="<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
+        <div class="featured-bookmark mt-2">
+          <%= render 'shared/bookmark_review_icons', dish: dish %>
+        </div>
+      </div>
 
-      <%# flavours %>
-      <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
+      <%# flavours + stars %>
+      <div style="list-style-type: none" class="d-flex flex-row justify-content-between flex-wrap">
+        <div>
           <span class="px-1 mx-1 btn pink-button">flavour</span>
           <span class="px-1 mx-1 btn pink-button">flavour</span>
           <span class="px-1 mx-1 btn pink-button">flavour</span>
-          <div class="featured-bookmark mt-2">
-            <%= render 'shared/bookmark_review_icons', dish: dish %>
-          </div>
+        </div>
+        <div class="stars-rank p-1">
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+        </div>
       </div>
 
       <%# description %>
