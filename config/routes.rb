@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :reviews do
+    resources :review_flavors
+  end
 
   end
 
