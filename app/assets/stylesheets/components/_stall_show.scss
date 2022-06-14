@@ -34,21 +34,35 @@
 .featured-dish-card {
   border: 3px solid #ffffff;
   margin-top: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+
   .featured-dish-image {
-    width: 420px;
-    background-size: cover;
-    border-radius: 25px;
+    height: 356px;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 25px;
+    }
+    .featured-bookmark {
+      position:absolute;
+      left: 3%;
+      top: 3%;
+    }
   }
   #foodtitle {
-    margin-top: 1rem;
-    margin-left: 5%;
+    margin-top: 0.2rem;
+    // margin-left: 5%;
     margin-right: 40px;
     text-align: justify;
   }
 
   #foodwriteuptext {
-    margin-left: 5%;
-    margin-right: 40px;
+    // margin-left: 5%;
+    // margin-right: 40px;
     text-align: justify;
     margin-top: 1rem;
   }
