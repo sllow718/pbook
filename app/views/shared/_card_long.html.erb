@@ -47,11 +47,12 @@
 
         </div>
         <div class="stars-rank p-1">
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <% sum = 0 %>
+          <% dish.reviews.to_a.each {|review| sum += review.rating} %>
+          <% avg_rating = sum/dish.reviews.length rescue 3%>
+          <% (1..avg_rating).step(1).each do %>
+                <%= fa_icon("star solid",style:"color:gold") %>
+              <% end %>
         </div>
       </div>
 
