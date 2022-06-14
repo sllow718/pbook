@@ -1,18 +1,4 @@
-
-<% if params[:query].present? && @dishes.length != 0%>
-  <h2>Searching for <%= params[:query] %>...</h2>
-<% elsif @dishes.length == 0 %>
-  <h2>No query found... Please enter something else</h2>
-<% else %>
-  <div class="py-4 text-center">
-    <h1>Be spoilt with your food choices!</h1>
-    <h2>We have a million food flavors waiting for you!</h2>
-  </div>
-<% end %>
-
-<div class="four-column-cards d-flex flex-wrap justify-content-around">
-<<<<<<< HEAD
-      <% @dishes.each do |dish| %>
+ <% dishes.each do |dish| %>
       <div class="col-5 p-2 card" style="position:relative;">
         <div class="column-headers pt-2 px-3">
         <%= link_to dish, style:"text-decoration:none;color:black;" do %>
@@ -21,7 +7,7 @@
             <div class="d-flex justify-content-between rankandstar">
               <div class="stars-rank">
 
-              <% (1..rand(2..5)).step(1).each do %>
+              <% ((1..rand(2..4)).step(1).to_a).each do %>
                 <%= fa_icon("star solid",style:"color:gold") %>
               <% end %>
               </div>
@@ -35,10 +21,9 @@
 
         <div  class="d-flex flex-row flex-wrap align-items-center px-2 justify-content-between">
                 <div style="list-style-type: none">
-                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
-                <% flavorlist.each do |reviewflavor| %>
-                  <span class="px-1 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
-                <% end %>
+                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
+                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
+                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
                 </div>
         <div>
         <%=render 'shared/bookmark_review_icons', dish: dish %>
@@ -47,9 +32,3 @@
 
       </div>
       <% end %>
-
-  </div>
-=======
-  <%= render 'shared/card_four_column', dishes: @dishes %>
-</div>
->>>>>>> master

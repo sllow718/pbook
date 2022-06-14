@@ -5,7 +5,9 @@
 <% else %>
   <div class="stall-show-grid-container" data-search-food-target="topgrid">
 <% end %>
+  <%# top dish %>
   <div class="div1">
+<<<<<<< HEAD
         <div class="featured-dish-card bg-white p-2 mt-4">
         <p id="stalltitle" style="margin-left:5%;"><%= @topstalls.first.name %></p>
         <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
@@ -30,9 +32,13 @@
       </div>
     </div>
 
+=======
+    <%= render partial: 'shared/card_featured_dish', locals: { dish: @topdish, topstalls: @topstalls } %>
+>>>>>>> master
   </div>
 
+  <%# dishes ranked 2 - 4 %>
   <div class="div2">
-    <%= render 'shared/long_card', dishes: @topdishes %>
+    <%= render 'shared/card_long', dishes: @topdishes %>
   </div>
 </div>

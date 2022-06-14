@@ -1,16 +1,16 @@
 .four-column-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 20px;
   border-radius: 30px;
   .img-fluid {
   }
 }
 
-#homepagetop1 {
-  width: 420px;
-  border-radius: 25px;
-}
+// #homepagetop1 {
+//   width: 420px;
+//   border-radius: 25px;
+// }
 
 .column-headers {
   .rankandstar {
@@ -39,11 +39,13 @@
     margin-right: auto;
 
     #foodwriteuptext {
-      font-size: 15px;
+      font-size: 12px;
     }
   }
   .card {
     width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
   }
 
   .sidefoodcards {
@@ -74,6 +76,8 @@
 @media (min-width: 576px) {
   .card {
     width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
   }
 }
 
@@ -81,19 +85,23 @@
 @media (min-width: 768px) {
   .card {
     width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .four-column-cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
     .img-fluid {
       height: 15vw;
     }
   }
   .card {
-    width: 25%;
+    width: 23%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
   }
 }
