@@ -5,10 +5,12 @@
 <% else %>
   <div class="stall-show-grid-container" data-search-food-target="topgrid">
 <% end %>
+  <%# top dish %>
   <div class="div1">
-    <%= render partial: 'shared/specialty_dish_card', locals: { dish: @topdish, topstalls: @topstalls } %>
+    <%= render partial: 'shared/featured_dish_card', locals: { dish: @topdish, topstalls: @topstalls } %>
   </div>
 
+  <%# dishes ranked 2 - 4 %>
   <div class="div2">
     <%= render 'shared/long_card', dishes: @topdishes %>
   </div>

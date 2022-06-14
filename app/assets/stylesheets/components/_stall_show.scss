@@ -34,6 +34,11 @@
 .featured-dish-card {
   border: 3px solid #ffffff;
   margin-top: 2rem;
+  img {
+    height: 360px;
+    background-size: cover;
+    border-radius: 25px;
+  }
   .featured-dish-image {
     width: 420px;
     background-size: cover;

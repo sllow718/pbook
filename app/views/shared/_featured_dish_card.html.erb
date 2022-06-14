@@ -1,0 +1,30 @@
+<div class="featured-dish-card bg-white p-2 mt-4">
+    <p id="stalltitle" style="margin-left:5%;"><%= topstalls.first.name %></p>
+    <%= link_to dish, style:"text-decoration:none;color:black;" do %>
+    <h5 id="foodtitle">
+      👑
+    <strong><%= dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+    </h5>
+    <% end %>
+
+    <%# div holding image, flavours, description  %>
+    <div class="d-flex flex-column justify-content-center">
+      <img src="<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
+
+      <%# flavours %>
+      <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
+          <span class="px-1 mx-1 btn pink-button">flavour</span>
+          <span class="px-1 mx-1 btn pink-button">flavour</span>
+          <span class="px-1 mx-1 btn pink-button">flavour</span>
+          <div class="featured-bookmark mt-2">
+            <%= render 'shared/bookmark_review_icons', dish: dish %>
+          </div>
+      </div>
+
+      <%# description %>
+      <p id="foodwriteuptext" class="text-justify">
+        <%= Review.where(dish: dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+      </p>
+    </div>
+
+</div>
