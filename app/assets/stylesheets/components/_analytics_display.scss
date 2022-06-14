@@ -1,0 +1,22 @@
+.overall {
+  box-shadow: rgba(82, 0, 14, 0.35) 0px 5px 15px;
+  padding: 12px;
+  margin: 20px;
+  text-align: center;
+  h2 {
+    color: #B3273D;
+  }
+  p {
+    margin-bottom: 8px;
+  }
+}
+
+.analytic-display {
+  box-shadow: rgba(82, 0, 14, 0.35) 0px 5px 15px;
+  padding: 12px;
+  margin: 12px;
+  width: 36%;
+  .analytic-display-summary {
+    text-align: center;
+  }
+}

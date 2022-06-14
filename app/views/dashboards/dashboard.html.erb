@@ -15,27 +15,17 @@
   </div>
 
   <%# div for overall analytics + Item Spefific %>
-  <div>
+  <div class='analytics-wrapper'>
     <%# div for overall analytics %>
-    <div class='d-flex justify-content-between'>
-      <div>
-        <p>The Boy's Roasted Delights is</p>
-        <h2>86th</h2>
-        <p>out of 1009 stalls in Singapore</p>
-        <p>(top 9%)</p>
-      </div>
-      <div>
-        <p>The Boy's Roasted Delights is</p>
-        <h2>6th</h2>
-        <p>out of 19 stalls in East Coast Lagoon</p>
-        <p>(top 20%)</p>
-      </div>
+    <div class='d-flex justify-content-around'>
+      <%= render 'overall_analytics'  %>
+      <%= render 'overall_analytics'  %>
     </div>
 
     <%# div for item specific analytics %>
     <div>
       <%# analytics for dish vs all dishes + dish vs others in the same dish category %>
-      <div class='d-flex'>
+      <div class='d-flex justify-content-around'>
         <%# dish vs all dishes %>
         <%= render 'item_analytics_rating' %>
         <%# dish vs others in the same category %>
@@ -43,7 +33,7 @@
       </div>
 
       <%# analytics for dish price vs same category dishes price + dish flavour vs same dish category flavours %>
-      <div class='d-flex'>
+      <div class='d-flex justify-content-around'>
         <%# dish price vs same category dishes price %>
         <%= render 'item_analytics_price' %>
         <%# dish flavour vs same category dishes flavours %>
