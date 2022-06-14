@@ -20,7 +20,7 @@
             <div class="d-flex justify-content-between rankandstar">
               <div class="stars-rank">
 
-              <% [1,2,3,4].each do %>
+              <% ((1..rand(2..4)).step(1).to_a).each do %>
                 <%= fa_icon("star solid",style:"color:gold") %>
               <% end %>
               </div>

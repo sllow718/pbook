@@ -1,6 +1,6 @@
 .four-column-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   border-radius: 30px;
   .img-fluid {
@@ -87,7 +87,7 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .four-column-cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 
     .img-fluid {
       height: 15vw;
