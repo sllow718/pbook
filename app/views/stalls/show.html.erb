@@ -12,10 +12,11 @@
         <h3 id="foodtitle"><%= @dishes.first.name %></h3>
         <div class="d-flex flex-column justify-content-center">
           <img src="<%= @dishes.first.description  %>" alt="" class="p-1 mx-auto" id="main-image">
-          <div style="list-style-type: none" class="d-flex flex-row flex-grow justify-content-around">
-            <p class="px-3 btn btn-success" style="border-radius:20px">flavour</p>
-            <p class="px-3 btn btn-success" style="border-radius:20px">flavour</p>
-            <p class="px-3 btn btn-success" style="border-radius:20px">flavour</p>
+          <div style="list-style-type: none" class="d-flex flex-row flex-grow justify-content-around px-4">
+                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
+                <% flavorlist.each do |reviewflavor| %>
+                  <span class="px-3 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
+                <% end %>
           </div>
         <p id="foodwriteuptext" class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi labore sed doloribus ab? Reiciendis odit sunt, voluptatibus veritatis molestiae suscipit est aspernatur, nulla, possimus odio ipsum nobis quia quasi commodi.</p>
       </div>

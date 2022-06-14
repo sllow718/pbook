@@ -38,11 +38,13 @@
       </div>
 
       <%# div holding flavours and stars %>
-      <div class='d-flex justify-content-between align-items-center'>
+      <div class='d-flex justify-content-between align-items-center flex-wrap'>
         <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
-          <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-          <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-          <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
+                <% flavorlist.each do |reviewflavor| %>
+                  <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%= reviewflavor.flavor.name %></span>
+                <% end %>
+
         </div>
         <div class="stars-rank p-1">
           <i class="fa-solid fa-star" style="color:gold;"></i>

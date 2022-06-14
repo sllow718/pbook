@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get 'bookmarks', to: 'bookmarks#bookmark'
     resources :reviews
   end
+
+  resources :reviews do
+    resources :review_flavors
+  end
+
   get 'dashboard', to: 'dashboards#dashboard'
 end
 
