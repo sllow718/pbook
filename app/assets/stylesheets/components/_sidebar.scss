@@ -1,4 +1,42 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar-first {
+  background-color: #52000E;
+  font-weight: 800;
+  h3 {
+    margin: 0;
+  }
+}
+
+.sidebar-other {
+  background-color: #B3273D;
+}
+
+.sidebar-other:hover {
+  background-color: #C06D7A;;
+}
+
+.sidebar-last {
+  background-color: #B3273D;
+  flex-grow: 1;
+}
+
+
+.sidebar-box {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 18px;
+  color: white;
+  // border-bottom: white;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  p {
+    font-size: 14;
+    margin: 0;
+  }
 }

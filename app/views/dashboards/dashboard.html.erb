@@ -1,14 +1,16 @@
 <%# Overall div holding the sidebar + Analytics content %>
 <div class='d-flex'>
   <div class='sidebar'>
-    <div class='sidebar-box'>
+    <div class='sidebar-box sidebar-first'>
       <h3>Select Dish</h3>
     </div>
     <% @dishes.each do |dish| %>
-      <div class="sidebar-box">
-        <h3><%= dish.name %></h3>
+      <div class="sidebar-box sidebar-other">
+        <p><%= dish.name %></p>
       </div>
     <% end %>
+    <div class="sidebar-last">
+    </div>
   </div>
 
 </div>
