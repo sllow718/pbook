@@ -7,11 +7,11 @@
 <% end %>
   <%# top dish %>
   <div class="div1">
-    <%= render partial: 'shared/featured_dish_card', locals: { dish: @topdish, topstalls: @topstalls } %>
+    <%= render partial: 'shared/card_featured_dish', locals: { dish: @topdish, topstalls: @topstalls } %>
   </div>
 
   <%# dishes ranked 2 - 4 %>
   <div class="div2">
-    <%= render 'shared/long_card', dishes: @topdishes %>
+    <%= render 'shared/card_long', dishes: @topdishes %>
   </div>
 </div>
