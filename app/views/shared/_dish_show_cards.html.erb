@@ -12,9 +12,12 @@
                   <span>Rank</span>
                   </div>
                   <div class="stars-rank">
-       <% (1..rand(2..5)).step(1).each do %>
-                <%= fa_icon("star solid",style:"color:gold") %>
-              <% end %>
+            <% sum = 0 %>
+            <% dish.reviews.to_a.each {|review| sum += review.rating} %>
+            <% avg_rating = sum/dish.reviews.length rescue 3%>
+            <% (1..avg_rating).step(1).each do %>
+                  <%= fa_icon("star solid",style:"color:gold") %>
+                <% end %>
                   </div>
                 </div>
               </div>
