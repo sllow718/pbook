@@ -8,12 +8,14 @@ class StallsController < ApplicationController
     @secondtopstalls.each do |stall|
       @topdishes.push(Dish.where(stall_id:stall.id).first)
     end
+    @flavors = Flavor.all
 
     if params[:query].present?
       @dishes = Dish.global_search(params[:query])
     else
       @dishes = Dish.all
     end
+
 
 
   end
