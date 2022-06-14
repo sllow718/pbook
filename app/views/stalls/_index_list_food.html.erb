@@ -11,39 +11,5 @@
 <% end %>
 
 <div class="four-column-cards d-flex flex-wrap justify-content-around">
-      <% @dishes.each do |dish| %>
-      <div class="col-5 p-2 card" style="position:relative;">
-        <div class="column-headers pt-2 px-3">
-        <%= link_to dish, style:"text-decoration:none;color:black;" do %>
-            <p><strong><%= dish.name[0..25] %></strong></p>
-            <% end %>
-            <div class="d-flex justify-content-between rankandstar">
-              <div class="stars-rank">
-
-              <% ((1..rand(2..4)).step(1).to_a).each do %>
-                <%= fa_icon("star solid",style:"color:gold") %>
-              <% end %>
-              </div>
-              <div class="rank">
-              <p>Rank <%= rand(4..200) %></p>
-              </div>
-            </div>
-        </div>
-
-        <img src="<%= dish.description  %>" alt="" class="img-fluid p-2" style="border-radius:20px">
-
-        <div  class="d-flex flex-row flex-wrap align-items-center px-2 justify-content-between">
-                <div style="list-style-type: none">
-                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
-                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
-                <span class="px-1 mx-1 btn pink-button-small">flavour</span>
-                </div>
-        <div>
-        <%=render 'shared/bookmark_review_icons', dish: dish %>
-        </div>
-        </div>
-
-      </div>
-      <% end %>
-
-  </div>
+  <%= render 'shared/card_four_column', dishes: @dishes %>
+</div>
