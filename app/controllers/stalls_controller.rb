@@ -18,6 +18,12 @@ class StallsController < ApplicationController
 
   end
 
+  def destroy
+    @stall = Stall.find(params[:id])
+    @stall.destroy
+    redirect_to root_path
+  end
+
   def show
     @stall = Stall.find(params[:id])
     @dishes = Dish.where("stall_id=?", @stall)
