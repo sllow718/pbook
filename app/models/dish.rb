@@ -17,4 +17,5 @@ class Dish < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  # for staging
 end
