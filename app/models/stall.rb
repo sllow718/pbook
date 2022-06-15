@@ -9,7 +9,16 @@ class Stall < ApplicationRecord
   end
 
   def rank
-    top = Dish.where(stall_id: self.id).order('dishes.score DESC').first
-    Dish.ranked.index(top) + 1
+    best = []
+    Stall.all.each do |stall|
+      if stall.best_dish.nil?
+        puts "haha"
+      else
+        best << stall.best_dish
+      end
+    end
+    # return best.count
+    dishes_sorted = best.sort_by { |dish| dish.score }.reverse
+    return dishes_sorted.index(self.best_dish) + 1
   end
 end
