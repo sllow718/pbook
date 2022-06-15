@@ -24,9 +24,7 @@ class='d-flex'>
   <div class='analytics-wrapper'>
     <%# div for overall analytics %>
     <div class='d-flex justify-content-around'>
-      <%= render partial: 'overall_analytics', locals: {
-        stall: @stall, stall_best_rank: @stall_best_rank,
-        all_stalls_count: @all_stalls_count, percentage: @percentage }  %>
+      <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
       <%= render partial: 'overall_hawkercenter_analytics', locals: {
         stall: @stall, hawkercenter: @hawkercenter, hawker_rank: @hawker_rank,
         hawker_count: @hawker_count

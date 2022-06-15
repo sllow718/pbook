@@ -4,14 +4,8 @@ class DashboardsController < ApplicationController
 
     # get the hawkercenter
     @hawkercenter = HawkerCenter.find(@stall.hawker_center_id)
-    # get all dishes in the same hawker center
-    hawkercenter_stalls = Stall.where(hawker_center_id: @hawkercenter.id)
     # get the number 1 dish of each stall in the hawker center
-    hawkercenter_dishes = []
-    hawkercenter_stalls.each do |stall|
-      dish = Dish.where(stall_id: stall.id).order('dishes.score DESC').first
-      hawkercenter_dishes << dish
-    end
+
     # get my rank within that hawker center
     @hawker_rank = hawkercenter_dishes.index(stall_best) + 1
     # get count of stalls in that hawker center
