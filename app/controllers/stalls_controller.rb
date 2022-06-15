@@ -19,8 +19,16 @@ class StallsController < ApplicationController
 
   def show
     @stall = Stall.find(params[:id]) rescue nil
-    redirect_to root_path, alert: "Stall not found" if @stall.nil?
-    @dishes = Dish.where("stall_id=?", @stall)
+    if @stall.nil?
+      redirect_to root_path, alert: "Stall not found"
+    else
+      @dishes = Dish.where("stall_id=?", @stall)
+      @stallmap = {
+        lat: @stall.hawker_center.latitude,
+        lng: @stall.hawker_center.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { hawker: @stall.hawker_center })
+      }
+    end
   end
 
   def new
