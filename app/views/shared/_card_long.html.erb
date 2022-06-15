@@ -59,9 +59,9 @@
       </div>
 
       <%# dish description %>
-      <div>
-        <p class="my-2 text-justify" style="margin-left:5px;font-size:12px;">
-          <%= Review.where(dish: dish)[0].comment[0..200] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
+      <div class="text-justify">
+        <p class="my-2" style="margin-left:5px;font-size:12px;">
+          <%= Review.where(dish: dish)[0].comment[0..500] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
         </p>
       </div>
     </div>
