@@ -1,12 +1,16 @@
 <%# Overall div holding the sidebar + Analytics content %>
-<div class='d-flex'>
+<div
+class='d-flex'
+data-controller="dashboard">
   <%# sidebar %>
   <div class='sidebar'>
     <div class='sidebar-box sidebar-first'>
       <h3>Select Dish</h3>
     </div>
     <% @stall_dishes.each do |dish| %>
-      <div class="sidebar-box sidebar-other">
+      <div
+      class="sidebar-box sidebar-other"
+      data-action="click->dashboard#display">
         <p><%= dish.name %></p>
       </div>
     <% end %>
