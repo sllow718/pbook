@@ -18,4 +18,13 @@ class Dish < ApplicationRecord
   }
 
   # for staging
+  def score(dish)
+    dish_reviews = dish.reviews.all
+    ratings = []
+    dish_reviews.each do |review|
+      ratings << review.rating
+    end
+    score = ratings.sum / ratings.length
+    return score
+  end
 end

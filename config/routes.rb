@@ -12,13 +12,8 @@ Rails.application.routes.draw do
     resources :review_flavors
   end
 
-<<<<<<< HEAD
+  resources :bookmarks
   get 'dashboard', to: 'dashboards#dashboard'
 end
-=======
-  resources :bookmarks
-
-  end
->>>>>>> master
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
