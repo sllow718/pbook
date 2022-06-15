@@ -21,4 +21,10 @@ class BookmarksController < ApplicationController
 
     end
   end
+
+  def index
+    dishes = Dish.all
+    user = current_user
+  end
+
 end
