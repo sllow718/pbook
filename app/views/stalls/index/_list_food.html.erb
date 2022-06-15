@@ -12,7 +12,7 @@
 
 <div class="four-column-cards d-flex flex-wrap justify-content-around py-3">
       <% @dishes.each do |dish| %>
-      <div class="col-5 p-2 card" style="position:relative;">
+      <div class="col-5 p-2 card" style="position:relative;border-radius:20px">
         <div class="column-headers pt-2 px-3">
         <%= link_to dish, style:"text-decoration:none;color:black;" do %>
             <p><strong><%= dish.name[0..25] %></strong></p>

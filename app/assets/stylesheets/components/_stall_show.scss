@@ -35,7 +35,7 @@
   border: 3px solid #ffffff;
   margin-top: 2rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
+  border-radius: 20px;
 
   .featured-dish-image {
     height: 356px;
@@ -48,7 +48,7 @@
       border-radius: 25px;
     }
     .featured-bookmark {
-      position:absolute;
+      position: absolute;
       left: 3%;
       top: 3%;
     }
@@ -73,6 +73,7 @@
   padding: 0.5em;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 20px;
 
   // .rank {
   //   position: relative;
@@ -90,7 +91,7 @@
 .sidefood-image {
   position: relative;
   margin-right: 2%;
-  .bookmark{
+  .bookmark {
     position: absolute;
     left: 4%;
     top: 4%;
