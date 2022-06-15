@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :bookmarks
   get 'dashboard', to: 'dashboards#dashboard'
+  post 'dashboard', to: 'dashboards#getdish'
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

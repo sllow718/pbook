@@ -1,6 +1,6 @@
 <div class='overall'>
   <p><%= stall.name %> is</p>
-  <h2> <%= stall_best_rank %> </h2>
-  <p>out of <%= all_stalls_count %> stalls in Singapore</p>
-  <p>top <%= percentage %>% </p>
+  <h2> <%= stall.rank %> </h2>
+  <p>out of <%= Stall.count %> stalls in Singapore</p>
+  <p>top <%= stall.rank/Stall.count %>% </p>
 </div>

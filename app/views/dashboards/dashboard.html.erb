@@ -1,7 +1,6 @@
 <%# Overall div holding the sidebar + Analytics content %>
 <div
-class='d-flex'
-data-controller="dashboard">
+class='d-flex'>
   <%# sidebar %>
   <div class='sidebar'>
     <div class='sidebar-box sidebar-first'>
@@ -10,7 +9,10 @@ data-controller="dashboard">
     <% @stall_dishes.each do |dish| %>
       <div
       class="sidebar-box sidebar-other"
-      data-action="click->dashboard#display">
+      data-controller="dashboard"
+      data-action="click->dashboard#display"
+      data-dashboard-id-value=<%= dish.id %>
+      data-dashboard-target="dish">
         <p><%= dish.name %></p>
       </div>
     <% end %>

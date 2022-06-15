@@ -16,4 +16,8 @@ class Dish < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  def self.ranked
+    Dish.order('dishes.score DESC').all
+  end
 end
