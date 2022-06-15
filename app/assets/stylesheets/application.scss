@@ -12,7 +12,12 @@
 @import "components/index";
 @import "pages/index";
 
+@import "mapbox-gl/dist/mapbox-gl";
 .background {
   background-image: url("bg");
   background-size: cover;
+}
+
+#map {
+  margin-bottom: 0rem;
 }
