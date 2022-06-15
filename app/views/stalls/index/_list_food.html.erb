@@ -1,4 +1,4 @@
-
+<%# second div in index %>
 <% if params[:query].present? && @dishes.length != 0%>
   <h2>Searching for <%= params[:query] %>...</h2>
 <% elsif @dishes.length == 0 %>
@@ -18,7 +18,7 @@
             <p><strong><%= dish.name[0..25] %></strong></p>
             <% end %>
             <div class="d-flex justify-content-between rankandstar">
-              <div class="stars-rank">
+                            <div class="stars-rank">
             <% sum = 0 %>
             <% dish.reviews.to_a.each {|review| sum += review.rating} %>
             <% avg_rating = sum/dish.reviews.length rescue 3%>
@@ -26,6 +26,7 @@
                   <%= fa_icon("star solid",style:"color:gold") %>
                 <% end %>
               </div>
+
               <div class="rank">
               <p>Rank <%= rand(4..200) %></p>
               </div>
@@ -34,14 +35,7 @@
 
         <img src="<%= dish.description  %>" alt="" class="img-fluid p-2" style="border-radius:20px">
 
-        <div  class="d-flex flex-row flex-wrap align-items-center px-2 justify-content-between">
-                <div style="list-style-type: none">
-                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
-                <% flavorlist.each do |reviewflavor| %>
-                  <span class="px-1 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
-                <% end %>
-                </div>
-        <div>
+        <%= render 'shared/flavor_buttons3x' %>
         <%=render 'shared/bookmark_review_icons', dish: dish %>
         </div>
         </div>
