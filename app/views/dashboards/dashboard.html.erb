@@ -5,7 +5,7 @@
     <div class='sidebar-box sidebar-first'>
       <h3>Select Dish</h3>
     </div>
-    <% @dishes.each do |dish| %>
+    <% @stall_dishes.each do |dish| %>
       <div class="sidebar-box sidebar-other">
         <p><%= dish.name %></p>
       </div>
@@ -18,7 +18,9 @@
   <div class='analytics-wrapper'>
     <%# div for overall analytics %>
     <div class='d-flex justify-content-around'>
-      <%= render 'overall_analytics'  %>
+      <%= render partial: 'overall_analytics', locals: {
+        stall: @stall, stall_best_rank: @stall_best_rank,
+        all_stalls_count: @all_stalls_count, percentage: @percentage }  %>
       <%= render 'overall_dishtype_analytics' %>
     </div>
 
