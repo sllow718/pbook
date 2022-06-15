@@ -1,6 +1,6 @@
 <div class='overall'>
   <p><%= stall.name %> is</p>
-  <h2> <%= hawker_rank %> </h2>
-  <p>out of <%= hawker_count %> stalls in <%= hawkercenter.name %></p>
-  <p>(top 9%)</p>
+  <h2> <%= stall.rank_in_hawkercenter %> </h2>
+  <p>out of <%= hawkercenter.stalls.count %> stalls in <%= hawkercenter.name %></p>
+  <p>(top <%= (1 - (stall.rank_in_hawkercenter.to_f / hawkercenter.stalls.count.to_f)).round %>%)</p>
 </div>

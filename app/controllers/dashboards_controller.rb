@@ -1,17 +1,7 @@
 class DashboardsController < ApplicationController
   def dashboard
     @stall = Stall.find_by(user_id: current_user.id)
-
-    # get the hawkercenter
     @hawkercenter = HawkerCenter.find(@stall.hawker_center_id)
-    # get the number 1 dish of each stall in the hawker center
-
-    # get my rank within that hawker center
-    @hawker_rank = hawkercenter_dishes.index(stall_best) + 1
-    # get count of stalls in that hawker center
-    @hawker_count = hawkercenter_dishes.count
-    # get percentage
-    @hawker_percentage = (@hawker_rank / @hawker_count).round * 100
   end
 
 

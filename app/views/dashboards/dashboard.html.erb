@@ -6,7 +6,7 @@ class='d-flex'>
     <div class='sidebar-box sidebar-first'>
       <h3>Select Dish</h3>
     </div>
-    <% @stall_dishes.each do |dish| %>
+    <% @stall.dishes.each do |dish| %>
       <div
       class="sidebar-box sidebar-other"
       data-controller="dashboard"
@@ -26,8 +26,7 @@ class='d-flex'>
     <div class='d-flex justify-content-around'>
       <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
       <%= render partial: 'overall_hawkercenter_analytics', locals: {
-        stall: @stall, hawkercenter: @hawkercenter, hawker_rank: @hawker_rank,
-        hawker_count: @hawker_count
+        stall: @stall, hawkercenter: @hawkercenter
       } %>
     </div>
 
