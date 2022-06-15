@@ -1,38 +1,68 @@
-<div class="four-column-cards d-flex flex-wrap justify-content-around py-3">
-      <% current_user.bookmarks.each do |dish| %>
-      <div class="col-5 p-2 card" style="position:relative;">
-        <div class="column-headers pt-2 px-3">
-        <%= link_to dish, style:"text-decoration:none;color:black;" do %>
-            <p><strong><%= dish.dish.name[0..25] %></strong></p>
-            <% end %>
-            <div class="d-flex justify-content-between rankandstar">
-              <div class="stars-rank">
-            <% sum = 0 %>
-            <% dish.dish.reviews.to_a.each {|review| sum += review.rating} %>
-            <% avg_rating = sum/dish.dish.reviews.length rescue 3%>
-            <% (1..avg_rating).step(1).each do %>
-                  <%= fa_icon("star solid",style:"color:gold") %>
-                <% end %>
-              </div>
-              <div class="rank">
-              <p>Rank <%= rand(4..200) %></p>
-              </div>
-            </div>
-        </div>
+<% current_user.bookmarks.each do |dish| %>
+  <div class="sidefoodcards d-flex my-4 flex-grow">
 
-        <img src="<%= dish.dish.description  %>" alt="" class="img-fluid p-2" style="border-radius:20px">
+    <%# dish image + review & bookmark icons %>
+    <div class="sidefood-image">
+      <img src=<%= dish.dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
+      <div class="bookmark mt-2">
+        <%= render 'shared/bookmark_review_icons', dish: dish %>
+      </div>
+    </div>
 
-        <div  class="d-flex flex-row flex-wrap align-items-center px-2 justify-content-between">
-                <div style="list-style-type: none">
-                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
-                <% flavorlist.each do |reviewflavor| %>
-                  <span class="px-1 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
-                <% end %>
-                </div>
+    <%# div holds everything else APART from picture %>
+    <%# pl-2 py-4 pr-4 %>
+    <div class="sidefood-content" style="flex-grow:inherit">
+      <%# <div class="d-flex justify-content-between"> %>
+      <%# </div> %>
+
+      <%# holds top pick, dish name, rank %>
+      <div class='d-flex justify-content-between align-items-center'>
+        <%# div holding top pick & name of dish %>
         <div>
-        <%=render 'shared/bookmark_review_icons', dish: dish %>
+          <%# rank %>
+          <div class="rank-text"> <%# my-1 %>
+            <span>👑 Top Pick</span>
+          </div>
+          <%# name of dish %>
+          <%= link_to dish, style:"text-decoration:none;color:black;" do %>
+            <span class="text-justify" style="font-size:20px;margin-left:5px;">
+            <strong><%= dish.name[0..30].strip rescue "Goreng Pisang Ala Carte" %></strong>
+            </span>
+          <% end %>
         </div>
+        <%# rank %>
+        <div>
+          <h3 class='m-0'>#?</h3>
         </div>
 
       </div>
-      <% end %>
+
+      <%# div holding flavours and stars %>
+      <div class='d-flex justify-content-between align-items-center flex-wrap'>
+        <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
+                <% flavorlist.each do |reviewflavor| %>
+                  <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%= reviewflavor.flavor.name %></span>
+                <% end %>
+
+        </div>
+        <div class="stars-rank p-1">
+          <% sum = 0 %>
+          <% dish.dish.reviews.to_a.each {|review| sum += review.rating} %>
+          <% avg_rating = sum/dish.reviews.length rescue 3%>
+          <% (1..avg_rating).step(1).each do %>
+                <%= fa_icon("star solid",style:"color:gold") %>
+              <% end %>
+        </div>
+      </div>
+
+      <%# dish description %>
+      <div>
+        <p class="my-2 text-justify" style="margin-left:5px;font-size:12px;">
+          <%= Review.where(dish: dish)[0].comment[0..200] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
+        </p>
+      </div>
+    </div>
+
+  </div>
+<% end %>
