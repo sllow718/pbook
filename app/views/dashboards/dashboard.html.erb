@@ -35,7 +35,7 @@ class='d-flex'>
       <%# analytics for dish vs all dishes + dish vs others in the same dish category %>
       <div class='d-flex justify-content-around'>
         <%# dish vs all dishes %>
-        <%= render 'item_analytics_rating' %>
+        <%= render partial: 'item_analytics_rating', locals: { dish: @dish } %>
         <%# dish vs others in the same category %>
         <%= render 'item_analytics_rating' %>
       </div>

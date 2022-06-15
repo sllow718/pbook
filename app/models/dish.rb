@@ -20,4 +20,8 @@ class Dish < ApplicationRecord
   def self.ranked
     Dish.order('dishes.score DESC').all
   end
+
+  def rank
+    Dish.ranked.index(self) + 1
+  end
 end
