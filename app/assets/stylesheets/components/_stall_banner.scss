@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Glory:wght@800&family=Kdam+Thmor+Pro&family=Montserrat+Subrayada:wght@700&display=swap");
 
-.banner {
+.stall_banner {
   // flex properties
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   // sizing
-  height: 45vh;
+  height: 100%;
+  padding: 70px;
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
   // set fonts
   h1,
   h2,
@@ -19,7 +19,7 @@
   }
 }
 
-.banner h1 {
+.stall_banner h1 {
   // font-size: 32px;
   // font-weight: bold;
   // line-height: 108px;
@@ -57,7 +57,7 @@
     rgb(9, 0, 0) 5.95932px -0.697531px 0px;
 }
 
-.banner h2 {
+.stall_banner h2 {
   font-size: 34px;
   color: white;
   // -webkit-text-stroke: 2px black;
@@ -84,7 +84,7 @@
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
-  .banner {
+  .stall_banner {
     padding: 15px;
   }
 }

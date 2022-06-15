@@ -15,23 +15,17 @@ class StallsController < ApplicationController
     else
       @dishes = Dish.all[1..12]
     end
-
-
-
   end
 
   def show
-    @stall = Stall.find(params[:id])
+    @stall = Stall.find(params[:id]) rescue nil
+    redirect_to root_path, alert: "Stall not found" if @stall.nil?
     @dishes = Dish.where("stall_id=?", @stall)
   end
 
   def new
     @stall = Stall.new
     @hawkers = HawkerCenter.all
-    # @hawker_center_names = []
-    # HawkerCenter.all.each do |hawker_center|
-    #   @hawker_center_names << hawker_center.name
-    # end
   end
 
   def create

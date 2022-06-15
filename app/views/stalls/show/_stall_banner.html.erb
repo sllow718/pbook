@@ -1,0 +1,35 @@
+<div class="stall_banner flex-row justify-content-between flex-wrap" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://payload.cargocollective.com/1/1/32536/13961206/pinkk_670.jpg);">
+    <div class="py-2 px-4 flex-grow" >
+    <h2 style="font-size:calc(100% + 2vw);"><%= @stall.name %></h2>
+    <h2 style="font-size:calc(100% + 2vw);"><%= @stall.hawker_center.name%></h2>
+    </div>
+
+    <div class="py-2 px-4 mr-auto">
+    <div class="avatar mx-auto mb-2 flex-grow">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxAwe7f5r7urNW0LbvhAr6ba0NWahro5jTmA&usqp=CAU" alt="" class="avatar">
+    </div>
+    <div id="map" data-controller="map-modal">
+      <button class="red-nav-button" data-action="click->map-modal#launchMap">Lets go!</button>
+
+
+    <div class="modal" tabindex="-1" data-map-modal-target="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">How to get there?</h5>
+            <button type="button" class="close" data-action="click->map-modal#closeMap" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Map goes here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+    </div>
+
+</div>

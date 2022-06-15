@@ -1,29 +1,9 @@
-<%= render '/shared/stall_banner' %>
-
 <div class="stall-show-grid-container">
   <div class="div1">
-    <div class="stall-write-up mb-3 bg-light">
-      <h2 id="stalltitle">Stall Write Up</h2>
-      <p id="writeuptext">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum animi, possimus numquam ut sed autem beatae ducimus rem quisquam? Eos eaque rerum dignissimos eum obcaecati saepe expedita consectetur perferendis rem.</p>
-      <%= link_to "Edit", @stall,class:"btn btn-dark px-3",style:"border-radius:20px;margin-left:80%;margin-bottom:10px" %>
-    </div>
-
-    <div class="featured-dish-card bg-light">
-        <h3 id="foodtitle"><%= @dishes.first.name %></h3>
-        <div class="d-flex flex-column justify-content-center">
-          <img src="<%= @dishes.first.description  %>" alt="" class="p-1 mx-auto" id="main-image">
-          <div style="list-style-type: none" class="d-flex flex-row flex-grow justify-content-around px-4">
-                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
-                <% flavorlist.each do |reviewflavor| %>
-                  <span class="px-3 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
-                <% end %>
-          </div>
-        <p id="foodwriteuptext" class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi labore sed doloribus ab? Reiciendis odit sunt, voluptatibus veritatis molestiae suscipit est aspernatur, nulla, possimus odio ipsum nobis quia quasi commodi.</p>
-      </div>
-    </div>
+    <%= render 'stalls/show/write_up' %>
   </div>
 
   <div class="div2">
-    <%= render '/shared/dish_show_cards' %>
+    <%= render 'stalls/show/card_long' %>
   </div>
 </div>
