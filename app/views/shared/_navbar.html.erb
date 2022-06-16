@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 sticky-top" style="background-color:#fa3757">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "tpb_logo.jpg" %>
     <% end %>
 
@@ -21,6 +21,8 @@
             <%= image_tag "user_logo.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <span class= "dropdown-item"><%= current_user.username %></span>
+              <%= link_to "My Stalls", stalls_path(:id), class: "dropdown-item" %>
+              <%= link_to "Bookmark Stalls", bookmarks_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
