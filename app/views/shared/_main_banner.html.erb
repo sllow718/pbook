@@ -1,7 +1,16 @@
 
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://payload.cargocollective.com/1/1/32536/13961206/pinkk_670.jpg);">
   <h1>THE LOCAL POCKETBOOK</strong></h1>
   <h2>Bringing the best local food to the palm of your hand</h2>
 <%# insert search bar here %>
+  <%= form_with url: "/", method: :get, html: { class:
+      'mb-4', data: { search_food_target: 'form' } } do |f| %>
+      <%= f.text_field :query,
+                      class: "form-control",
+                      style:"width:60vw",
+                      placeholder: 'Type in a dish your craving for!',
+                      value: params[:query],
+                      data: { search_food_target: 'input' },
+                      action: 'keyup->search-food#update' %>
+            <% end %>
 </div>
