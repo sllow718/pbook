@@ -40,16 +40,31 @@
       <%# flavours + stars %>
       <div style="list-style-type: none" class="d-flex flex-row justify-content-between flex-wrap mt-2">
         <div>
-          <span class="px-1 btn pink-button">flavour</span>
-          <span class="px-1 btn pink-button">flavour</span>
-          <span class="px-1 btn pink-button">flavour</span>
+          <%flavors=[]%>
+          <%@dish.reviews.each do |review|%>
+            <%review.review_flavors.each do |review_flavor|%>
+                <%flavors<<review_flavor.flavor.name%>
+            <%end%>
+          <%end%>
+           <%flavor_count = Hash.new(0)%>
+           <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
+            <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=last_flavor%></span>
+            <%flavor_count.delete(last_flavor)%>
+             <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=second_last_flavor%></span>
+            <%flavor_count.delete(second_last_flavor)%>
+              <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=third_last_flavor%></span>
         </div>
         <div class="stars-rank">
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
+              <%@dish.score.to_i.times do%>
+                <i class="fa-solid fa-star" style="color:gold;"></i>
+              <%end%>
+              <%left_overstars= 5-@dish.score.to_i%>
+              <%left_overstars.times do%>
+                <i class="fa-light fa-star" style="color:gold;"></i>
+              <%end%>
         </div>
       </div>
     </div>
