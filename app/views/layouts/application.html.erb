@@ -16,17 +16,9 @@
   <body>
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
-      <% if params[:controller] == "stalls"  && params[:action] == "index" %>
-        <%= render 'shared/main_banner' %>
-      <% elsif params[:controller] == "stalls" && params[:action] == "show" %>
-        <%= render 'stalls/show/stall_banner' %>
-      <% elsif params[:controller] == "dishes"  && params[:action] == "show" %>
-        <%= render 'shared/dish_banner' %>
-      <% end %>
 
-      <% if current_page?(new_stall_path) %>
-        <%= render 'stalls/banner_new_stall' %>
-      <% end %>
+
+
 
       <div class="background">
        <%# <div class="container"> %>

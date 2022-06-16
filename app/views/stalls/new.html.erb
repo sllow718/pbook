@@ -1,36 +1,40 @@
-
-<div class="half-box-holder">
-
-  <div class="d-flex flex-column half-box">
-    <%# explanation side %>
-    <div>
-      <h2>Why list on Local Pocket Book?</h2>
-        <%# visibility reason %>
-        <div>
-          <h3>Enhanced visibility</h3>
-            <div class='explanation-box'>
-              <i class="fa-solid fa-glasses icon"></i>
-              <p>
-                Expose your stall to a global audience by merit of the quality of your food.
-              </p>
-            </div>
-        </div>
-    </div>
-        <%# analytics reason %>
-    <div>
-      <h3>Understand your business</h3>
-          <div class='explanation-box'>
-            <i class="fa-solid fa-chart-mixed icon"></i>
-            <p>
-              Gain simple statistics about how you compare to the competition on a national-scale and within
-              your hawker center.
-            </p>
+<div class=“container”>
+  <div class=“row”>
+    <div class="col-10 mx-auto">
+      <div class="half-box-holder">
+        <div class="d-flex flex-column half-box">
+          <%# explanation side %>
+          <div>
+            <h2>Why list on Local Pocket Book?</h2>
+              <%# visibility reason %>
+              <div>
+                <h3>Enhanced visibility</h3>
+                  <div class='explanation-box'>
+                    <i class="fa-solid fa-glasses icon"></i>
+                    <p>
+                      Expose your stall to a global audience by merit of the quality of your food.
+                    </p>
+                  </div>
+              </div>
           </div>
+              <%# analytics reason %>
+          <div>
+            <h3>Understand your business</h3>
+                <div class='explanation-box'>
+                  <i class="fa-solid fa-chart-mixed icon"></i>
+                  <p>
+                    Gain simple statistics about how you compare to the competition on a national-scale and within
+                    your hawker center.
+                  </p>
+                </div>
+          </div>
+        </div>
+          <%# form side %>
+        <div class='w-50 form'>
+          <%= render 'stalls/new/list_stall_form' %>
+        </div>
+
+      </div>
     </div>
   </div>
-    <%# form side %>
-  <div class='w-50 form'>
-    <%= render 'stalls/new/list_stall_form' %>
-  </div>
-
 </div>
