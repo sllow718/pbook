@@ -13,12 +13,13 @@ class DishesController < ApplicationController
         flavorsarray<<review_flavor.flavor.name
       end
     end
+
     flavor_count = Hash.new(0)
     flavorsarray.each {|flavor| flavor_count[flavor] += 1}
-    @last_flavor = flavor_count.sort_by { |flavor,number| number}
-    raise
-flavor_count.delete(@last_flavor)
-             @second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]
+    @flavor_array = flavor_count.sort_by { |flavor, number| number}
+    @last_flavor = @flavor_array[-1][0] if @flavor_array.count > 0
+    @second_last_flavor=@flavor_array[-2][0] if @flavor_array.count > 1
+    @third_last_flavor=@flavor_array[-3][0] if @flavor_array.count > 2
 
   end
 
