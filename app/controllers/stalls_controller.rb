@@ -17,6 +17,12 @@ class StallsController < ApplicationController
     end
   end
 
+  def destroy
+    @stall = Stall.find(params[:id])
+    @stall.destroy
+    redirect_to root_path
+  end
+
   def show
     @stall = Stall.find(params[:id]) rescue nil
     if @stall.nil?

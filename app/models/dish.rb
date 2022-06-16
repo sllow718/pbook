@@ -1,7 +1,7 @@
 class Dish < ApplicationRecord
   belongs_to :stall
   has_one :hawker_center, :through => :stall
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :bookmarks
   has_one_attached :photo
   has_many :flavors, :through => :review_flavor, :through => :review
