@@ -4,6 +4,7 @@ class Dish < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :bookmarks
   has_one_attached :photo
+  has_many :flavors, :through => :review_flavor, :through => :review
 
 
   include PgSearch::Model
@@ -16,4 +17,6 @@ class Dish < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  # for staging
 end

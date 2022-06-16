@@ -1,60 +1,74 @@
-<div class="dish-show-container">
+<<div class="dish-show-container">
   <div class="left-side-container">
     <div class = "description-box">
       <div class = "dish-title">
         <h2><%=@dish.name%></h2>
       </div>
       <div class = "dish-description-text">
-        <%=@dish.description%>
+         <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
+        <%= Review.where(dish: dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+      </p>
       </div>
     </div>
-    <div class = "dish-individual-card">
-      <div class = "dish-header">
-      <div class ="dish-rank">
-      <h5>Rank #</h5>
-      </div>
-      <div class ="dish-name-and-rating-card">
-        <div class ="dish-name-card">
-          <h5><%=@dish.name%></h5>
-        </div>
-        <div class = "dish-rating-card">
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-        </div>
+    <div class = "second-container">
+    <div class="featured-dish-card bg-white py-3 px-4 mt-4">
+      <div class='d-flex justify-content-between'>
+      <div>
+        <p id="stalltitle" class='m-0'><%= @dish.stall.name %></p>
+        <%# style="margin-left:5%;" %>
+        <%= link_to @dish, style:"text-decoration:none;color:black;" do %>
+        <h5 id="foodtitle">
+        <strong><%= @dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+        </h5>
+        <% end %>
       </div>
       </div>
-      <div class ="dish-photo-card">
-          <% if @dish.photo.attached? %>
-            <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:'height:250px;width:250px,crop:fill,gravity:auto') %>
-          <% else %>
-            <img src="<%= @dish.description  %>" alt="" class="p-1 mx-auto" id="main-image">
-          <% end %>
-          </div>
-           <div class = "dish-flavor-mark">
-        <div class = "dish-flavor-card">
-          <div style="list-style-type: none" class="d-flex flex-row justify-content-center p-2">
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-                <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
-                <%= link_to dish_bookmarks_path(@dish) do %>
-                  <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
-                   <div class ="bookmark">
-              <% if Bookmark.where(user_id: (current_user.id rescue false ? current_user.id : nil) , dish_id: @dish.id).first.present? %>
-                    <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
-                  <% else %>
-                    <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
-                  <% end %>
+    </div>
+
+
+    <%# div holding image, flavours, description  %>
+    <div class="d-flex flex-column justify-content-center">
+      <div class="featured-dish-image">
+         <% if @dish.photo.attached? %>
+                  <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"height:300px;width:400px; p-40; crop: :fill") %>
+                <% else %>
+                   <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
                 <% end %>
-              </div>
-              </div>
-            </div>
+      </div>
+    </div>
+
+      <%# flavours + stars %>
+      <div style="list-style-type: none" class="d-flex flex-row justify-content-between flex-wrap mt-2">
+        <div>
+          <%flavors=[]%>
+          <%@dish.reviews.each do |review|%>
+            <%review.review_flavors.each do |review_flavor|%>
+                <%flavors<<review_flavor.flavor.name%>
+            <%end%>
+          <%end%>
+         <%flavor_count = Hash.new(0)%>
+           <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
+            <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=last_flavor%></span>
+            <%flavor_count.delete(last_flavor)%>
+             <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=second_last_flavor%></span>
+            <%flavor_count.delete(second_last_flavor)%>
+              <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=third_last_flavor%></span>
+        </div>
+        <div class="stars-rank">
+              <%@dish.score.to_i.times do%>
+                <i class="fa-solid fa-star" style="color:gold;"></i>
+              <%end%>
+              <%left_overstars= 5-@dish.score.to_i%>
+              <%left_overstars.times do%>
+                <i class="fa-light fa-star" style="color:gold;"></i>
+              <%end%>
         </div>
       </div>
     </div>
+     </div>
 
   <div class="right-side-container">
     <div class ="review-container">
@@ -62,41 +76,64 @@
       <% if @dish.reviews.blank? %>
         Be the first to leave a review for <%= @dish.name %>
       <% else %>
-        <% @dish.reviews.each do |review| %>
+        <%flavors=[]%>
+         <%reviews=@dish.reviews.reverse%>
+        <% reviews.each do |review| %>
         <div class = "review-cards">
             <div class = "upload-photo">
              <% if review.photo.attached? %>
-              <%= cl_image_tag(review.photo.key, class:'img-fluid', style:'250px;width:250px;crop:fill;border-radius:15px') %>
+              <%= cl_image_tag(review.photo.key, class:'img-fluid', style:'140px;width:140px;crop:fill;border-radius:15px') %>
               <% else %>
-               <%= image_tag 'https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg', class:'img-fluid', style:'height:250px;width:250px;crop:fill;border-radius:15px' %>
+               <%= image_tag 'https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg', class:'img-fluid', style:'height:140px;width:140px;crop:fill;border-radius:15px' %>
               <% end %>
             </div>
           <div class ="comment">
           <p><%=review.user.username%>   <%=review.created_at%></p>
           <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
-           <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <div class = "dish-rating-card">
-              <i class="fa-light fa-star"></i>
-              <i class="fa-light fa-star"></i>
-              <i class="fa-light fa-star"></i>
-              <i class="fa-light fa-star"></i>
-              <i class="fa-light fa-star"></i>
+
+
+
+            <% if review.review_flavors != {} %>
+           <%review.review_flavors.each do |review_flavor|%>
+                <%flavors<<review_flavor.flavor.name%>
+            <%end%>
+         <%flavor_count = Hash.new(0)%>
+           <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
+            <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=last_flavor%></span>
+            <%flavor_count.delete(last_flavor)%>
+             <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=second_last_flavor%></span>
+            <%flavor_count.delete(second_last_flavor)%>
+              <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=third_last_flavor%></span>
+        <div class="dish-rating-card">
+              <%review.rating.to_i.times do%>
+                <i class="fa-solid fa-star" style="color:gold;"></i>
+              <%end%>
+              <%left_overstars= 5-review.rating.to_i%>
+              <%left_overstars.times do%>
+                <i class="fa-light fa-star"></i>
+              <%end%>
+
+
+
           </div>
+          <%end%>
           </div>
           <p id="review-<%= review.id %>"><%= review.comment %></p>
+
         </div>
         </div>
         <% end %>
       <% end %>
+
+    </div>
     </div>
     </div>
       <div class = "leave-a-review">
       <%=link_to "Have you tried the dish? Leave a Review!", new_dish_review_path(@dish)%>
     </div>
   </div>
-
-
 </div>
 </div>

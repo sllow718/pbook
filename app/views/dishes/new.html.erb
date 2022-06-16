@@ -28,15 +28,13 @@
                 <% if dish.photo.attached? %>
                   <%= cl_image_tag(dish.photo.key, class:'img-fluid', style:"height:77px;width:133px; p-40; crop: :fill") %>
                 <% else %>
-                  <%= image_tag 'https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg',  class:"img-fluid", style:"height:77px;width:133px; p-40; crop: :fill" %>
+                   <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
                 <% end %>
                 </div>
 
         </div>
         <%end%>
       </div>
-
-
     </div>
 
   <div class = "form-container">

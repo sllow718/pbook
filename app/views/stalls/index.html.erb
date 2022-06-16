@@ -2,7 +2,7 @@
   <h1>Top Rated Hawker Dishes in Singapore</h1>
 </div>
 
-  <div data-controller="search-food">
+<div data-controller="search-food">
     <%= form_with url: "/", method: :get, html: { class:
       'mb-4', data: { search_food_target: 'form' } } do |f| %>
       <%= f.text_field :query,
@@ -14,7 +14,7 @@
                       action: 'keyup->search-food#update' %>
             <% end %>
 
-<%= render 'index_top_dishes' %>
-<%= render 'index_list_food' %>
+  <%= render 'stalls/index/top_dishes' %>
+  <%= render 'stalls/index/list_food' %>
 
-  </div>
+</div>

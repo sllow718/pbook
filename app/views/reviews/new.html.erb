@@ -5,52 +5,71 @@
         <h2><%=@dish.name%></h2>
       </div>
       <div class = "dish-description-text">
-        <%=@dish.description%>
+         <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
+        <%= Review.where(dish: dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+      </p>
       </div>
     </div>
-    <div class = "dish-individual-card">
-      <div class = "dish-header">
-      <div class ="dish-rank">
-      <h5>Rank #</h5>
-      </div>
-      <div class ="dish-name-and-rating-card">
-        <div class ="dish-name-card">
-          <h5><%=@dish.name%></h5>
-        </div>
-        <div class = "dish-rating-card">
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-           <i class="fa-light fa-star"></i>
-        </div>
+    <div class = "second-container">
+    <div class="featured-dish-card bg-white py-3 px-4 mt-4">
+      <div class='d-flex justify-content-between'>
+      <div>
+        <p id="stalltitle" class='m-0'><%= @dish.stall.name %></p>
+        <%# style="margin-left:5%;" %>
+        <%= link_to @dish, style:"text-decoration:none;color:black;" do %>
+        <h5 id="foodtitle">
+        <strong><%= @dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+        </h5>
+        <% end %>
       </div>
       </div>
-      <div class ="dish-photo-card">
-         <img src=<%= @dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
-          </div>
-           <div class = "dish-flavor-mark">
-        <div class = "dish-flavor-card">
-          <div style="list-style-type: none" class="d-flex flex-row justify-content-center p-2">
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-                <%# Letting font awesome icon lead to creation/destruction of a bookmark %>
-                <%= link_to dish_bookmarks_path(@dish) do %>
-                  <%# font awesome icon +conditional. If user has bookmarked this item, color of icon is red%>
-                   <div class ="bookmark">
-              <% if Bookmark.where(user_id: (current_user.id rescue false ? current_user.id : nil) , dish_id: @dish.id).first.present? %>
-                    <i class="fa-regular fa-bookmark fa-xl mx-1 red"></i>
-                  <% else %>
-                    <i class="fa-regular fa-bookmark fa-xl mx-1"></i>
-                  <% end %>
+    </div>
+
+
+    <%# div holding image, flavours, description  %>
+    <div class="d-flex flex-column justify-content-center">
+      <div class="featured-dish-image">
+         <% if @dish.photo.attached? %>
+                  <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"height:300px;width:400px; p-40; crop: :fill") %>
+                <% else %>
+                   <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
                 <% end %>
-              </div>
-              </div>
-            </div>
+      </div>
+    </div>
+
+      <%# flavours + stars %>
+      <div style="list-style-type: none" class="d-flex flex-row justify-content-between flex-wrap mt-2">
+        <div>
+          <%flavors=[]%>
+          <%@dish.reviews.each do |review|%>
+            <%review.review_flavors.each do |review_flavor|%>
+                <%flavors<<review_flavor.flavor.name%>
+            <%end%>
+          <%end%>
+           <%flavor_count = Hash.new(0)%>
+           <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
+            <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=last_flavor%></span>
+            <%flavor_count.delete(last_flavor)%>
+             <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=second_last_flavor%></span>
+            <%flavor_count.delete(second_last_flavor)%>
+              <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+            <span class="px-1 btn pink-button"><%=third_last_flavor%></span>
+        </div>
+        <div class="stars-rank">
+              <%@dish.score.to_i.times do%>
+                <i class="fa-solid fa-star" style="color:gold;"></i>
+              <%end%>
+              <%left_overstars= 5-@dish.score.to_i%>
+              <%left_overstars.times do%>
+                <i class="fa-light fa-star" style="color:gold;"></i>
+              <%end%>
         </div>
       </div>
     </div>
+     </div>
+
 
   <div class="review-right-side-container">
     <div class="review-submit-container">
@@ -59,18 +78,32 @@
         </div>
       <%= simple_form_for([@dish, @review]) do |f| %>
         <div class="form-inputs">
-        <p>Rating<p>
-        <%=f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last%>
+        <div class ="rating d-flex gap-3">
+        Rating:
+        <%=f.collection_radio_buttons :rating, [[1, ' 1'] ,[2, ' 2'],[3, ' 3'],[4, ' 4'],[5, ' 5']], :first, :last%>
+        </div>
           <div class="d-flex gap-3">
-            <%= f.input :photo, as: :file, label: "Upload An Image" %>
+            <%= f.input :photo, as: :file, label:"Upload a Photo" %>
+          </div>
+          Flavors:
+          <div class ="checkboxes d-flex gap-3">
+            <div class = "checkboxes-label">
+            </div>
+            <div class = "individual-checkboxes">
+             <%=f.simple_fields_for ([@review_flavor]) do |e|%>
+             <%=  e.collection_check_boxes :flavor_id, Flavor.all, :id, :name,  item_label_class: 'my-custom-class' %>
+            <%end%>
+            </div>
           </div>
           <%= f.input :comment, label: "Comment",
-            input_html: { style: 'height: 200px'  } %>
+            input_html: { style: 'height: 150px'  } %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "Submit", class: "btn btn-primary"%>
+          <%= f.button :submit, "Submit", class: "btn btn-dark"%>
         </div>
+
       <% end %>
     </div>
     </div>
+</div>
 </div>

@@ -12,11 +12,12 @@
                   <span>Rank</span>
                   </div>
                   <div class="stars-rank">
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
-                    <i class="fa-light fa-star"></i>
+            <% sum = 0 %>
+            <% dish.reviews.to_a.each {|review| sum += review.rating} %>
+            <% avg_rating = sum/dish.reviews.length rescue 3%>
+            <% (1..avg_rating).step(1).each do %>
+                  <%= fa_icon("star solid",style:"color:gold") %>
+                <% end %>
                   </div>
                 </div>
               </div>
@@ -34,9 +35,10 @@
             </span>
 
             <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
-              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;">flavour</span>
+                      <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
+                <% flavorlist.each do |reviewflavor| %>
+                  <span class="px-3 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
+                <% end %>
             </div>
 
             <p class="my-2 text-justify" style="margin-left:5px;font-size:15px;">

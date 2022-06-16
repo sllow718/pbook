@@ -8,14 +8,13 @@ class StallsController < ApplicationController
     @secondtopstalls.each do |stall|
       @topdishes.push(Dish.where(stall_id:stall.id).first)
     end
+    @flavors = Flavor.all
 
     if params[:query].present?
       @dishes = Dish.global_search(params[:query])
     else
-      @dishes = Dish.all
+      @dishes = Dish.all[1..12]
     end
-
-
   end
 
   def destroy
@@ -25,17 +24,22 @@ class StallsController < ApplicationController
   end
 
   def show
-    @stall = Stall.find(params[:id])
-    @dishes = Dish.where("stall_id=?", @stall)
+    @stall = Stall.find(params[:id]) rescue nil
+    if @stall.nil?
+      redirect_to root_path, alert: "Stall not found"
+    else
+      @dishes = Dish.where("stall_id=?", @stall)
+      @stallmap = {
+        lat: @stall.hawker_center.latitude,
+        lng: @stall.hawker_center.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { hawker: @stall.hawker_center })
+      }
+    end
   end
 
   def new
     @stall = Stall.new
     @hawkers = HawkerCenter.all
-    # @hawker_center_names = []
-    # HawkerCenter.all.each do |hawker_center|
-    #   @hawker_center_names << hawker_center.name
-    # end
   end
 
   def create

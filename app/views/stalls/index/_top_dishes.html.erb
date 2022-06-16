@@ -1,0 +1,41 @@
+<%# For top div in index  %>
+<% if params[:query].present? %>
+  <div class="stall-show-grid-container d-none" data-search-food-target="topgrid">
+<% else %>
+  <div class="stall-show-grid-container" data-search-food-target="topgrid">
+<% end %>
+  <%# top dish %>
+  <div class="div1">
+        <div class="featured-dish-card bg-white p-2 mt-4">
+        <%= link_to @topstalls.first,style:"text-decoration:none;color:black;" do  %>
+        <p id="stalltitle" style="margin-left:5%;margin-bottom:0rem;"><%= @topstalls.first.name %></p>
+        <% end %>
+        <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
+        <h5 id="foodtitle">
+        👑
+        <strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+        </h5>
+        <% end %>
+        <div class="d-flex flex-column justify-content-center">
+          <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
+        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
+                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
+                <% flavorlist.each do |reviewflavor| %>
+                  <span class="px-3 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
+                <% end %>
+               <div class="featured-bookmark mt-2"> <%= render 'shared/bookmark_review_icons', dish: @topdish %>
+               </div>
+        </div>
+        <p id="foodwriteuptext" class="text-justify px-4">
+        <%= Review.where(dish: @topdish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <%# dishes ranked 2 - 4 %>
+  <div class="div2">
+    <%= render 'shared/card_long', dishes: @topdishes %>
+  </div>
+</div>
