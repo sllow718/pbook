@@ -3,7 +3,9 @@
   <div>
     <div class='analytic-display-summary'>
       <p>
-        Your dish is the <strong><span class="dark-red"> <%= @dish.rank %> </span></strong> highest rated "Chicken Rice" dish out of 222 dishes
+        Your dish is the <strong><span class="dark-red">
+        <%= @dish.rank_per_type(@dish.dish_type) %> </span></strong>
+        highest rated "Chicken Rice" dish out of 222 dishes
       </p>
     </div>
     <%# rating and stars %>

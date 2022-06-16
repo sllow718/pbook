@@ -25,6 +25,11 @@ class Dish < ApplicationRecord
     Dish.ranked.index(self) + 1
   end
 
+  def rank_per_type(dish_type)
+    list = Dish.order('dishes.score DESC').where(dish_type: dish_type).all
+    return list.index(self) + 1
+  end
+
   def self.score_average
     dishes = Dish.where.not(score: 0)
     dish_arr = []

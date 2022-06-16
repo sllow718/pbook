@@ -7,6 +7,8 @@ class DashboardsController < ApplicationController
     # item analysis
     name = @stall.dishes.first.name
     @dish = Dish.where(stall_id: @stall.id, name: name).first
+
+    @dish_type = @dish.dish_type
   end
 
 
