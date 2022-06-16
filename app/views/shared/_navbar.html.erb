@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 bg-light sticky-top">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
       <%= image_tag "tpb_logo.jpg" %>
@@ -8,9 +8,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class ="brand-name" style="position:absolute; left:100px;">
+      <%# <div class ="brand-name" style="position:absolute; left:100px;">
         <span>THE LOCAL POCKET BOOK</span>
-      </div>
+      </div> %>
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
@@ -31,9 +31,11 @@
           </li>
           <li class="nav-item">
             <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+          <% if (current_user rescue false) %>
           </li>
-
             <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto" %>
+          </li>
+          <% end %>
 
         <% end %>
       </ul>
