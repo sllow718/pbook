@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @review_flavor = ReviewFlavor.new
     @flavors = Flavor.all
+
   end
 
   def create
@@ -11,7 +12,6 @@ class ReviewsController < ApplicationController
     new_review_params = review_params
     new_review_params.delete("review_flavor")
     @review = Review.new(new_review_params)
-
     @review.user = current_user
     @review.dish = @dish
     if @review.save

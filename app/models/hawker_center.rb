@@ -1,5 +1,7 @@
 class HawkerCenter < ApplicationRecord
   has_many :stalls, dependent: :destroy
-  include PgSearch::Model
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
 end

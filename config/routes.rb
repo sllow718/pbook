@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'stalls#index'
-
   resources :stalls
   resources :dishes do
     get 'bookmarks', to: 'bookmarks#bookmark'
@@ -16,5 +15,3 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#dashboard'
   post 'dashboard', to: 'dashboards#getdish'
 end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
