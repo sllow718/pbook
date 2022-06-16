@@ -26,8 +26,11 @@ class Dish < ApplicationRecord
   end
 
   def self.score_average
-    Dish.average[:score].where("score <> 0")
-
-    Dish.select("score").having("score > ?", 0)
+    dishes = Dish.where.not(score: 0)
+    dish_arr = []
+    dishes.each do |dish|
+      dish_arr << dish.score
+    end
+    return dish_arr.sum / dish_arr.length
   end
 end

@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
     @hawkercenter = HawkerCenter.find(@stall.hawker_center_id)
 
     # item analysis
-    name = "Yummy Lo Mee"
+    name = @stall.dishes.first.name
     @dish = Dish.where(stall_id: @stall.id, name: name).first
   end
 
