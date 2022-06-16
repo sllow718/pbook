@@ -6,6 +6,9 @@ class Review < ApplicationRecord
 
   after_create :update_dish_score
 
+  def by_dish_type(dish_type)
+  end
+
   private
 
   def update_dish_score

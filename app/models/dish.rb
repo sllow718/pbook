@@ -65,4 +65,13 @@ class Dish < ApplicationRecord
     end
     return dish_arr.sum / dish_arr.length
   end
+
+  def type_flavors
+    # join reviews to dishes where certain dish type
+    # dish + dishtype -> review
+    Dish.joins(:reviews).where(dish_type: "#{self.dish_type}").all
+  end
+
+
+
 end
