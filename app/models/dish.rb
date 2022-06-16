@@ -43,6 +43,11 @@ class Dish < ApplicationRecord
     return dish_arr.sum / dish_arr.length
   end
 
+  def price_rank
+    list = Dish.order('dishes.price DESC').where(dish_type: self.dish_type).all
+    return list.index(self) + 1
+  end
+
   def average_price
     dishes = Dish.where(dish_type: "#{self.dish_type}")
     dish_arr = []

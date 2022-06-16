@@ -3,7 +3,8 @@
   <div>
     <div>
       <p class='analytic-display-summary'>
-        Your dish is the <strong><span class="dark-red">3rd</span></strong> most expensive of
+        Your dish is the <strong><span class="dark-red">
+        <%= @dish.price_rank %> </span></strong> most expensive of
         <%= Dish.count_in_dish_type(@dish.dish_type) %> <%= @dish.dish_type %> dishes
       </p>
     </div>
