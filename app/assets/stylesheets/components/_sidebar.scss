@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 15%;
 }
 
 .sidebar-first {
   background-color: #52000E;
   font-weight: 800;
-  h3 {
+  p {
     margin: 0;
   }
 }
@@ -32,6 +33,8 @@
   justify-content: start;
   padding: 18px;
   color: white;
+  height: 8%;
+  overflow: hidden;
   // border-bottom: white;
   margin-top: 1px;
   margin-bottom: 1px;
