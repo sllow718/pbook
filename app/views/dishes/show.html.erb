@@ -56,7 +56,9 @@
            <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
         <%# print out the 3 top flavors %>
           <% flavors.each do |foodflavor| %>
-            <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=foodflavor%></span>
+            <%= link_to "/?query=#{foodflavor}" do  %>
+              <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=foodflavor%></span>
+            <% end %>
           <% end %>
         <%# end of added new line %>
             <%# causing error if theres no 3x food flavor%>

@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 bg-light sticky-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon p-0 sticky-top" style="background-color:#fa3757">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "tpb_logo.jpg" %>
@@ -13,25 +13,25 @@
       </div> %>
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+          <li class="nav-item active" style="align-self:center">
+            <%= link_to "Home", root_path, class: "nav-link",style: "color:white;"%>
           </li>
           <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto" %>
           <li class="nav-item dropdown">
             <%= image_tag "user_logo.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <span class= "dropdown-item"><%= current_user.username %></span>
               <%= link_to "My Stalls", stalls_path(:id), class: "dropdown-item" %>
-
               <%= link_to "Bookmark Stalls", bookmarks_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link",style:"color:white;" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+            <%= link_to "Register", new_user_registration_path, class: "nav-link",style:"color:white;" %>
           <% if (current_user rescue false) %>
           </li>
             <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto" %>
