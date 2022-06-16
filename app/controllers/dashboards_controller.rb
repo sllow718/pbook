@@ -13,12 +13,11 @@ class DashboardsController < ApplicationController
 
 
   def getdish
-    # clicked_dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:id])
 
     respond_to do |format|
-      format.json # Follow the classic Rails flow and look for a create.json view
+      format.json
     end
-    # # app/views/reviews/create.json.jbuilder
 
   end
 end

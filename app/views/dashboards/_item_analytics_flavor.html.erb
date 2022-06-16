@@ -5,7 +5,7 @@
       <p class='analytic-display-summary'>Your dish flavours (per reviewers)</p>
     </div>
     <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
-      <%= render partial: 'shared/top_dish_flavour', locals: { dish: @dish } %>
+      <%= render 'shared/top_dish_flavour.html.erb', dish: @dish  %>
     </div>
   </div>
   <%# hawker dish flavours %>
@@ -14,6 +14,6 @@
       <p class='analytic-display-summary mt-3'>Flavours of top-ranked <%= "#{@dish.dish_type}" %></p>
     </div>
     <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
-      <%= render partial: 'shared/top_dish_flavour', locals: { dish: @dish.type_flavors } %>
+      <%= render 'shared/top_dish_flavour.html.erb', dish: @dish.type_flavors %>
   </div>
 </div>

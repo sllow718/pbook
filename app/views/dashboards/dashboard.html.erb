@@ -1,6 +1,7 @@
 <%# Overall div holding the sidebar + Analytics content %>
 <div
-class='d-flex'>
+class='d-flex'
+data-controller="dashboard">
   <%# sidebar %>
   <div class='sidebar'>
     <div class='sidebar-box sidebar-first'>
@@ -9,7 +10,6 @@ class='d-flex'>
     <% @stall.dishes.each do |dish| %>
       <div
       class="sidebar-box sidebar-other"
-      data-controller="dashboard"
       data-action="click->dashboard#display"
       data-dashboard-id-value=<%= dish.id %>
       data-dashboard-target="dish">
@@ -31,22 +31,9 @@ class='d-flex'>
     </div>
 
     <%# div for item specific analytics %>
-    <div>
+    <div data-dashboard-target="analytics">
       <%# analytics for dish vs all dishes + dish vs others in the same dish category %>
-      <div class='d-flex justify-content-around'>
-        <%# dish vs all dishes %>
-        <%= render partial: 'item_analytics_rating_all', locals: { dish: @dish }  %>
-        <%# dish vs others in the same category %>
-        <%= render 'item_analytics_rating', locals: { dish: @dish } %>
-      </div>
-
-      <%# analytics for dish price vs same category dishes price + dish flavour vs same dish category flavours %>
-      <div class='d-flex justify-content-around'>
-        <%# dish price vs same category dishes price %>
-        <%= render partial: 'item_analytics_price', locals: { dish: @dish } %>
-        <%# dish flavour vs same category dishes flavours %>
-        <%= render 'item_analytics_flavor' %>
-      </div>
+      <%= render partial: 'dashboards/dish_analytics_holder.html.erb', locals: { dish: @dish } %>
     </div>
 
   </div>

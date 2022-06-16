@@ -10,7 +10,7 @@
     <div class='d-flex justify-content-between'>
       <p>Your rating:</p>
       <div class='d-flex justify-content-between'>
-        <%= render 'stars', display: dish.score.round %>
+        <%= render 'dashboards/stars.html.erb', display: dish.score.round %>
         <p>(<%= dish.score.round(2) %>)</p>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <p>Avg. Hawker Rating:</p>
     <div class='d-flex justify-content-between'>
 
-     <%= render 'stars', display: Dish.score_average.round %>
+     <%= render 'dashboards/stars.html.erb', display: Dish.score_average.round %>
       <p> (<%= Dish.score_average.round(2) %>) </p>
     </div>
   </div>

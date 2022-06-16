@@ -13,5 +13,5 @@ Rails.application.routes.draw do
 
   resources :bookmarks
   get 'dashboard', to: 'dashboards#dashboard'
-  post 'dashboard', to: 'dashboards#getdish'
+  get 'dashboard/:id', to: 'dashboards#getdish'
 end

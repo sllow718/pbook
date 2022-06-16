@@ -2,8 +2,8 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "dish" ]
-  static values = { id: String }
+  static targets = [ "dish", "analytics" ]
+
 
   connect() {
     // this.outputTarget.textContent = 'Hello, Stimulus!'
@@ -12,20 +12,20 @@ export default class extends Controller {
   }
 
   display(event) {
-    const to_post = this.idValue
-    console.log(to_post)
+    console.log(event.currentTarget)
+    console.log(event.currentTarget.dataset.dashboardIdValue)
+    console.log(this.analyticsTarget)
 
-    const url = '/dashboard'
+    const dishId = event.currentTarget.dataset.dashboardIdValue
+    const url = `/dashboard/${dishId}`
     const options = {
-      method: "POST",
-      headers: { "Accept": 'text/html' },
-      body: to_post,
+      headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() }
     }
 
     fetch(url, options)
-      .then(response => response.text())
+      .then(response => response.json())
       .then((data) => {
-        console.log(data)
+        this.analyticsTarget.innerHTML = data.dish
       })
   }
 }
