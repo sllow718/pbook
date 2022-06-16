@@ -22,13 +22,6 @@
     <div class='d-flex justify-content-between'>
 
      <%= render 'stars', display: Dish.score_average.round %>
-      <%# <div class="stars-rank p-1">
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-      </div> %>
       <p> (<%= Dish.score_average.round(2) %>) </p>
     </div>
   </div>

@@ -37,13 +37,13 @@ class='d-flex'>
         <%# dish vs all dishes %>
         <%= render partial: 'item_analytics_rating_all', locals: { dish: @dish }  %>
         <%# dish vs others in the same category %>
-        <%= render 'item_analytics_rating' %>
+        <%= render 'item_analytics_rating', locals: { dish: @dish } %>
       </div>
 
       <%# analytics for dish price vs same category dishes price + dish flavour vs same dish category flavours %>
       <div class='d-flex justify-content-around'>
         <%# dish price vs same category dishes price %>
-        <%= render 'item_analytics_price' %>
+        <%= render partial: 'item_analytics_price', locals: { dish: @dish } %>
         <%# dish flavour vs same category dishes flavours %>
         <%= render 'item_analytics_flavor' %>
       </div>

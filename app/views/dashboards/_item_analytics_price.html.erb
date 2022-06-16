@@ -3,17 +3,18 @@
   <div>
     <div>
       <p class='analytic-display-summary'>
-      Your dish is the <strong><span class="dark-red">3rd</span></strong> most expensive of 222 "Chicken Rice" dishes
+        Your dish is the <strong><span class="dark-red">3rd</span></strong> most expensive of
+        <%= Dish.count_in_dish_type(@dish.dish_type) %> <%= @dish.dish_type %> dishes
       </p>
     </div>
     <div class='d-flex justify-content-between'>
       <p>Your Price:</p>
-      <p>$8.50SGD</p>
+      <p>$ <%= @dish.price.round(2) %> SGD</p>
     </div>
   </div>
   <%# hawker price %>
   <div class='d-flex justify-content-between'>
     <p>Avg. Hawker Price:</p>
-    <p>$8.50SGD</p>
+    <p> $<%= @dish.average_price.round(2) %> SGD </p>
   </div>
 </div>

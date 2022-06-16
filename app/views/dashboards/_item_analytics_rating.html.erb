@@ -22,9 +22,8 @@
   <div class='d-flex justify-content-between'>
     <p>Avg. Hawker Rating:</p>
     <div class='d-flex justify-content-between'>
-     <%= render 'stars', display: Dish.score_average.round %>
-
-      <p>(4.0)</p>
+      <%= render 'stars', display: Dish.type_average(@dish.dish_type) %>
+      <p> (<%= Dish.type_average(@dish.dish_type).round(2) %>) </p>
     </div>
   </div>
 </div>

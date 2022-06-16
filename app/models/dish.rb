@@ -43,6 +43,15 @@ class Dish < ApplicationRecord
     return dish_arr.sum / dish_arr.length
   end
 
+  def average_price
+    dishes = Dish.where(dish_type: "#{self.dish_type}")
+    dish_arr = []
+    dishes.each do |dish|
+      dish_arr << dish.price
+    end
+    return dish_arr.sum / dish_arr.length
+  end
+
   def self.score_average
     dishes = Dish.where.not(score: 0)
     dish_arr = []
