@@ -6,7 +6,7 @@
       </div>
       <div class = "dish-description-text">
          <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
-        <%= Review.where(dish: dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+        <%= Review.where(dish: @dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
       </p>
       </div>
     </div>
@@ -32,7 +32,8 @@
          <% if @dish.photo.attached? %>
                   <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"height:300px;width:400px; p-40; crop: :fill") %>
                 <% else %>
-                   <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
+
+                   <img src=<%= @dish.image rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
                 <% end %>
       </div>
     </div>
@@ -98,8 +99,21 @@
                 <%flavors<<review_flavor.flavor.name%>
             <%end%>
          <%flavor_count = Hash.new(0)%>
+
+        <%# added new line %>
            <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
-            <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+        <%# sort each flavors by number of review and map just the flavors, takes the top 3 %>
+           <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
+        <%# print out the 3 top flavors %>
+          <% flavors.each do |foodflavor| %>
+            <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=foodflavor%></span>
+          <% end %>
+        <%# end of added new line %>
+
+        <%# causing error if theres no 3x food flavor%>
+        <%# entire line wont be printed as its always false %>
+        <% if 1==0 %>
+         <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
             <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=last_flavor%></span>
             <%flavor_count.delete(last_flavor)%>
              <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
@@ -107,6 +121,9 @@
             <%flavor_count.delete(second_last_flavor)%>
               <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
             <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=third_last_flavor%></span>
+        <% end %>
+        <%# end of error %>
+
         <div class="dish-rating-card">
               <%review.rating.to_i.times do%>
                 <i class="fa-solid fa-star" style="color:gold;"></i>

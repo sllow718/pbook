@@ -17,7 +17,7 @@
         </h5>
         <% end %>
         <div class="d-flex flex-column justify-content-center">
-          <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
+          <img src="<%= @topdish.image %>" alt="" class="p-1 mx-auto" id="homepagetop1">
         <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
                 <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
                 <% flavorlist.each do |reviewflavor| %>
