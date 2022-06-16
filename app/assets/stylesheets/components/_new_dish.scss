@@ -10,14 +10,16 @@
   width: 700px;
   padding-right: 20px;
   margin: 20px;
-  box-shadow: 5px 5px #888888;
   border-radius: 25px;
   border-color: black;
   justify-content: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  text-align: center;
 }
 
 .stall-title {
-  background-color: #b3263d;
+  background-color: #ff375c;
   width: 700px;
   height: 113px;
   border-radius: 25px;
@@ -39,26 +41,27 @@
   justify-content: center;
   height: 286px;
   margin-top: 40px;
+  background-color: white;
 }
 
 .stall-description {
-  background-color: lightgray;
+  background-color: white;
   height: 140px;
   width: 550;
   border-radius: 25px;
   display: flex;
   justify-content: center;
-  margin: 40px;
+  margin: 20px;
   margin-right: 10px;
   align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .stall-dish-pictures {
   height: 140px;
   width: 550;
-  border-radius: 25px;
   display: flex;
-  margin: 40px;
+  margin: 20px;
   margin-right: 10px;
   align-items: center;
   overflow-x: scroll;
@@ -87,11 +90,11 @@
   width: 700px;
   padding-left: 20px;
   margin: 20px;
-  box-shadow: 5px 5px #888888;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #b3263d;
+  background-color: #ff375c;
   color: white;
 }
