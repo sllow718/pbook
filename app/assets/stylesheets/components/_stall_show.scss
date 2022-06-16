@@ -173,4 +173,10 @@
   .stall-show-grid-container {
     grid-template-columns: 2fr 3fr;
   }
+
+  .div1 {
+    position: sticky;
+    top: 3rem;
+    align-self: start;
+  }
 }
