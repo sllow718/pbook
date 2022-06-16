@@ -1,5 +1,5 @@
-<div  class="d-flex flex-row flex-wrap align-items-center px-2 justify-content-between">
-                <div style="list-style-type: none">
+<div  class="d-flex flex-row flex-wrap align-items-center justify-content-between">
+                <div style="list-style-type: none" class="mx-auto">
                 <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
                 <% flavorlist.each do |reviewflavor| %>
                   <span class="px-1 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>

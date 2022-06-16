@@ -91,16 +91,28 @@
 .sidefood-image {
   position: relative;
   margin-right: 2%;
-  .bookmark {
-    position: absolute;
-    left: 4%;
-    top: 4%;
-  }
+
   #image {
     width: 180px;
     height: 180px;
     padding: 0px;
     border-radius: 20px;
+  }
+  .bookmark {
+    position: absolute;
+    left: 4%;
+    top: 4%;
+    opacity: 0%;
+  }
+}
+
+.sidefood-image:hover {
+  #image {
+    opacity: 50%;
+  }
+
+  .bookmark {
+    opacity: 100%;
   }
 }
 
