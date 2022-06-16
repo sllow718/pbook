@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks
-  end
+  get 'dashboard', to: 'dashboards#dashboard'
+  get 'dashboard/:id', to: 'dashboards#getdish'
+end
