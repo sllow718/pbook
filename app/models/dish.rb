@@ -24,4 +24,10 @@ class Dish < ApplicationRecord
   def rank
     Dish.ranked.index(self) + 1
   end
+
+  def self.score_average
+    Dish.average[:score].where("score <> 0")
+
+    Dish.select("score").having("score > ?", 0)
+  end
 end

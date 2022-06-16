@@ -1,0 +1,39 @@
+<div class='d-flex flex-column analytic-display'>
+  <%# Your dish rating %>
+  <div>
+    <div class='analytic-display-summary'>
+      <p>
+        Your dish is the <strong><span class="dark-red"> <%= dish.rank %> </span></strong> highest rated Hawker Dish out of 222 dishes
+      </p>
+    </div>
+    <%# rating and stars %>
+    <div class='d-flex justify-content-between'>
+      <p>Your rating:</p>
+      <div class='d-flex justify-content-between'>
+        <div class="stars-rank p-1">
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+          <i class="fa-solid fa-star" style="color:gold;"></i>
+        </div>
+        <p>(<%= dish.score %>)</p>
+      </div>
+    </div>
+  </div>
+  <%# hawker dish rating %>
+  <%# rating and stars %>
+  <div class='d-flex justify-content-between'>
+    <p>Avg. Hawker Rating:</p>
+    <div class='d-flex justify-content-between'>
+      <div class="stars-rank p-1">
+        <i class="fa-solid fa-star" style="color:gold;"></i>
+        <i class="fa-solid fa-star" style="color:gold;"></i>
+        <i class="fa-solid fa-star" style="color:gold;"></i>
+        <i class="fa-solid fa-star" style="color:gold;"></i>
+        <i class="fa-solid fa-star" style="color:gold;"></i>
+      </div>
+      <p>(4.0)</p>
+    </div>
+  </div>
+</div>
