@@ -5,21 +5,15 @@
       <p>
         Your dish is the <strong><span class="dark-red">
         <%= @dish.rank_per_type(@dish.dish_type) %> </span></strong>
-        highest rated "Chicken Rice" dish out of 222 dishes
+        highest rated <%= @dish.dish_type %> dish out of <%= Dish.count_in_dish_type(@dish.dish_type) %> dishes
       </p>
     </div>
     <%# rating and stars %>
     <div class='d-flex justify-content-between'>
       <p>Your rating:</p>
       <div class='d-flex justify-content-between'>
-        <div class="stars-rank p-1">
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-        </div>
-        <p>(4.6)</p>
+        <%= render 'stars', display: @dish.score.round %>
+        <p>(<%= @dish.score.round(2) %>)</p>
       </div>
     </div>
   </div>
@@ -28,13 +22,8 @@
   <div class='d-flex justify-content-between'>
     <p>Avg. Hawker Rating:</p>
     <div class='d-flex justify-content-between'>
-      <div class="stars-rank p-1">
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-        <i class="fa-solid fa-star" style="color:gold;"></i>
-      </div>
+     <%= render 'stars', display: Dish.score_average.round %>
+
       <p>(4.0)</p>
     </div>
   </div>
