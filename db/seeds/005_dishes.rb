@@ -10,7 +10,8 @@ CSV.foreach(dishes_filepath, headers: :first_row) do |row|
   @stall = Stall.where("name=?","#{row['stallname'].strip}")[0]
   @dish.name = row["dishname"]
   @dish.price = rand(3..5)
-  @dish.description = row["description"]
+  @dish.image = row["description"]
+  @dish.description = "loremsss"
   @dish.stall = @stall
   @dish.dish_type = dish_types.sample
 

@@ -3,10 +3,11 @@
 
     <%# dish image + review & bookmark icons %>
     <div class="sidefood-image">
-      <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
+      <img src=<%= dish.image %> alt="" id="image">
       <div class="bookmark mt-2">
         <%= render 'shared/bookmark_review_icons', dish: dish %>
       </div>
+
     </div>
 
     <%# div holds everything else APART from picture %>

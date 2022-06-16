@@ -31,6 +31,14 @@ class DishesController < ApplicationController
     @stall = @user.stalls.last
   end
 
+  def destroy
+    @dish = Dish.find(params[:id])
+    @dish.destroy
+    @stall = @dish.stall
+    redirect_to stall_path(@stall)
+  end
+
+
   def create
     @user = current_user
     @dish = Dish.new(dish_params)

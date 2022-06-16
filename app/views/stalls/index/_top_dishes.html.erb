@@ -17,14 +17,20 @@
         </h5>
         <% end %>
         <div class="d-flex flex-column justify-content-center">
-          <img src="<%= @topdish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="p-1 mx-auto" id="homepagetop1">
-        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-5">
+          <div class="main-item-image mx-auto">
+            <img src="<%= @topdish.image %>" alt="" class="px-4 py-2 img-fluid" id="homepagetop1">
+            <div class="bookmark mt-2 p-2">
+              <%= render 'shared/bookmark_review_icons', dish: @topdish %>
+            </div>
+          </div>
+
+
+        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-4">
                 <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
                 <% flavorlist.each do |reviewflavor| %>
                   <span class="px-3 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
                 <% end %>
-               <div class="featured-bookmark mt-2"> <%= render 'shared/bookmark_review_icons', dish: @topdish %>
-               </div>
+
         </div>
         <p id="foodwriteuptext" class="text-justify px-4">
         <%= Review.where(dish: @topdish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>

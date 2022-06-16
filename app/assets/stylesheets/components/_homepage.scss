@@ -7,9 +7,26 @@
   }
 }
 
-#homepagetop1 {
-  width: 420px;
-  border-radius: 25px;
+.main-item-image {
+  position: relative;
+  #homepagetop1 {
+    width: 420px;
+    border-radius: 25px;
+  }
+  .bookmark {
+    position: absolute;
+    left: 4%;
+    top: 4%;
+    opacity: 0%;
+  }
+}
+.main-item-image:hover {
+  #homepagetop1 {
+    opacity: 50%;
+  }
+  .bookmark {
+    opacity: 100%;
+  }
 }
 
 .column-headers {
@@ -19,6 +36,27 @@
   }
 }
 
+.list-food-image {
+  position: relative;
+  .bookmark {
+    position: absolute;
+    top: 6%;
+    left: 6%;
+    opacity: 0%;
+  }
+}
+
+.list-food-image:hover {
+  .img-fluid {
+    opacity: 50%;
+  }
+  .bookmark {
+    position: absolute;
+    top: 6%;
+    left: 6%;
+    opacity: 100%;
+  }
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .four-column-cards {
@@ -67,6 +105,10 @@
         padding: 1rem;
         align-content: center;
       }
+    }
+
+    .sidefood-image:hover {
+      opacity: 50%;
     }
   }
 }
