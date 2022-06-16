@@ -18,9 +18,9 @@
 
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-dark", style:"border-radius:10px; " %>
+    <%= link_to 'View Your Stall!', stall_path(@user.stalls.last.id), class: "red-nav-button"  %>
   </div>
 
-  <%= link_to 'View Your Stall!', stall_path(@user.stalls.last.id) %>
 
 
 

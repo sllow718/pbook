@@ -8,5 +8,7 @@
       <i class="fa-regular fa-bookmark fa-xl mx-1 black"></i>
     <% end %>
   <% end %>
-  <i class="fa-regular fa-comment-lines fa-xl"></i>
+  <%= link_to (new_dish_review_path(dish) rescue false ? new_dish_review_path(dish) : root_path) do  %>
+  <i class="fa-regular fa-comment-lines fa-xl" style="color:black"></i>
+  <% end %>
 </div>

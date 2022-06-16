@@ -34,8 +34,9 @@
 
         </div>
         <%end%>
-      </div>
-    </div>
+      </div class = "view-button">
+       <%= link_to 'View Your Stall!', stall_path(@user.stalls.last.id), class: "red-nav-button " %>
+     </div>
 
   <div class = "form-container">
    <%= render 'shared/dish_form', dish: @dish %>

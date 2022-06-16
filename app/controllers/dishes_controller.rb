@@ -7,6 +7,20 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     @stall = @dish.stall
     @review = Review.new
+    flavorsarray=[]
+    @dish.reviews.each do |review|
+      review.review_flavors.each do |review_flavor|
+        flavorsarray<<review_flavor.flavor.name
+      end
+    end
+
+    flavor_count = Hash.new(0)
+    flavorsarray.each {|flavor| flavor_count[flavor] += 1}
+    @flavor_array = flavor_count.sort_by { |flavor, number| number}
+    @last_flavor = @flavor_array[-1][0] if @flavor_array.count > 0
+    @second_last_flavor=@flavor_array[-2][0] if @flavor_array.count > 1
+    @third_last_flavor=@flavor_array[-3][0] if @flavor_array.count > 2
+
   end
 
   def new

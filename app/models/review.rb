@@ -16,7 +16,11 @@ class Review < ApplicationRecord
     dish_reviews = dish.reviews.all
     scores = []
     dish_reviews.each do |review|
-      scores << review.rating
+      if review.rating.nil?
+        scores << 0
+      else
+        scores << review.rating
+      end
     end
     score = scores.sum / scores.length
     dish.update!(score: score)
