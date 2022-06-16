@@ -49,14 +49,29 @@
           <%end%>
          <%flavor_count = Hash.new(0)%>
            <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
-            <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
-            <span class="px-1 btn pink-button"><%=last_flavor%></span>
-            <%flavor_count.delete(last_flavor)%>
-             <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
-            <span class="px-1 btn pink-button"><%=second_last_flavor%></span>
-            <%flavor_count.delete(second_last_flavor)%>
-              <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
-            <span class="px-1 btn pink-button"><%=third_last_flavor%></span>
+
+
+        <%# added new line %>
+        <%# sort each flavors by number of review and map just the flavors, takes the top 3 %>
+           <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
+        <%# print out the 3 top flavors %>
+          <% flavors.each do |foodflavor| %>
+            <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=foodflavor%></span>
+          <% end %>
+        <%# end of added new line %>
+            <%# causing error if theres no 3x food flavor%>
+            <%# entire line wont be printed as its always false %>
+           <% if 1==0 %>
+              <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+              <span class="px-1 btn pink-button"><%=last_flavor%></span>
+              <%flavor_count.delete(last_flavor)%>
+              <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+              <span class="px-1 btn pink-button"><%=second_last_flavor%></span>
+              <%flavor_count.delete(second_last_flavor)%>
+                <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+              <span class="px-1 btn pink-button"><%=third_last_flavor%></span>
+            <% end %>
+          <%# end of error %>
         </div>
         <div class="stars-rank">
               <%@dish.score.to_i.times do%>
@@ -85,11 +100,13 @@
              <% if review.photo.attached? %>
               <%= cl_image_tag(review.photo.key, class:'img-fluid', style:'140px;width:140px;crop:fill;border-radius:15px') %>
               <% else %>
-               <%= image_tag 'https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg', class:'img-fluid', style:'height:140px;width:140px;crop:fill;border-radius:15px' %>
+               <%= image_tag "#{@dish.image}", class:'img-fluid', style:'height:140px;width:140px;crop:fill;border-radius:15px' %>
+
               <% end %>
+
             </div>
           <div class ="comment">
-          <p><%=review.user.username%>   <%=review.created_at%></p>
+          <p><%=review.user.username%>  <%=review.created_at%></p>
           <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
 
 
@@ -98,7 +115,7 @@
            <%review.review_flavors.each do |review_flavor|%>
                 <%flavors<<review_flavor.flavor.name%>
             <%end%>
-         <%flavor_count = Hash.new(0)%>
+          <%flavor_count = Hash.new(0)%>
 
         <%# added new line %>
            <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
