@@ -2,7 +2,7 @@
   <div class="sidefoodcards d-flex my-4 flex-grow">
 
     <%# dish image + review & bookmark icons %>
-  <%= raise %>
+
     <div class="sidefood-image">
       <img src=<%= dish.image %> alt="" id="image">
       <div class="bookmark mt-2">
@@ -35,7 +35,7 @@
         </div>
         <%# rank %>
         <div>
-          <h3 class='m-0'>#?</h3>
+          <h3 class='m-0'> <%= dish.rank %> </h3>
         </div>
 
       </div>

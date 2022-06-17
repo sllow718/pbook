@@ -7,8 +7,8 @@
   <%# top dish %>
   <div class="div1">
         <div class="featured-dish-card bg-white p-2 mt-4">
-        <%= link_to @topstalls.first,style:"text-decoration:none;color:black;" do  %>
-        <p id="stalltitle" style="margin-left:5%;margin-bottom:0rem;"><%= @topstalls.first.name %></p>
+        <%= link_to @topdish, style:"text-decoration:none;color:black;" do  %>
+        <p id="stalltitle" style="margin-left:5%;margin-bottom:0rem;"><%= @topdish.stall.name %></p>
         <% end %>
         <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
         <h5 id="foodtitle">

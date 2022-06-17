@@ -1,9 +1,10 @@
 class StallsController < ApplicationController
   def index
     @stalls = Stall.ranked
-    @topstalls = @stalls[0..3]
-    @topdish = Stall.ranked.first
-    @top_second_to_fourth_dishes = @stalls[1..3]
+    # @topstalls = @stalls[0..3]
+    @topdish = Dish.ranked[0]
+    @top_second_to_fourth_dishes = Dish.ranked[1..3]
+    @regular_dishes = Dish.ranked[4..23]
     # @topdishes = []
     # @secondtopstalls.each do |stall|
     #   @topdishes.push(Dish.where(stall_id:stall.id).first)

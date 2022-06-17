@@ -1,7 +1,7 @@
 <%# second div in index %>
-<% if params[:query].present? && @dishes.length != 0%>
+<% if params[:query].present? && @regular_dishes.length != 0%>
   <h2>Searching for <%= params[:query] %>...</h2>
-<% elsif @dishes.length == 0 %>
+<% elsif @regular_dishes.length == 0 %>
   <h2>No query found... Please enter something else</h2>
 <% else %>
   <div class="py-4 text-center">
@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="four-column-cards d-flex flex-wrap justify-content-around py-3">
-      <% @dishes.each do |dish| %>
+      <% @regular_dishes.each do |dish| %>
       <div class="col-5 p-2 card" style="position:relative;border-radius:20px">
         <div class="column-headers pt-2 px-3">
         <%= link_to dish, style:"text-decoration:none;color:black;" do %>
@@ -28,7 +28,7 @@
               </div>
 
               <div class="rank">
-              <p>Rank <%= rand(4..200) %></p>
+              <p>Rank <%= dish.rank %></p>
               </div>
             </div>
         </div>
