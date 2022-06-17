@@ -23,7 +23,7 @@ data-controller="dashboard">
   <%# div for overall analytics + Item Spefific %>
   <div class='analytics-wrapper'>
     <%# div for overall analytics %>
-    <div class='d-flex justify-content-around'>
+    <div class='d-flex justify-content-around overall-box'>
       <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
       <%= render partial: 'overall_hawkercenter_analytics', locals: {
         stall: @stall, hawkercenter: @hawkercenter
