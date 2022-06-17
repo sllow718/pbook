@@ -1,10 +1,11 @@
-<% if params[:query].present? %>
-  <div class="stall-show-grid-container d-none" data-search-food-target="topgrid" data-controller="reviewmodal">
-<% else %>
-  <div class="stall-show-grid-container" data-search-food-target="topgrid" data-controller="reviewmodal">
-<% end %>
+<%= render '/shared/dish_banner' %>
 
-<div class="div1">
+<div class="container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <div class="stall-show-grid-container">
+        <div class="div1">
+
   <div class="featured-dish-card bg-white p-2 mt-4">
     <%= link_to @stall,style:"text-decoration:none;color:black;" do  %>
       <p id="stalltitle" style="margin-left:5%;margin-bottom:0rem;"><%= @stall.name %></p>
@@ -144,5 +145,7 @@
   </div>
 
 </div>
-</div>
+   </div>
+    </div>
+  </div>
 </div>
