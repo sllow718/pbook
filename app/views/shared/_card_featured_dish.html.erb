@@ -30,6 +30,17 @@
     <%# flavours + stars %>
     <div style="list-style-type: none" class="d-flex flex-row justify-content-between align-items-center flex-wrap mt-2">
       <%#= render 'shared/dish_flavour_calc.html.erb', dish: dish %>
+           <% dish.top_3_reviewed_flavors.each do |flavor, score| %>
+        <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
+          <span class="pink-badge">
+            <%= flavor %>
+              <span class="number-badge">
+                <%= score %>
+                <span class="visually-hidden">reviews</span>
+              </span>
+          </span>
+        <% end %>
+      <% end %>
       <div class="d-flex align-items-center">
         <div class="stars-rank p-1">
           <% (1..dish.score).step(1).each do %>
@@ -38,7 +49,6 @@
         </div>
         <p>(<%= dish.score.round(2) %>)</p>
       </div>
-
     </div>
 
     <%# description %>

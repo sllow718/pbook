@@ -43,10 +43,19 @@
       <%# div holding flavours and stars %>
       <div class='d-flex justify-content-between align-items-center flex-wrap'>
         <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
-                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
-                <% flavorlist.each do |reviewflavor| %>
-                  <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%= reviewflavor.flavor.name %></span>
-                <% end %>
+  <div style="list-style-type: none" class="mx-auto d-flex gap-3">
+      <% dish.top_3_reviewed_flavors.each do |flavor, score| %>
+        <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
+          <span class="pink-badge">
+            <%= flavor %>
+              <span class="number-badge">
+                <%= score %>
+                <span class="visually-hidden">reviews</span>
+              </span>
+          </span>
+        <% end %>
+      <% end %>
+  </div>
 
         </div>
         <div class="stars-rank p-1">

@@ -18,14 +18,15 @@
             <p style="font-size:0.7rem;"><strong><%= dish.name[0..25] %></strong></p>
             <% end %>
             <div class="d-flex justify-content-between rankandstar">
-                            <div class="stars-rank">
-            <% dish.score.step(1).each do %>
-                  <%= fa_icon("star solid",style:"color:gold") %>
+              <div class="stars-rank">
+
+            <% (1..dish.score).step(1).each do %>
+                  <%= fa_icon("star solid xs",style:"color:gold") %>
                 <% end %>
               </div>
 
               <div class="rank">
-              <p>Rank #<%= dish.rank %></p>
+              <p style="font-size:0.75em">Rank #<%= dish.rank %></p>
               </div>
         </div>
         <div class="list-food-image mx-auto">
@@ -40,6 +41,6 @@
         </div>
 
       </div>
-      <% end %>
 
   </div>
+      <% end %>
