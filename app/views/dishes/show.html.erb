@@ -1,4 +1,3 @@
-
 <%= render '/shared/dish_banner' %>
 
 <div class="container">
@@ -13,7 +12,7 @@
     <% end %>
     <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
       <h5 id="foodtitle">
-        👑
+        :crown:
         <strong><%= @dish.name[0..40].strip %></strong>
       </h5>
     <% end %>
@@ -137,10 +136,7 @@
           </p>
         </div>
         <% end %>
-
       </div>
-      <% end %>
-
     </div>
     <% end %>
   </div>
@@ -152,9 +148,4 @@
    </div>
     </div>
   </div>
-<% end %>
-    <%= render "reviewform" %>
 </div>
-
-</div>
-
