@@ -1,13 +1,13 @@
 class StallsController < ApplicationController
   def index
-    @stalls = Stall.all
-    @topstalls = @stalls[6..9]
-    @topdish = Dish.where(stall_id:@topstalls.first.id).first
-    @secondtopstalls = @topstalls[1..3]
-    @topdishes = []
-    @secondtopstalls.each do |stall|
-      @topdishes.push(Dish.where(stall_id:stall.id).first)
-    end
+    @stalls = Stall.ranked
+    @topstalls = @stalls[0..3]
+    @topdish = Stall.ranked.first
+    @top_second_to_fourth_dishes = @stalls[1..3]
+    # @topdishes = []
+    # @secondtopstalls.each do |stall|
+    #   @topdishes.push(Dish.where(stall_id:stall.id).first)
+    # end
     @flavors = Flavor.all
 
     if params[:query].present?

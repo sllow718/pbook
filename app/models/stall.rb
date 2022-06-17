@@ -22,7 +22,7 @@ class Stall < ApplicationRecord
     return dishes_sorted.index(self.best_dish) + 1
   end
 
-  def ranked
+  def self.ranked
     best = []
     Stall.all.each do |stall|
       if stall.best_dish.nil?
