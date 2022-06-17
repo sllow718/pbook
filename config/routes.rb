@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :review_flavors
   end
 
+  get 'mystalls', to: 'stalls#mystallsindex'
+
   resources :bookmarks
   end

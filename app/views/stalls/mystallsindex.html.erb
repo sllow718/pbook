@@ -1,0 +1,28 @@
+<% @stalls.each do |stall| %>
+  <%= link_to stall do %>
+    <div class="sidefoodcards d-flex my-4 flex-grow" style= "width:50%">
+      <%# dish image + review & bookmark icons %>
+      <div class="sidefood-image">
+      <% if stall.photo.key.nil? %>
+        <img src= "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" alt="" id="image">
+      <% else %>
+        <div class="mystallsindex-image">
+            <%=cl_image_tag stall.photo.key, height: 180, width: 180, crop: :fill %>
+        </div>
+      <% end %>
+      </div>
+
+      <%# div holds everything else APART from picture %>
+      <%# pl-2 py-4 pr-4 %>
+      <div class="myindexstalls-font" style="flex-grow:inherit">
+      <ul>
+      <li><%= stall.name %></li>
+      <li><%= stall.hawker_center.name %></li>
+      </ul>
+        <%# <div class="d-flex justify-content-between"> %>
+        <%# </div> %>
+      </div>
+
+    </div>
+  <% end %>
+<% end %>
