@@ -21,7 +21,7 @@ class Dish < ApplicationRecord
   }
 
   def rank
-    Dish.ranked.index(self) + 1
+    self.class.ranked.index(self) + 1
   end
 
   def rank_per_type(dish_type)
