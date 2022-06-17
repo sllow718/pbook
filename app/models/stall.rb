@@ -22,6 +22,20 @@ class Stall < ApplicationRecord
     return dishes_sorted.index(self.best_dish) + 1
   end
 
+  def self.ranked
+    best = []
+    Stall.all.each do |stall|
+      if stall.best_dish.nil?
+        puts "haha"
+      else
+        best << stall.best_dish
+      end
+    end
+    # return best.count
+    dishes_sorted = best.sort_by { |dish| dish.score }.reverse
+    return dishes_sorted
+  end
+
   def rank_in_hawkercenter
     hawkercenter_stalls = Stall.where(hawker_center_id: self.hawker_center_id)
     hawkercenter_dishes = []
