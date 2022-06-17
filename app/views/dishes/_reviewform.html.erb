@@ -5,16 +5,14 @@
         Rating:
         <%=f.collection_radio_buttons :rating, [[1, ' 1'] ,[2, ' 2'],[3, ' 3'],[4, ' 4'],[5, ' 5']], :first, :last%>
         </div>
-          <div class="d-flex gap-3">
-            <%= f.input :photo, as: :file, label:"Upload a Photo" %>
-          </div>
-          Flavors:
           <div class ="checkboxes d-flex gap-3">
             <div class = "checkboxes-label">
             </div>
             <div class = "individual-checkboxes">
              <%=f.simple_fields_for ([@review_flavor]) do |e|%>
-             <%=  e.collection_check_boxes :flavor_id, Flavor.all, :id, :name,  item_label_class: 'my-custom-class' %>
+              <%#e.collection_check_boxes :flavor_id, Flavor.all, :id, :name,  item_label_class: 'my-custom-class'%>
+              <%= e.input :flavor_id, collection: @flavors, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}} %>
+
             <%end%>
             </div>
           </div>
