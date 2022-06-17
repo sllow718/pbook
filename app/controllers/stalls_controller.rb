@@ -8,9 +8,7 @@ class StallsController < ApplicationController
     @flavors = Flavor.all
 
     if params[:query].present?
-      @dishes = Dish.global_search(params[:query])
-    else
-      @dishes = Dish.all[1..12]
+      @regular_dishes = Dish.global_search(params[:query])
     end
   end
 
