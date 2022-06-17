@@ -17,6 +17,7 @@ class StallsController < ApplicationController
 
   def show
     @stall = Stall.find(params[:id]) rescue nil
+
     if @stall.nil?
       redirect_to root_path, alert: "Stall not found"
     else
