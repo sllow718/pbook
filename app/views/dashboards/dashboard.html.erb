@@ -1,4 +1,5 @@
 <%# Overall div holding the sidebar + Analytics content %>
+<%= render 'dashboards/stall_banner'%>
 <div
 class='d-flex'
 data-controller="dashboard">
@@ -24,6 +25,7 @@ data-controller="dashboard">
   <div class='analytics-wrapper'>
     <%# div for overall analytics %>
     <div class='d-flex justify-content-around overall-box'>
+
       <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
       <%= render partial: 'overall_hawkercenter_analytics', locals: {
         stall: @stall, hawkercenter: @hawkercenter
