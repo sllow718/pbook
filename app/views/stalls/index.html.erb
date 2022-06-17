@@ -7,9 +7,13 @@
         <div class="pt-3 pb-1">
           <h1 class="text-center">Top Rated Hawker Dishes in Singapore</h1>
         </div>
+          <% if @dishes.count > 0 %>
+            <%= render partial: 'stalls/index/top_dishes', locals: { dishes: @dishes } %>
+            <%= render 'stalls/index/list_food', dishes: @dishes %>
+          <% else %>
+            <p class="text-center pt-3">No <%= params[:query] %> was found.</p>
 
-          <%= render partial: 'stalls/index/top_dishes', locals: { dishes: @dishes } %>
-          <%= render 'stalls/index/list_food', dishes: @dishes %>
+          <% end %>
 
         </div>
       </div>
