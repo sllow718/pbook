@@ -1,13 +1,13 @@
 <div class="featured-dish-card bg-white py-3 px-4 mt-4">
-    <div class='d-flex justify-content-between'>
+  <div class='d-flex justify-content-between'>
     <%# stall + dish name %>
     <div>
       <p id="stalltitle" class='m-0'><%= dish.stall.name %></p>
       <%# style="margin-left:5%;" %>
       <%= link_to dish, style:"text-decoration:none;color:black;" do %>
-      <h5 id="foodtitle">
-        <strong><%= dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
-      </h5>
+        <h5 id="foodtitle">
+          <strong><%= dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+        </h5>
       <% end %>
     </div>
     <%# Rank %>
@@ -15,32 +15,46 @@
       <h3>👑</h3>
       <h3>#1</h3>
     </div>
+  </div>
+
+
+  <%# div holding image, flavours, description  %>
+  <div class="d-flex flex-column justify-content-center">
+    <div class="featured-dish-image">
+      <img src="<%= dish.image.present? ? dish.image : "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
+      <div class="featured-bookmark mt-2">
+        <%#= render 'shared/bookmark_review_icons', dish: dish %>
+      </div>
     </div>
 
-
-    <%# div holding image, flavours, description  %>
-    <div class="d-flex flex-column justify-content-center">
-      <div class="featured-dish-image">
-        <img src="<%= dish.image rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
-        <div class="featured-bookmark mt-2">
-          <%= render 'shared/bookmark_review_icons', dish: dish %>
+    <%# flavours + stars %>
+    <div style="list-style-type: none" class="d-flex flex-row justify-content-between align-items-center flex-wrap mt-2">
+      <%#= render 'shared/dish_flavour_calc.html.erb', dish: dish %>
+           <% dish.top_3_reviewed_flavors.each do |flavor, score| %>
+        <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
+          <span class="pink-badge">
+            <%= flavor %>
+              <span class="number-badge">
+                <%= score %>
+                <span class="visually-hidden">reviews</span>
+              </span>
+          </span>
+        <% end %>
+      <% end %>
+      <div class="d-flex align-items-center">
+        <div class="stars-rank p-1">
+          <% (1..dish.score).step(1).each do %>
+            <%= fa_icon("star solid",style:"color:gold") %>
+          <% end %>
         </div>
+        <p>(<%= dish.score.round(2) %>)</p>
       </div>
-
-      <%# flavours + stars %>
-      <div style="list-style-type: none"
-      class="d-flex flex-row justify-content-between align-items-center flex-wrap mt-2">
-        <%= render 'shared/dish_flavour_calc.html.erb', dish: dish %>
-        <div class="d-flex">
-          <%= render 'shared/stars_rating.html.erb', display: dish.score %>
-          <p>(<%= dish.score.round(2) %>)</p>
-        </div>
-      </div>
-
-      <%# description %>
-      <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
-        <%= Review.where(dish: dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
-      </p>
     </div>
+
+    <%# description %>
+    <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
+      <%= dish.description %>
+    </p>
+  </div>
 
 </div>

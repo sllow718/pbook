@@ -17,6 +17,28 @@
     opacity: 0%;
   }
 }
+
+.homepage-image{
+  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.sidepage-image{
+  width: 180px;
+  height: 180px;
+  border-radius: 25px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+
 .main-item-image:hover {
 }
 
@@ -63,10 +85,6 @@
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-
-    #foodwriteuptext {
-      font-size: 12px;
-    }
   }
   .card {
     width: 80%;
@@ -101,6 +119,9 @@
 @media (min-width: 576px) {
   .four-column-cards {
     grid-template-columns: 1fr 1fr 1fr;
+    .img-fluid {
+      height: max-content;
+    }
   }
   .card {
     width: 80%;
@@ -114,7 +135,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
   .card {
-    width: 40%;
+    width: 48%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 }
@@ -129,11 +150,15 @@
     }
   }
   .card {
-    width: 28%;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 31%;
   }
 }
 
+@media (min-width: 1200px) {
+  .card {
+    width: 31%;
+  }
+}
 @media (min-width: 1400px) {
   .four-column-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;

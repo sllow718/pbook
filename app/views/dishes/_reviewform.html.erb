@@ -1,10 +1,16 @@
- <div class="review-submit-container">
- <%= simple_form_for([@dish, @review]) do |f| %>
+
+
+    <div class="review-submit-container">
+        <div class="review-plea">
+          <p>Enjoyed the Dish? Leave a review to show our hawkers your appreciation!<p>
+        </div>
+      <%= simple_form_for([@dish, @review]) do |f| %>
         <div class="form-inputs">
         <div class ="rating d-flex gap-3">
         Rating:
         <%=f.collection_radio_buttons :rating, [[1, ' 1'] ,[2, ' 2'],[3, ' 3'],[4, ' 4'],[5, ' 5']], :first, :last%>
         </div>
+
           <div class ="checkboxes d-flex gap-3">
             <div class = "checkboxes-label">
             </div>
@@ -12,7 +18,6 @@
              <%=f.simple_fields_for ([@review_flavor]) do |e|%>
               <%#e.collection_check_boxes :flavor_id, Flavor.all, :id, :name,  item_label_class: 'my-custom-class'%>
               <%= e.input :flavor_id, collection: @flavors, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}} %>
-
             <%end%>
             </div>
           </div>
@@ -24,4 +29,8 @@
         </div>
 
       <% end %>
-      </div>
+
+
+    </div>
+    </div>
+

@@ -10,7 +10,5 @@ export default class extends Controller {
   open() {
     this.listsTarget.classList.toggle("d-none");
     this.formTarget.classList.toggle("d-none");
-    // this.popUpTarget.classList.remove("fade");
-    // render "reviewform"
   }
 }

@@ -1,0 +1,31 @@
+.pink-badge {
+  position: relative;
+  background-color: $lpb-pink !important;
+  padding: 12px 8px;
+  padding: 0.35em 0.65em;
+  font-size: 0.55em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 2px;
+}
+
+.number-badge {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: $darkest-red;
+  color: white;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}

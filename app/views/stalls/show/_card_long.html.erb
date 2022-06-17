@@ -3,11 +3,16 @@
 
     <%# dish image + review & bookmark icons %>
     <div class="sidefood-image">
-      <img src=<%= dish.image %> alt="" id="image">
+      <% if dish.photo.attached? %>
+        <div class="sidepage-image">
+          <%= cl_image_tag(dish.photo.key, class:'img-fluid', style:"height:180px;width:180px; p-40; crop: :fill") %>
+        </div>
+      <% else %>
+        <img src=<%= dish.image %> alt="" id="image">
+      <%end%>
       <div class="bookmark mt-2">
         <%= render 'shared/bookmark_review_icons', dish: dish %>
       </div>
-
     </div>
 
     <%# div holds everything else APART from picture %>
