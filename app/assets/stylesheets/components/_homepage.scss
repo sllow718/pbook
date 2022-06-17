@@ -17,6 +17,28 @@
     opacity: 0%;
   }
 }
+
+.homepage-image{
+  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.sidepage-image{
+  width: 180px;
+  height: 180px;
+  border-radius: 25px;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
+
 .main-item-image:hover {
 }
 
@@ -63,10 +85,6 @@
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-
-    #foodwriteuptext {
-      font-size: 12px;
-    }
   }
   .card {
     width: 80%;
