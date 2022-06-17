@@ -7,6 +7,8 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     @stall = @dish.stall
     @review = Review.new
+    @review_flavor = ReviewFlavor.new
+    @flavors = Flavor.all
     flavorsarray=[]
     @dish.reviews.each do |review|
       review.review_flavors.each do |review_flavor|
