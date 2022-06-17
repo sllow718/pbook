@@ -2,9 +2,12 @@ class Dish < ApplicationRecord
   belongs_to :stall
   has_one :hawker_center, :through => :stall
   has_many :reviews, dependent: :destroy
+  has_many :review_flavors, through: :reviews
+  has_many :flavors, through: :review_flavors
   has_many :bookmarks
   has_one_attached :photo
-  has_many :flavors, :through => :review_flavor, :through => :review
+
+  scope :ranked, -> { order(score: :desc) }
 
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -16,10 +19,6 @@ class Dish < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
-
-  def self.ranked
-    Dish.order('dishes.score DESC').all
-  end
 
   def rank
     Dish.ranked.index(self) + 1
@@ -72,6 +71,7 @@ class Dish < ApplicationRecord
     Dish.joins(:reviews).where(dish_type: "#{self.dish_type}").all
   end
 
-
-
+  def top_3_reviewed_flavors
+    Flavor.joins(review_flavors: :review).where(reviews: { dish_id: id }).group(:name).order('count_id desc').limit(3).count('id')
+  end
 end

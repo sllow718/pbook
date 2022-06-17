@@ -2,15 +2,14 @@ class StallsController < ApplicationController
   def index
     @stalls = Stall.ranked
     # @topstalls = @stalls[0..3]
-    @topdish = Dish.ranked[0]
-    @top_second_to_fourth_dishes = Dish.ranked[1..3]
-    @regular_dishes = Dish.ranked[4..23]
-    @flavors = Flavor.all
+    ranked_dishes = Dish.includes(reviews: {review_flavors: [:flavor]}).ranked
+    @top_four_dishes = ranked_dishes[0..4]
+    @regular_dishes = ranked_dishes[4..23]
 
     if params[:query].present?
       @dishes = Dish.global_search(params[:query])
     else
-      @dishes = Dish.all[1..12]
+      @dishes = Dish.all.first(12)
     end
   end
 

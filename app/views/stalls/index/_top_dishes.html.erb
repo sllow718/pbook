@@ -6,11 +6,11 @@
 <% end %>
   <%# top dish %>
   <div class="div1">
-    <%= render 'shared/card_featured_dish', dish: @topdish %>
+    <%= render 'shared/card_featured_dish', dish: top_four_dishes[0] %>
   </div>
 
   <%# dishes ranked 2 - 4 %>
   <div class="div2">
-    <%= render 'shared/card_long', dishes: @top_second_to_fourth_dishes %>
+    <%= render 'shared/card_long', dishes: top_four_dishes[1..3] %>
   </div>
 </div>
