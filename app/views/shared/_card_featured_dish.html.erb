@@ -28,18 +28,12 @@
       </div>
 
       <%# flavours + stars %>
-      <div style="list-style-type: none" class="d-flex flex-row justify-content-between flex-wrap mt-2">
-        <div>
-          <span class="px-1 btn pink-button">flavour</span>
-          <span class="px-1 btn pink-button">flavour</span>
-          <span class="px-1 btn pink-button">flavour</span>
-        </div>
-        <div class="stars-rank">
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
-          <i class="fa-solid fa-star" style="color:gold;"></i>
+      <div style="list-style-type: none"
+      class="d-flex flex-row justify-content-between align-items-center flex-wrap mt-2">
+        <%= render 'shared/dish_flavour_calc.html.erb', dish: dish %>
+        <div class="d-flex">
+          <%= render 'shared/stars_rating.html.erb', display: dish.score %>
+          <p>(<%= dish.score.round(2) %>)</p>
         </div>
       </div>
 
