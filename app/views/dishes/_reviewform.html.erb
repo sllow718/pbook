@@ -1,9 +1,5 @@
-
-    <div class="review-submit-container">
-        <div class="review-plea">
-          <p>Enjoyed the Dish? Leave a review to show our hawkers your appreciation!<p>
-        </div>
-      <%= simple_form_for([@dish, @review]) do |f| %>
+ <div class="review-submit-container">
+ <%= simple_form_for([@dish, @review]) do |f| %>
         <div class="form-inputs">
         <div class ="rating d-flex gap-3">
         Rating:
@@ -30,5 +26,4 @@
         </div>
 
       <% end %>
-    </div>
-    </div>
+      </div>
