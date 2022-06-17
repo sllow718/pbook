@@ -134,20 +134,12 @@
 
 .review-submit-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #b3263d;
   color: white;
-  width: 100%;
+  width: 100% !important;
   border-radius: 15px;
-}
-
-.review-right-side-container {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  align-items: center;
 }
 
 .review-plea {
@@ -167,8 +159,6 @@
 
 .individual-checkboxes {
   width: 370px;
-  display: inline-block;
   height: 160px;
-  word-break: keep-all;
   justify-content: center;
 }
