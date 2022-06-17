@@ -12,8 +12,7 @@ class Review < ApplicationRecord
   private
 
   def update_dish_score
-    dish = Dish.find(self.dish_id)
-    dish_reviews = dish.reviews.all
+    dish_reviews = dish.reviews
     scores = []
     dish_reviews.each do |review|
       if review.rating.nil?
@@ -22,7 +21,7 @@ class Review < ApplicationRecord
         scores << review.rating
       end
     end
-    score = scores.sum / scores.length
+    score = scores.sum / scores.length.to_f
     dish.update!(score: score)
   end
 end

@@ -1,7 +1,7 @@
 <%# second div in index %>
-<% if params[:query].present? && @regular_dishes.length != 0%>
+<% if params[:query].present? && dishes.length != 0%>
   <h2>Searching for <%= params[:query] %>...</h2>
-<% elsif @regular_dishes.length == 0 %>
+<% elsif dishes.length == 0 %>
   <h2>No query found... Please enter something else</h2>
 <% else %>
   <div class="py-4 text-center">
@@ -11,35 +11,30 @@
 <% end %>
 
 <div class="four-column-cards d-flex flex-wrap justify-content-around py-3">
-      <% @regular_dishes.each do |dish| %>
+      <% dishes.each do |dish| %>
       <div class="col-5 p-2 card" style="position:relative;border-radius:20px">
         <div class="column-headers pt-2">
         <%= link_to dish, style:"text-decoration:none;color:black;" do %>
             <p style="font-size:0.7rem;"><strong><%= dish.name[0..25] %></strong></p>
             <% end %>
             <div class="d-flex justify-content-between rankandstar">
-
-              <div class="stars-rank">
-              <% (1..dish.score rescue 1).step(1).each do %>
-                    <%= fa_icon("star solid xs",style:"color:gold") %>
-                  <% end %>
-                <span style="font-size:0.75rem;vertical-align:text-top;">(<%= dish.score %>)</span>
-                </div>
-
-                <div class="rank">
-                <span style="font-size:0.75rem;vertical-align:text-top;">
-
-                    Rank <%= dish.rank %>
-
-                </span>
-                </div>
+                            <div class="stars-rank">
+            <% dish.score.step(1).each do %>
+                  <%= fa_icon("star solid",style:"color:gold") %>
+                <% end %>
               </div>
 
+              <div class="rank">
+              <p>Rank #<%= dish.rank %></p>
+              </div>
         </div>
         <div class="list-food-image mx-auto">
           <img src="<%= dish.image %>" alt="" class="img-fluid p-2" style="border-radius:20px">
+          <div class="bookmark">
+            <%= render 'shared/bookmark_review_icons', dish: dish %>
+          </div>
         </div>
-        <%= render 'shared/flavor_buttons3x' %>
+        <%= render 'shared/flavor_buttons3x', dish: dish %>
 
         </div>
         </div>
