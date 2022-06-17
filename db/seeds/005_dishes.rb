@@ -6,7 +6,7 @@ dish_types = ["Chicken Rice", "Laksa", "Chili Crab", "Nasi Lemak", "Roast Meat",
 
 CSV.foreach(dishes_filepath, headers: :first_row) do |row|
   @dish = Dish.new
-  # binding.pry
+
   @stall = Stall.where("name=?","#{row['stallname'].strip}")[0]
   dish_type = dish_types.sample
   @dish.name = dish_type
