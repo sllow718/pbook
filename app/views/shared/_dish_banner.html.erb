@@ -1,11 +1,19 @@
-<div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://payload.cargocollective.com/1/1/32536/13961206/pinkk_670.jpg);">
-  <div class="banner-container">
-    <div class="word-container">
-      <h1><strong><%=@dish.stall.hawker_center.name%></strong></h1>
+
+<div class="stall_banner flex-row justify-content-between flex-wrap" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://payload.cargocollective.com/1/1/32536/13961206/pinkk_670.jpg);">
+    <div class="py-2 px-4 flex-grow" >
+    <h2 style="font-size:calc(100% + 2vw);"><%= @dish.stall.hawker_center.name%></h2>
+    <h2 style="font-size:calc(100% + 2vw);"><%=@dish.stall.name%>/<%=@dish.name%></h2>
     </div>
-      <br>
-    <div class="word-container">
-      <h1><strong><%=@dish.stall.name%>/<%=@dish.name%></strong></h1>
+
+    <div class="py-2 px-4 mr-auto">
+    <div class="avatar mx-auto mb-2 flex-grow">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxAwe7f5r7urNW0LbvhAr6ba0NWahro5jTmA&usqp=CAU" alt="" class="avatar">
     </div>
+    <div id="map" data-controller="map-modal">
+      <button class="red-nav-button" data-action="click->map-modal#launchMap">Lets go!</button>
+
+
+    <%= render 'stalls/show/map_modal' %>
   </div>
+
 </div>

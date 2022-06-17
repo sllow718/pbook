@@ -10,7 +10,9 @@ class DishesController < ApplicationController
     @review = Review.new
     @review_flavor = ReviewFlavor.new
     @flavors = Flavor.all
-    flavorsarray = []
+
+    flavorsarray=[]
+
     @dish.reviews.each do |review|
       review.review_flavors.each do |review_flavor|
         flavorsarray << review_flavor.flavor.name
