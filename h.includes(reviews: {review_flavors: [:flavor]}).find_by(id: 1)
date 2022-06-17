@@ -1,0 +1,12 @@
+=> [32m#<Dish:0x000055ef1ec6b9a8[0m
+ id: [1;34m1[0m,
+ name:
+  [31m[1;31m"[0m[31mA tribute to hawker culture here at #goldenmilefoodcentre we turned the heat up in the rainy day with this curry chicken mee.[1;31m"[0m[31m[0m,
+ price: [1;35m3.0[0m,
+ description: [31m[1;31m"[0m[31mloremsss[1;31m"[0m[31m[0m,
+ dish_type: [31m[1;31m"[0m[31mRoti Prata[1;31m"[0m[31m[0m,
+ stall_id: [1;34m53[0m,
+ created_at: [1;34;4mFri[0m, [1;34m17[0m [1;34;4mJun[0m [1;34m2022[0m [1;34m01[0m:[1;34m38[0m:[1;35m33.646980000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mFri[0m, [1;34m17[0m [1;34;4mJun[0m [1;34m2022[0m [1;34m01[0m:[1;34m38[0m:[1;35m49.343052000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ score: [1;35m3.0[0m,
+ image: [31m[1;31m"[0m[31mhttps://burpple-3.imgix.net/foods/4f71bcefb02b22b8d0e1728068_original.?w=420&dpr=1&fit=crop&q=80&auto=format[1;31m"[0m[31m[0m[32m>[0m

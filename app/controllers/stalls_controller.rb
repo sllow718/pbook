@@ -5,10 +5,6 @@ class StallsController < ApplicationController
     @topdish = Dish.ranked[0]
     @top_second_to_fourth_dishes = Dish.ranked[1..3]
     @regular_dishes = Dish.ranked[4..23]
-    # @topdishes = []
-    # @secondtopstalls.each do |stall|
-    #   @topdishes.push(Dish.where(stall_id:stall.id).first)
-    # end
     @flavors = Flavor.all
 
     if params[:query].present?
