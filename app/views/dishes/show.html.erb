@@ -1,152 +1,142 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 mx-auto">
-      <<div class="dish-show-container">
-        <div class="left-side-container">
-          <div class = "description-box">
-            <div class = "dish-title">
-              <h2><%=@dish.name%></h2>
-            </div>
-            <div class = "dish-description-text">
-              <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
-              <%= Review.where(dish: @dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
-            </p>
-            </div>
-          </div>
-          <div class = "second-container">
-          <div class="featured-dish-card bg-white py-3 px-4 mt-4">
-            <div class='d-flex justify-content-between'>
-            <div>
-              <p id="stalltitle" class='m-0'><%= @dish.stall.name %></p>
-              <%# style="margin-left:5%;" %>
-              <%= link_to @dish, style:"text-decoration:none;color:black;" do %>
-              <h5 id="foodtitle">
-              <strong><%= @dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
-              </h5>
-              <% end %>
-            </div>
-            </div>
-          </div>
 
-
-          <%# div holding image, flavours, description  %>
-          <div class="d-flex flex-column justify-content-center">
-            <div class="featured-dish-image">
-              <% if @dish.photo.attached? %>
-                        <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"height:300px;width:400px; p-40; crop: :fill") %>
-                      <% else %>
-
-                        <img src=<%= @dish.image rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
-                      <% end %>
-            </div>
-          </div>
-
-            <%# flavours + stars %>
-            <div style="list-style-type: none" class="d-flex flex-row justify-content-between flex-wrap mt-2">
-              <div>
-                  <span class="px-1 btn pink-button"><%=@last_flavor%></span>
-
-                  <span class="px-1 btn pink-button"><%=@second_last_flavor%></span>
-
-                  <span class="px-1 btn pink-button"><%=@third_last_flavor%></span>
-              </div>
-              <div class="stars-rank">
-                    <%@dish.score.to_i.times do%>
-                      <i class="fa-solid fa-star" style="color:gold;"></i>
-                    <%end%>
-                    <%left_overstars= 5-@dish.score.to_i%>
-                    <%left_overstars.times do%>
-                      <i class="fa-light fa-star" style="color:gold;"></i>
-                    <%end%>
-              </div>
-            </div>
-          </div>
-          </div>
-
-        <div class="right-side-container">
-          <div class ="review-container">
-            <div id = "reviews">``
-            <% if @dish.reviews.blank? %>
-              Be the first to leave a review for <%= @dish.name %>
-            <% else %>
-              <%flavors=[]%>
-              <%reviews=@dish.reviews.reverse%>
-              <% reviews.each do |review| %>
-              <div class = "review-cards">
-                  <div class = "upload-photo">
-                  <% if review.photo.attached? %>
-                    <%= cl_image_tag(review.photo.key, class:'img-fluid', style:'140px;width:140px;crop:fill;border-radius:15px') %>
-                    <% else %>
-                    <%= image_tag "#{@dish.image}", class:'img-fluid', style:'height:140px;width:140px;crop:fill;border-radius:15px' %>
-
-                    <% end %>
-
-                  </div>
-                <div class ="comment">
-                <p><%=review.user.username%>  <%=review.created_at%></p>
-                <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
-
-
-
-                  <% if review.review_flavors != {} %>
-                <%review.review_flavors.each do |review_flavor|%>
-                      <%flavors<<review_flavor.flavor.name%>
-                  <%end%>
-                <%flavor_count = Hash.new(0)%>
-
-              <%# added new line %>
-                <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
-              <%# sort each flavors by number of review and map just the flavors, takes the top 3 %>
-                <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
-              <%# print out the 3 top flavors %>
-                <% flavors.each do |foodflavor| %>
-                  <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=foodflavor%></span>
-                <% end %>
-              <%# end of added new line %>
-
-              <%# causing error if theres no 3x food flavor%>
-              <%# entire line wont be printed as its always false %>
-              <% if 1==0 %>
-              <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
-                  <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=last_flavor%></span>
-                  <%flavor_count.delete(last_flavor)%>
-                  <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
-                  <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=second_last_flavor%></span>
-                  <%flavor_count.delete(second_last_flavor)%>
-                    <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
-                  <span class="px-1 mx-1 btn pink-button" style="border-radius:20px;font-size:12px;"><%=third_last_flavor%></span>
-              <% end %>
-              <%# end of error %>
-
-              <div class="dish-rating-card">
-                    <%review.rating.to_i.times do%>
-                      <i class="fa-solid fa-star" style="color:gold;"></i>
-                    <%end%>
-                    <%left_overstars= 5-review.rating.to_i%>
-                    <%left_overstars.times do%>
-                      <i class="fa-light fa-star"></i>
-                    <%end%>
-
-
-
-                </div>
-                <%end%>
-                </div>
-                <p id="review-<%= review.id %>"><%= review.comment %></p>
-
-              </div>
-              </div>
-              <% end %>
-            <% end %>
-
-          </div>
-          </div>
-          </div>
-            <div class = "leave-a-review">
-            <%=link_to "Have you tried the dish? Leave a Review!", new_dish_review_path(@dish)%>
+<% if params[:query].present? %>
+  <div class="stall-show-grid-container d-none" data-search-food-target="topgrid">
+<% else %>
+  <div class="stall-show-grid-container" data-search-food-target="topgrid">
+<% end %>
+    <div class="div1">
+      <div class="featured-dish-card bg-white p-2 mt-4">
+        <%= link_to @stall,style:"text-decoration:none;color:black;" do  %>
+          <p id="stalltitle" style="margin-left:5%;margin-bottom:0rem;"><%= @stall.name %></p>
+        <% end %>
+        <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
+          <h5 id="foodtitle">
+            👑
+            <strong><%= @dish.name[0..40].strip %></strong>
+          </h5>
+        <% end %>
+      <div class="d-flex flex-column justify-content-center">
+        <div class="main-item-image mx-auto">
+          <% if @dish.photo.attached? %>
+            <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"height:300px;width:400px; p-40; crop: :fill") %>
+          <% else %>
+            <img src="<%= @dish.image %>" alt="" class="px-4 py-2 img-fluid" id="homepagetop1">
+          <%end%>
+          <div class="bookmark mt-2 p-2">
+            <%= render 'shared/bookmark_review_icons', dish: @dish %>
           </div>
         </div>
+        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-4">
+          <span class="px-3 mx-1 btn pink-button-small"><%=@last_flavor%></span>
+          <span class="px-3 mx-1 btn pink-button-small"><%=@second_last_flavor%></span>
+          <span class="px-3 mx-1 btn pink-button-small"><%=@third_last_flavor%></span>
+          <div class="stars-rank">
+            <%@dish.score.to_i.times do%>
+              <i class="fa-solid fa-star" style="color:gold;"></i>
+            <%end%>
+            <%left_overstars= 5-@dish.score.to_i%>
+              <%left_overstars.times do%>
+                <i class="fa-light fa-star" style="color:gold;"></i>
+              <%end%>
+        </div>
       </div>
+  <p id="foodwriteuptext" class="text-justify px-4">
+  <%= Review.where(dish: @dish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
+        </p>
     </div>
   </div>
 </div>
+
+
+<div class ="div2 d-flex my-4 flex-grow flex-column">
+  <%flavors=[]%>
+  <%reviews=@dish.reviews.reverse%>
+  <% reviews.each do |review| %>
+  <div class="sidefoodcards d-flex my-4 flex-grow">
+    <% if @dish.reviews.blank? %>
+      Be the first to leave a review for <%= @dish.name %>
+    <% else %>
+    <%# dish image + review & bookmark icons %>
+  <div class="sidefood-image">
+    <% if review.photo.attached? %>
+      <%= cl_image_tag(review.photo.key, class:'img-fluid', style:'140px;width:140px;crop:fill;border-radius:15px') %>
+    <% else %>
+      <%= image_tag "#{@dish.image}", class:'img-fluid', style:'height:140px;width:140px;crop:fill;border-radius:15px' %>
+    <% end %>
+  </div>
+  <%# div holds everything else APART from picture %>
+  <%# pl-2 py-4 pr-4 %>
+  <div class="sidefood-content" style="flex-grow:inherit">
+    <%# <div class="d-flex justify-content-between"> %>
+    <%# </div> %>
+    <%# holds top pick, dish name, rank %>
+    <div class='d-flex justify-content-between align-items-center'>
+      <%# div holding top pick & name of dish %>
+      <div>
+        <%# rank %>
+        <%# name of dish %>
+        <p><%=review.user.username%> <%=review.created_at%></p>
+      </div>
+      <%# rank %>
+      <div>
+      </div>
+    </div>
+
+      <%# div holding flavours and stars %>
+  <div class='d-flex justify-content-between align-items-center flex-wrap'>
+    <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
+      <% if review.review_flavors != {} %>
+        <%review.review_flavors.each do |review_flavor|%>
+          <%flavors<<review_flavor.flavor.name%>
+        <%end%>
+        <%flavor_count = Hash.new(0)%>
+        <%# added new line %>
+        <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
+        <%# sort each flavors by number of review and map just the flavors, takes the top 3 %>
+        <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
+        <%# print out the 3 top flavors %>
+        <% flavors.each do |foodflavor| %>
+          <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%=foodflavor%></span>
+        <% end %>
+        <%# end of added new line %>
+        <%# causing error if theres no 3x food flavor%>
+        <%# entire line wont be printed as its always false %>
+      <% if 1==0 %>
+        <%last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+        <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%=last_flavor%></span>
+        <%flavor_count.delete(last_flavor)%>
+        <%second_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+        <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%=second_last_flavor%></span>
+        <%flavor_count.delete(second_last_flavor)%>
+        <%third_last_flavor=flavor_count.sort_by { |flavor,number| number}.last[0]%>
+        <span class="px-2 mx-1 btn pink-button-small" style="border-radius:20px;font-size:12px;"><%=third_last_flavor%></span>
+      <% end %>
+    </div>
+    <div class="stars-rank p-1">
+      <%review.rating.to_i.times do%>
+        <i class="fa-solid fa-star" style="color:gold;"></i>
+      <%end%>
+      <%left_overstars= 5-review.rating.to_i%>
+      <%left_overstars.times do%>
+        <i class="fa-light fa-star"></i>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+
+      <%# dish description %>
+      <div>
+        <p class="my-2 text-justify" style="margin-left:5px;font-size:12px;">
+         <%= review.comment[0..200] rescue "#burpple #6splus #food #foodporn #yum #instafood #yummy #amazing #instagood #photooftheday #sweet #dinner #lunch #breakfast #fresh #tasty #foodie #delish #delicious #eating #foodpic #foodpics #eat #hungry #foodgasm #hot #foods" %>
+         </p>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
+    <%= render "reviewform" %>
+</div>
+
+</div>
+
