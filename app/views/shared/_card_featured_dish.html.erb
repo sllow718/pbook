@@ -2,7 +2,7 @@
     <div class='d-flex justify-content-between'>
     <%# stall + dish name %>
     <div>
-      <p id="stalltitle" class='m-0'><%= topstalls.first.name %></p>
+      <p id="stalltitle" class='m-0'><%= dish.stall.name %></p>
       <%# style="margin-left:5%;" %>
       <%= link_to dish, style:"text-decoration:none;color:black;" do %>
       <h5 id="foodtitle">
@@ -21,7 +21,7 @@
     <%# div holding image, flavours, description  %>
     <div class="d-flex flex-column justify-content-center">
       <div class="featured-dish-image">
-        <img src="<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
+        <img src="<%= dish.image rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
         <div class="featured-bookmark mt-2">
           <%= render 'shared/bookmark_review_icons', dish: dish %>
         </div>
