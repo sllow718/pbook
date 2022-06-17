@@ -12,6 +12,11 @@ class StallsController < ApplicationController
     end
   end
 
+  def mystallsindex
+    @stalls = current_user.stalls
+  end
+
+
   def destroy
     @stall = Stall.find(params[:id])
     @stall.destroy
