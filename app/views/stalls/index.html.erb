@@ -1,20 +1,19 @@
-<div class="pt-3 pb-1">
-  <h1>Top Rated Hawker Dishes in Singapore</h1>
-</div>
-
 <div data-controller="search-food">
-    <%= form_with url: "/", method: :get, html: { class:
-      'mb-4', data: { search_food_target: 'form' } } do |f| %>
-      <%= f.text_field :query,
-                      class: "form-control",
-                      style:"width:50%",
-                      placeholder: 'Type in a dish your craving for!',
-                      value: params[:query],
-                      data: { search_food_target: 'input' },
-                      action: 'keyup->search-food#update' %>
-            <% end %>
+  <%= render 'shared/main_banner' %>
 
-  <%= render 'stalls/index/top_dishes' %>
-  <%= render 'stalls/index/list_food' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <div class="pt-3 pb-1">
 
-</div>
+          <h1>Top Rated Hawker Dishes in Singapore</h1>
+        </div>
+
+
+          <%= render partial: 'stalls/index/top_dishes', locals: {topdish: @topdish} %>
+          <%= render 'stalls/index/list_food' %>
+
+        </div>
+      </div>
+    </div>
+  </div>

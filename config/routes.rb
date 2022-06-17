@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get 'mystalls', to: 'stalls#mystallsindex'
 
   resources :bookmarks
-  end
+  get 'dashboard', to: 'dashboards#dashboard'
+  get 'dashboard/:id', to: 'dashboards#getdish'
+end

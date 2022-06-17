@@ -2,15 +2,15 @@
   border-radius: 20px;
   font-size: 13px;
   border: 2px solid #fa3757;
-  color: white;
-  margin: 0;
+
+  color: #fa3757;
+  padding: 10px;
   text-decoration: none;
 }
 
 .pink-button-small {
   border-radius: 20px;
-  font-size: 10px;
-  border: 2px solid #fa3757;
+  font-size: 0.6rem;
   color: #fa3757;
 }
 
@@ -25,5 +25,5 @@
 
 .red-nav-button:hover {
   color: white;
-  background-color: #52000E;
+  background-color: #52000e;
 }

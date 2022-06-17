@@ -1,0 +1,21 @@
+<div class='d-flex flex-column analytic-display'>
+  <%# your price %>
+  <div>
+    <div>
+      <p class='analytic-display-summary'>
+        Your dish is the <strong><span class="dark-red">
+        <%= @dish.price_rank %> </span></strong> most expensive of
+        <%= Dish.count_in_dish_type(@dish.dish_type) %> <%= @dish.dish_type %> dishes
+      </p>
+    </div>
+    <div class='d-flex justify-content-between'>
+      <p>Your Price:</p>
+      <p>$ <%= @dish.price.round(2) %> SGD</p>
+    </div>
+  </div>
+  <%# hawker price %>
+  <div class='d-flex justify-content-between'>
+    <p>Avg. Hawker Price:</p>
+    <p> $<%= @dish.average_price.round(2) %> SGD </p>
+  </div>
+</div>

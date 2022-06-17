@@ -1,43 +1,51 @@
-<div class = "add-dish-container">
-  <div class = "stall-card-container">
-      <div class = "stall-title">
-      <h2><%=current_user.stalls.last.name%></h2>
-         <div class = "stall-address">
-            <h4><%=current_user.stalls.last.hawker_center.name%>, <%=current_user.stalls.last.unit%></h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <div class = "add-dish-container">
+        <div class = "stall-card-container">
+            <div class = "stall-title">
+            <h2><%=current_user.stalls.last.name%></h2>
+              <div class = "stall-address">
+                  <h4><%=current_user.stalls.last.hawker_center.name%>, <%=current_user.stalls.last.unit%></h4>
+                </div>
+            </div>
+              <div class="stall-photo">
+              <% if @current_user.stalls.last.photo.attached? %>
+            <%= cl_image_tag(@current_user.stalls.last.photo.key, class:'img-fluid', style:'height:286px;width:453px,crop:fill,gravity:auto,p-40') %>
+            <% else %>
+              <%= image_tag "https://danielfooddiary.com/wp-content/uploads/2019/04/hillstreet7.jpg", class:"img-fluid", style:"height:286px;width:453; p-40; crop: :fill"%>
+            <% end %>
+
+              </div>
+              <div class="stall-description">
+                <%= @current_user.stalls.last.description%>
+              </div>
+
+            <div class="stall-dish-pictures">
+              <% @stall.dishes.each do |dish|%>
+                <div class = "stall-dish-picture-card">
+                      <div class = "stall-dish-picture-name">
+                          <p><%=dish.name%><p>
+                      </div>
+                      <div class = "stall-dish-picture">
+                      <% if dish.photo.attached? %>
+                        <%= cl_image_tag(dish.photo.key, class:'img-fluid', style:"height:77px;width:133px; p-40; crop: :fill") %>
+                      <% else %>
+                        <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
+                      <% end %>
+                      </div>
+
+              </div>
+              <%end%>
+            </div class = "view-button">
+            <%= link_to 'View Your Stall!', stall_path(@user.stalls.last.id), class: "red-nav-button " %>
           </div>
-      </div>
-        <div class="stall-photo">
-         <% if @current_user.stalls.last.photo.attached? %>
-      <%= cl_image_tag(@current_user.stalls.last.photo.key, class:'img-fluid', style:'height:286px;width:453px,crop:fill,gravity:auto,p-40') %>
-       <% else %>
-         <%= image_tag "https://danielfooddiary.com/wp-content/uploads/2019/04/hillstreet7.jpg", class:"img-fluid", style:"height:286px;width:453; p-40; crop: :fill"%>
-      <% end %>
 
-         </div>
-         <div class="stall-description">
-           <%= @current_user.stalls.last.description%>
-         </div>
-
-      <div class="stall-dish-pictures">
-        <% @stall.dishes.each do |dish|%>
-          <div class = "stall-dish-picture-card">
-                <div class = "stall-dish-picture-name">
-                    <p><%=dish.name%><p>
-                </div>
-                <div class = "stall-dish-picture">
-                <% if dish.photo.attached? %>
-                  <%= cl_image_tag(dish.photo.key, class:'img-fluid', style:"height:77px;width:133px; p-40; crop: :fill") %>
-                <% else %>
-                   <img src=<%= dish.description rescue "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %> alt="" id="image">
-                <% end %>
-                </div>
-
+        <div class = "form-container form">
+        <%= render 'shared/dish_form', dish: @dish %>
         </div>
-        <%end%>
       </div>
-    </div>
-
-  <div class = "form-container">
-   <%= render 'shared/dish_form', dish: @dish %>
+      </div>
   </div>
 </div>

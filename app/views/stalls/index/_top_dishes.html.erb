@@ -6,42 +6,11 @@
 <% end %>
   <%# top dish %>
   <div class="div1">
-        <div class="featured-dish-card bg-white p-2 mt-4">
-        <%= link_to @topstalls.first,style:"text-decoration:none;color:black;" do  %>
-        <p id="stalltitle" style="margin-left:5%;margin-bottom:0rem;"><%= @topstalls.first.name %></p>
-        <% end %>
-        <%= link_to @topdish, style:"text-decoration:none;color:black;" do %>
-        <h5 id="foodtitle">
-        👑
-        <strong><%= @topdish.name[0..40].strip rescue "Delicious Dish!" %></strong>
-        </h5>
-        <% end %>
-        <div class="d-flex flex-column justify-content-center">
-          <div class="main-item-image mx-auto">
-            <img src="<%= @topdish.image %>" alt="" class="px-4 py-2 img-fluid" id="homepagetop1">
-            <div class="bookmark mt-2 p-2">
-              <%= render 'shared/bookmark_review_icons', dish: @topdish %>
-            </div>
-          </div>
-
-
-        <div style="list-style-type: none" class="d-flex flex-row justify-content-around flex-wrap px-4">
-                <% flavorlist = Review.where(dish:dish)[0].review_flavors rescue ReviewFlavor.all.sample(3) %>
-                <% flavorlist.each do |reviewflavor| %>
-                  <span class="px-3 mx-1 btn pink-button-small"><%= reviewflavor.flavor.name %></span>
-                <% end %>
-
-        </div>
-        <p id="foodwriteuptext" class="text-justify px-4">
-        <%= Review.where(dish: @topdish)[0].comment[0..300] rescue "The chilli sauce added a slight tinge of sweet and sour to the otherwise bland roasted meat. On the whole, the portion was generous and really reasonable for the affordable price of $3!!! #burpple #stfoodtrending #8dayseat #cbdeats #igsg #sgfoodie #whati8today #onthetable #thelocal5everpiggie #hawkercentresarebae #charsiew #hollanddrive #cheaponana #BurppleCheapNGood"%>
-        </p>
-      </div>
-    </div>
-
+    <%= render 'shared/card_featured_dish', dish: @topdish %>
   </div>
 
   <%# dishes ranked 2 - 4 %>
   <div class="div2">
-    <%= render 'shared/card_long', dishes: @topdishes %>
+    <%= render 'shared/card_long', dishes: @top_second_to_fourth_dishes %>
   </div>
 </div>
