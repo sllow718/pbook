@@ -1,10 +1,7 @@
 .four-column-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 20px;
   border-radius: 30px;
-  .img-fluid {
-  }
 }
 
 .main-item-image {
@@ -21,18 +18,14 @@
   }
 }
 .main-item-image:hover {
-  #homepagetop1 {
-    opacity: 50%;
-  }
-  .bookmark {
-    opacity: 100%;
-  }
 }
 
 .column-headers {
+  padding-right: 1rem;
+  padding-left: 0.5rem;
   .rankandstar {
     margin-top: -1rem;
-    margin-bottom: -1rem;
+    margin-bottom: -0.5rem;
   }
 }
 
@@ -47,20 +40,15 @@
 }
 
 .list-food-image:hover {
-  .img-fluid {
-    opacity: 50%;
-  }
-  .bookmark {
-    position: absolute;
-    top: 6%;
-    left: 6%;
-    opacity: 100%;
-  }
 }
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .four-column-cards {
     grid-template-columns: 1fr;
+    .img-fluid {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   .div2 {
@@ -106,15 +94,14 @@
         align-content: center;
       }
     }
-
-    .sidefood-image:hover {
-      opacity: 50%;
-    }
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+  .four-column-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   .card {
     width: 80%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -123,6 +110,9 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
+  .four-column-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   .card {
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -133,9 +123,23 @@
 @media (min-width: 992px) {
   .four-column-cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-
     .img-fluid {
-      height: 15vw;
+      height: 30vh;
+      width: 25vw;
+    }
+  }
+  .card {
+    width: 28%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .four-column-cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    .img-fluid {
+      height: 30vh;
+      width: 25vw;
     }
   }
   .card {
