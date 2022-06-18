@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_024504) do
     t.bigint "stall_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "score", default: 1.0
+    t.float "score", default: 0.0
     t.text "image", default: "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg"
     t.index ["stall_id"], name: "index_dishes_on_stall_id"
   end

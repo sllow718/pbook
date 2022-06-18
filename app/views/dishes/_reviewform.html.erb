@@ -1,36 +1,15 @@
 
 
     <div class="review-submit-container">
-        <div class="review-plea">
-          <p>Enjoyed the Dish? Leave a review to show our hawkers your appreciation!<p>
-        </div>
       <%= simple_form_for([@dish, @review]) do |f| %>
-        <div class="form-inputs">
-        <div class ="rating d-flex gap-3">
         Rating:
         <%=f.collection_radio_buttons :rating, [[1, ' 1'] ,[2, ' 2'],[3, ' 3'],[4, ' 4'],[5, ' 5']], :first, :last%>
-        </div>
-
-          <div class ="checkboxes d-flex gap-3">
-            <div class = "checkboxes-label">
-            </div>
-            <div class = "individual-checkboxes">
-             <%=f.simple_fields_for ([@review_flavor]) do |e|%>
+            <%=f.simple_fields_for ([@review_flavor]) do |e|%>
               <%#e.collection_check_boxes :flavor_id, Flavor.all, :id, :name,  item_label_class: 'my-custom-class'%>
-              <%= e.input :flavor_id, collection: @flavors, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}} %>
+              <% e.input :flavor_id, collection: @flavors, label: false, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}, style:"width:100%;font-size:20px !important;" } %>
             <%end%>
-            </div>
-          </div>
           <%= f.input :comment, label: "Comment",
             input_html: { style: 'height: 150px'  } %>
-        </div>
-        <div class="form-actions">
           <%= f.button :submit, "Submit", class: "btn btn-dark"%>
-        </div>
-
       <% end %>
-
-
     </div>
-    </div>
-
