@@ -11,7 +11,7 @@ CSV.foreach(review_filepath, headers: :first_row) do |row|
   @review.comment = row["descriptionlong"]
   @review.user = User.all.sample
 
-  @review.save
+  @review.save!
   puts "Review rails#{@review.id} is saved!"
 end
 
