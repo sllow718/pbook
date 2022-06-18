@@ -26,7 +26,20 @@
               </div>
 
               <div class="rank">
-              <p style="font-size:0.75em;line-height:2;">#<%= dish.rank %></p>
+               <% if [1 , 2, 3, 4].include? dish.rank %>
+                  <% case dish.rank %>
+                  <% when 1 %>
+                    <%= image_tag "gold_medal.jpg"%>
+                  <% when 2 %>
+                    <%= image_tag "silver_medal.jpg"%>
+                  <% when 3 %>
+                    <%= image_tag "bronze_medal.jpg"%>
+                  <% when 4 %>
+                    <%= image_tag "fourth_place.png"%>
+                  <% end %>
+                 <% else %>
+                  <p style="font-size:0.75em;line-height:2;">#<%= dish.rank %></p>
+                <% end %>
               </div>
         </div>
         <div class="list-food-image mx-auto">
