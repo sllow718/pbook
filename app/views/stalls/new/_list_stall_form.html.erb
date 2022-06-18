@@ -2,17 +2,21 @@
 
 <%= simple_form_for(@stall) do |f| %>
   <div class="form-inputs">
-    <%= f.input :hawker_center_id, label: "Hawker Center", collection: @hawkers %>
-    <%= f.input :name, autofocus: true, label: "Stall Name" %>
+    <%= f.input :hawker_center_id, label: "Hawker Center",
+      :label_html => { :class => 'type' } , collection: @hawkers %>
+    <%= f.input :name, autofocus: true, label: "Stall Name",
+      :label_html => { :class => 'type' }  %>
     <div class="d-flex gap-3">
-      <%= f.input :unit, label: "Stall Unit Number" %>
-      <%= f.input :photo, as: :file, label: "Upload Stall Photo" %>
+      <%= f.input :unit, label: "Unit No.",
+        :label_html => { :class => 'type' } %>
+      <%= f.input :photo, as: :file, label: "Upload Photo",
+        :label_html => { :class => 'type' }  %>
     </div>
     <%= f.input :description, label: "Stall Description",
-      input_html: { style: 'height: 160px'  } %>
+      :label_html => { :class => 'type' }, input_html: { style: 'height: 160px'  } %>
 
   </div>
   <div class="form-actions">
-    <%= f.button :submit, "List stall", class: "btn btn-primary"%>
+    <%= f.button :submit, "List stall", class: "btn btn-danger"%>
   </div>
 <% end %>
