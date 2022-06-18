@@ -4,7 +4,6 @@ puts "seeding the reviews..."
 
 CSV.foreach(review_filepath, headers: :first_row) do |row|
   @review = Review.new
-  # binding.pry
   @dish = Dish.where("name=?","#{row['dishname'].strip}")[0]
   @review.dish = @dish
   @review.rating = rand(1..5)
