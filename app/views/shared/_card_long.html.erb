@@ -35,7 +35,22 @@
         </div>
         <%# rank %>
         <div>
-          <h3 class='m-0'> <%= dish.rank %> </h3>
+          <div class='d-flex align-items-center rank-medal-featured'>
+            <% if [1 , 2, 3, 4].include? dish.rank %>
+              <% case dish.rank %>
+              <% when 1 %>
+                <%= image_tag "gold_medal.jpg"%>
+              <% when 2 %>
+                <%= image_tag "silver_medal.jpg"%>
+              <% when 3 %>
+                <%= image_tag "bronze_medal.jpg"%>
+              <% when 4 %>
+                <%= image_tag "fourth_place.png"%>
+              <% end %>
+            <% else %>
+              <h3 class='m-0'> <%= dish.rank %> </h3>
+            <% end %>
+          </div>
         </div>
 
       </div>
