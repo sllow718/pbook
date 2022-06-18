@@ -8,17 +8,76 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
   @dish = Dish.new
   @stall = Stall.where("name=?","#{row['stallname'].strip}")[0]
   dish_type = dish_types.sample
+
+  case row_number
+  when 0
+    @dish.dish_type = "Curry Mee"
+  when 1
+    @dish.dish_type = "Chicken Rice"
+  when 2
+    @dish.dish_type = "Curry Noodles"
+  when 3
+    @dish.dish_type = "Chicken Laksa"
+  when 4
+    @dish.dish_type = "Katong Laksa"
+  when 5
+    @dish.dish_type = "Fish Curry"
+  when 6
+    @dish.dish_type = "Basil Rice"
+  when 7
+    @dish.dish_type = "Indian Curry"
+  when 8
+    @dish.dish_type = "Vegetarian Curry"
+  when 9
+    @dish.dish_type = "Seafood Curry"
+  when 10
+    @dish.dish_type = "Potato Curry"
+  when 11
+    @dish.dish_type = "Curry Ramen"
+  when 12
+    @dish.dish_type = "Coriander Curry"
+  when 13
+    @dish.dish_type = "Fish Laksa"
+  when 14
+    @dish.dish_type = "White Fish Rice"
+  when 15
+    @dish.dish_type = "Chives on Curry"
+  when 16
+    @dish.dish_type = "Fried Pork Soup"
+  when 17
+    @dish.dish_type = "Tom Yum"
+  when 18
+    @dish.dish_type = "Hokkien Mee"
+  when 19
+    @dish.dish_type = "Seafood Mee"
+  when 20
+    @dish.dish_type = "Wokhey Mee"
+  when 21
+    @dish.dish_type = "Sotong Mee"
+  when 22
+    @dish.dish_type = "Chilli Mee"
+  when 23
+    @dish.dish_type = "Singapore Noodles"
+  when 24
+    @dish.dish_type = "Limey Noodles"
+  when 25
+    @dish.dish_type = "Heartwarming Noodles"
+  else
+    @dish.dish_type = dish_type
+  end
+
   @dish.name = row["dishname"]
   @dish.price = rand(3..5)
-  if row_number < 24
-    @dish.score = 5 - (row_number *= 0.01)
+  if Dish.all.length <= 24
+    @dish.score = 5.0
   else
     @dish.score = rand(1..4)
   end
+
   @dish.image = row["description"]
   @dish.description = "loremsss"
   @dish.stall = @stall
-  @dish.dish_type = dish_type
+
 
   @dish.save!
   puts "#{@dish.name} of #{@dish.price} from #{@dish.stall.name} is saved!"
