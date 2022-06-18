@@ -10,8 +10,17 @@
         </h5>
       <% end %>
     </div>
-    <div class='d-flex align-items-center'>
-      <h3> <%= dish.rank %> </h3>
+    <div class='d-flex align-items-center rank-medal-featured'>
+      <% case dish.rank %>
+      <% when 1 %>
+        <%= image_tag "gold_medal.jpg"%>
+      <% when 2 %>
+        <%= image_tag "silver_medal.jpg"%>
+      <% when 3 %>
+        <%= image_tag "bronze_medal.jpg"%>
+      <% when 4 %>
+        <%= image_tag "fourth_place.png"%>
+      <% end %>
     </div>
   </div>
 
