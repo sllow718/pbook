@@ -6,7 +6,7 @@
       <%# style="margin-left:5%;" %>
       <%= link_to dish, style:"text-decoration:none;color:black;" do %>
         <h5 id="foodtitle">
-          <strong><%= dish.name[0..40].strip rescue "Delicious Dish!" %></strong>
+          <strong><%= dish.dish_type.strip rescue "Delicious Dish!" %></strong>
         </h5>
       <% end %>
     </div>
@@ -53,7 +53,7 @@
 
     <%# description %>
     <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
-      <%= dish.description %>
+      <%= dish.reviews.first.comment %>
     </p>
   </div>
 
