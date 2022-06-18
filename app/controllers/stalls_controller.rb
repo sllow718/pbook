@@ -1,7 +1,7 @@
 class StallsController < ApplicationController
   def index
     @dishes = Dish.includes(:stall).ranked[0..23]
-    @dishes = Dish.global_search(params[:query]) if params[:query].present?
+    @dishes = Dish.global_search(params[:query]).ranked[0..23] if params[:query].present?
   end
 
   def mystallsindex
