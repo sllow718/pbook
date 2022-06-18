@@ -1,6 +1,6 @@
 <%# second div in index %>
 <% if params[:query].present? && dishes.length != 0%>
-  <h4 class="title text-center">Search results for <%= params[:query]: %></h4>
+  <h4 class="title text-center">Search results for <%= params[:query] %></h4>
 <% elsif dishes.length == 0 %>
   <h4 class="title">No query found... Please enter something else</h4>
 <% else %>
