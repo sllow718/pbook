@@ -1,18 +1,17 @@
-<div data-controller="search-food">
+<div class='bg-white' data-controller="search-food">
   <%= render 'shared/main_banner' %>
 
-  <div class="container">
+  <div class="container bg-white">
     <div class="row">
       <div class="col-12 mx-auto">
         <div class="pt-3 pb-1">
           <h1 class="text-center">Top Rated Hawker Dishes in Singapore</h1>
         </div>
           <% if @dishes.count > 0 %>
-            <%= render partial: 'stalls/index/top_dishes', locals: { dishes: @dishes } %>
-            <%= render 'stalls/index/list_food', dishes: @dishes %>
+            <%= render 'stalls/index/top_dishes', dishes: @dishes %>
+            <%= render 'stalls/index/list_food', dishes: @dishes[4..23] %>
           <% else %>
             <p class="text-center pt-3">No <%= params[:query] %> was found.</p>
-
           <% end %>
 
         </div>
