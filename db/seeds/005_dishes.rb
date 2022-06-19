@@ -2,7 +2,14 @@ dishes_filepath = 'lib/seeds/stalldishes.csv'
 
 puts "seeding the dishes..."
 
-dish_types = ["Chicken Rice", "Laksa", "Chili Crab", "Nasi Lemak", "Roast Meat", "Nasi Biryani", "Hainanese Curry Rice", "Char Kway Teow", "Hokkien Noodles", "Oyster Omelette" , "Carrot Cake", "Roti Prata", "Fish Head Curry", "Prawn Noodles", "Bak Chor Mee ",  "Kway Chap", "Bak Kut Teh ", "Satay", "BBQ Stingray", "Rojak", "Ice Kachang ", "Curry Noodles", " Duck Rice",  "Kaya Toast", "Mee Rebus", "Mee Siam", "Mee Soto", "Oyster Omelette", "Peranakan Food", "Sambal Stingray" , "Wanton Mee", "Yong Tau Foo", "Zi CHar", "Nasi Biryani" ]
+dish_types = [
+  "Chicken Rice", "Laksa", "Chili Crab", "Nasi Lemak", "Roast Meat", "Nasi Biryani",
+  "Hainanese Curry Rice", "Char Kway Teow", "Hokkien Noodles", "Oyster Omelette", "Carrot Cake",
+  "Roti Prata", "Fish Head Curry", "Prawn Noodles", "Bak Chor Mee ", "Kway Chap", "Bak Kut Teh ",
+  "Satay", "BBQ Stingray", "Rojak", "Ice Kachang ", "Curry Noodles", " Duck Rice",  "Kaya Toast",
+  "Mee Rebus", "Mee Siam", "Mee Soto", "Oyster Omelette", "Peranakan Food", "Sambal Stingray",
+  "Wanton Mee", "Yong Tau Foo", "Zi CHar", "Nasi Biryani"
+]
 
 CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index do |row, row_number|
   @dish = Dish.new
