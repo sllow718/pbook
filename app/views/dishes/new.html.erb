@@ -4,11 +4,13 @@
     <div class="col-12 mx-auto">
       <div class = "add-dish-container">
         <div class = "stall-card-container">
-            <div class = "stall-title">
-            <h2><%=current_user.stalls.last.name%></h2>
-              <div class = "stall-address">
-                  <h4><%=current_user.stalls.last.hawker_center.name%>, <%=current_user.stalls.last.unit%></h4>
+            <div class = "stall header">
+            <div class = "stall-titlev2">
+            <p><strong><%=current_user.stalls.last.name%></strong><p>
+              <div class = "stall-addressv2">
+                  <p><%=current_user.stalls.last.hawker_center.name%>, <%=current_user.stalls.last.unit%><p>
                 </div>
+              </div>
             </div>
               <div class="stall-photo">
               <% if @current_user.stalls.last.photo.attached? %>

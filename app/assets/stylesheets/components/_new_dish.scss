@@ -19,27 +19,35 @@
   text-align: center;
 }
 
-.stall-title {
-  background-color: #ff375c;
+.stall header {
+  justify-content: center;
+  text-align: center;
+}
+.stall-titlev2 {
   // width: 700px;
-  height: 113px;
+  background-color: #ff375c;
+  height: 100px;
   border-radius: 25px;
-  font-family: grandstander;
-  font-size: 36;
+  font-size: 16 !important;
   color: white;
   text-align: center;
   justify-content: center;
-  padding-top: 20px;
+
+  p {
+    margin-bottom: 0px;
+    padding-top: 10px;
+    height: 30px;
+  }
 }
 
 .stall-address {
   color: white;
-  font-size: 20;
+  font-size: 16 !important;
 }
 
 .stall-photo {
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
   width: 30vw;
   // height: 286px;
   margin-top: 40px;
@@ -119,7 +127,6 @@
   .add-dish-container {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
 // Large devices (desktops, 992px and up)
