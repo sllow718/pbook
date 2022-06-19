@@ -7,19 +7,16 @@ data-controller="dashboard">
       Select Dish
     </h4>
 
-    <% @stall.dishes.each do |dish| %>
+    <% @stall.dishes[0..4].each do |dish| %>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li
       class="nav-item nav-dish"
       data-action="click->dashboard#display"
       data-dashboard-id-value=<%= dish.id %>
+      data-dashboard-target="highlight"
       data-dashboard-target="dish">
-        <p
-        class="nav-link"
-        data-dashboard-target="highlight"
-        >
-        <%# aria-current="page" %>
+        <p class="nav-link">
           <%= dish.name %>
         </p>
       </li>

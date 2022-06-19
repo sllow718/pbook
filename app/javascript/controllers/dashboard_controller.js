@@ -17,7 +17,7 @@ export default class extends Controller {
     console.log(this.analyticsTarget)
     console.log(this.highlightTarget)
 
-    this.highlightTarget.classList.toggle("active-highlight")
+    this.highlightTarget.classList.toggle("active")
 
     const dishId = event.currentTarget.dataset.dashboardIdValue
     const url = `/dashboard/${dishId}`
