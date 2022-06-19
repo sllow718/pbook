@@ -3,7 +3,7 @@
   <div>
     <div class='analytic-display-summary'>
       <p>
-        <strong><span class="dark-red"><%= @dish.rank_per_type(@dish.dish_type) %> </span></strong>
+        <strong><span class="dark-red"><%= @dish.rank_per_type(@dish.dish_type).ordinalize %> </span></strong>
         highest rated <%= @dish.dish_type %> dish out of <%= Dish.count_in_dish_type(@dish.dish_type) %> dishes
       </p>
     </div>

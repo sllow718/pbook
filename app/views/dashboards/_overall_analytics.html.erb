@@ -1,6 +1,7 @@
 <div class='overall'>
-  <div>
-    <h1> <%= @stall.rank %> </h1>
+  <div class="ordinalize-parent">
+    <h1> <%= stall.rank%></h1>
+    <h3 class="ordinalize"><%= stall.rank.ordinalize.last(2) %></h3>
   </div>
   <div class="overall-details">
     <p>out of <strong><%= Stall.count %></strong> stalls</p>

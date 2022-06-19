@@ -3,7 +3,7 @@
   <div>
     <div class='analytic-display-summary'>
       <p>
-        <strong><span class="dark-red"> <%= @dish.rank %> </span></strong>
+        <strong><span class="dark-red"> <%= @dish.rank.ordinalize %> </span></strong>
         highest rated Hawker Dish out of <%= Dish.count %> dishes
       </p>
     </div>
