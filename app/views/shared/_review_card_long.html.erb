@@ -2,7 +2,10 @@
 <%flavors=[]%>
 <%reviews=@dish.reviews.reverse%>
 <div class="d-flex flex-column gap-2" >
-  <div class="sidefoodcards d-flex my-4 flex-grow" data-reviewmodal-target="lists">
+    <div class="pt-4">
+    <h4>Reviews</h4>
+    </div>
+  <div class="sidefoodcards d-flex flex-grow" data-reviewmodal-target="lists">
     <%# div holds everything else APART from picture %>
     <%# pl-2 py-4 pr-4 %>
     <% reviews.each do |review| %>
