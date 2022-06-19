@@ -26,16 +26,46 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
     )
   when 1
     @dish.dish_type = "Chicken Rice"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/chicken_rice.jpg'),
+      filename: "chicken_rice.jpg",
+      content_type: "photo/jpg"
+    )
   when 2
     @dish.dish_type = "Laksa"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/laksa.jpg'),
+      filename: "laksa.jpg",
+      content_type: "photo/jpg"
+    )
   when 3
     @dish.dish_type = "Satay"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/satay.jpg'),
+      filename: "satay.jpg",
+      content_type: "photo/jpg"
+    )
   when 4
     @dish.dish_type = "Nasi Lemak"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/nasi_lemak.jpg'),
+      filename: "nasi_lemak.jpg",
+      content_type: "photo/jpg"
+    )
   when 5
     @dish.dish_type = "Fish Curry"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/fish_curry.jpg'),
+      filename: "fish_curry.jpg",
+      content_type: "photo/jpg"
+    )
   when 6
     @dish.dish_type = "Roast Meat"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/roast_meat.jpg'),
+      filename: "roast_meat.jpg",
+      content_type: "photo/jpg"
+    )
   when 7
     @dish.dish_type = "Wanton Noodles"
   when 8
