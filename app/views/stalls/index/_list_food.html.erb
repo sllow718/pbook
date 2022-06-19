@@ -18,11 +18,13 @@
             <p style="font-size:0.7rem;"><strong><%= dish.dish_type %></strong></p>
             <% end %>
             <div class="d-flex justify-content-between rankandstar">
-              <div class="stars-rank">
-
-            <% (1..dish.score).step(1).each do %>
-                  <%= fa_icon("star solid xs",style:"color:gold") %>
-                <% end %>
+              <div class='d-flex align-items-center'>
+                <div class="stars-rank">
+                  <% (1..dish.score).step(1).each do %>
+                    <%= fa_icon("star solid xs",style:"color:gold") %>
+                  <% end %>
+                </div>
+                <p style='font-size:14px; margin:0'>(<%= dish.score %>)</p>
               </div>
 
               <div class="rank">
