@@ -1,7 +1,10 @@
 <div class='overall'>
-  <p><%= stall.name %> is</p>
-  <h2> <%= stall.rank_in_hawkercenter %> </h2>
-  <p>out of <strong><%= hawkercenter.stalls.count %></strong> stalls</p>
-  <p> in <%= hawkercenter.name %></p>
-  <p>(top <%= ((1 - (stall.rank_in_hawkercenter.to_f / hawkercenter.stalls.count.to_f))* 100).round %>%)</p>
+  <div>
+    <h1> <%= stall.rank_in_hawkercenter %> </h1>
+  </div>
+  <div class="overall-details">
+    <p>out of <strong><%= hawkercenter.stalls.count %></strong> stalls</p>
+    <p> in <%= hawkercenter.name %></p>
+    <p>(top <%= ((1 - (stall.rank_in_hawkercenter.to_f / hawkercenter.stalls.count.to_f))* 100).round %>%)</p>
+  </div>
 </div>
