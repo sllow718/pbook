@@ -2,22 +2,27 @@
 <div
 class='d-flex'
 data-controller="dashboard">
-  <%# sidebar %>
-  <div class='sidebar'>
-    <div class='sidebar-box sidebar-first'>
-      <p>Select Dish</p>
-    </div>
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">Select Dish</span>
+    </a>
+
     <% @stall.dishes.each do |dish| %>
-      <div
-      class="sidebar-box sidebar-other"
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li
+      class="nav-item"
       data-action="click->dashboard#display"
       data-dashboard-id-value=<%= dish.id %>
       data-dashboard-target="dish">
-        <p><%= dish.name %></p>
-      </div>
-    <% end %>
-    <div class="sidebar-last">
-    </div>
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+            <%= dish.name %>
+        </a>
+      </li>
+      <% end %>
+    <hr>
   </div>
 
   <%# div for overall analytics + Item Spefific %>
