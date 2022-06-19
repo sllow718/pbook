@@ -1,7 +1,0 @@
- <% if dish.photo.attached? %>
-        <%= cl_image_tag @item.photo.key%>
-      <% elsif dish.image.present? %>
-        <img src="<%= dish.image %>" alt="" class="mx-auto" id="homepagetop1">
-      <% else %>
-        <img src="<%= "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
-      <% end %>

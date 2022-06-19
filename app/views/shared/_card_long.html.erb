@@ -4,7 +4,16 @@
     <%# dish image + review & bookmark icons %>
 
     <div class="sidefood-image">
-      <img src=<%= dish.image %> alt="" id="image">
+      <% if dish.photo.attached? %>
+        <%= cl_image_tag dish.photo.key, id:"image" %>
+      <% elsif dish.image.present? %>
+        <img src="<%= dish.image %>" alt="" class="mx-auto" id="image">
+      <% else %>
+        <img src="<%= "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
+      <% end %>
+      <%# <img src=<%= dish.image %>
+      <%# alt="" id="image"> %>
+
       <div class="bookmark mt-2">
         <%= render 'shared/bookmark_review_icons', dish: dish %>
       </div>
