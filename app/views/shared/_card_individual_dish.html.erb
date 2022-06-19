@@ -5,7 +5,7 @@
       <p id="stalltitle" class='m-0'><%=  @stall.name %></p>
       <%# style="margin-left:5%;" %>
         <h5 id="foodtitle">
-          <strong><%= @dish.name %></strong>
+          <strong><%= @dish.dish_type %></strong>
         </h5>
     </div>
     <%# Rank %>
@@ -16,7 +16,7 @@
   <div class="d-flex flex-column justify-content-center">
     <div class="featured-dish-image">
        <% if @dish.photo.attached? %>
-                  <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"height:300px;width:400px; p-40; crop: :fill") %>
+                  <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"crop: :fill") %>
                 <% else %>
                   <img src="<%= @dish.image.present? ? dish.image : "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
                 <%end%>
@@ -54,9 +54,12 @@
       <%= @dish.reviews.first.comment %>
     </p>
   </div>
-    </p>
-              <button class=" review-btn btn btn-dark"  data-action="click->reviewmodal#open" >
+    <% if current_user.nil? %>
+    <%= link_to "Sign in to leave a review!", new_user_session_path, class:"red-nav-button",style:"font-size:0.55rem"  %>
+    <% else %>
+              <button class="red-nav-button" data-action="click->reviewmodal#open" style="font-size:0.55rem">
                 Leave a Review
               </button>
+    <% end %>
 
 </div>

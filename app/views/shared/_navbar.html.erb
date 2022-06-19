@@ -8,19 +8,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class ="brand-name" style="position:absolute; left:100px;">
-        <span>THE LOCAL POCKET BOOK</span>
-      </div>
+
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active" style="align-self:center">
             <%= link_to "Home", root_path, class: "nav-link",style: "color:white;"%>
           </li>
-          <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto" %>
-          <li class="nav-item dropdown">
+          <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto align-self-center" %>
+          <li class="nav-item dropdown align-self-center">
             <%= image_tag "user_logo.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <span class= "dropdown-item"><%= current_user.username %></span>
+            <div class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+              <span class= "dropdown-item disabled" ><%= current_user.username %></span>
               <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
               <%= link_to "My Stalls", mystalls_path, class: "dropdown-item" %>
 
@@ -37,7 +35,7 @@
           <% if (current_user rescue false) %>
           </li>
 
-            <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto" %>
+            <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto align-self-center" %>
 
           <% end %>
         <% end %>

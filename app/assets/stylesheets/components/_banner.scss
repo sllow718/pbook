@@ -23,7 +23,7 @@
   // font-size: 32px;
   // font-weight: bold;
   // line-height: 108px;
-
+  text-align: center;
   margin: 0;
   font-weight: 800;
   font-size: calc(1.375rem + 1.5vw);
@@ -87,7 +87,10 @@
 @media (min-width: 100px) and (max-width: 575px) {
   .banner {
     padding: 15px;
-    height: 30vh;
+    height: 50vh;
+  }
+
+  .banner h1 {
   }
 }
 
