@@ -4,10 +4,15 @@
     <%# dish image + review & bookmark icons %>
 
     <div class="sidefood-image">
-      <img src=<%= dish.image %> alt="" id="image">
-      <div class="bookmark mt-2">
-        <%= render 'shared/bookmark_review_icons', dish: dish %>
-      </div>
+      <% if dish.photo.attached? %>
+        <%= cl_image_tag dish.photo.key, id:"image" %>
+      <% elsif dish.image.present? %>
+        <img src="<%= dish.image %>" alt="" class="mx-auto" id="image">
+      <% else %>
+        <img src="<%= "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
+      <% end %>
+      <%# <img src=<%= dish.image %>
+      <%# alt="" id="image"> %>
     </div>
 
     <%# div holds everything else APART from picture %>
@@ -18,20 +23,17 @@
 
       <%# holds top pick, dish name, rank %>
       <div class='d-flex justify-content-between align-items-center'>
-        <%# div holding top pick & name of dish %>
-        <div>
-          <%# rank %>
-          <div class="rank-text"> <%# my-1 %>
-            <span>👑 Top Pick</span>
-          </div>
-          <%# stall name %>
-
+        <%# div holding name of dish %>
+        <div class='d-flex'>
           <%# name of dish %>
           <%= link_to dish, style:"text-decoration:none;color:black;" do %>
             <span class="text-justify" style="font-size:20px;margin-left:5px;">
             <strong><%= dish.dish_type.strip rescue "Goreng Pisang Ala Carte" %></strong>
             </span>
           <% end %>
+          <div class="bookmark mt-2">
+            <%= render 'shared/bookmark_review_icons', dish: dish %>
+          </div>
         </div>
         <%# rank %>
         <div>
@@ -58,28 +60,33 @@
       <%# div holding flavours and stars %>
       <div class='d-flex justify-content-between align-items-center flex-wrap'>
         <div style="list-style-type: none" class="d-flex flex-row justify-content-left">
-  <div style="list-style-type: none" class="mx-auto d-flex gap-3">
-      <% dish.top_3_reviewed_flavors.each do |flavor, score| %>
-        <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
-          <span class="pink-badge">
-            <%= flavor %>
-              <span class="number-badge">
-                <%= score %>
-                <span class="visually-hidden">reviews</span>
-              </span>
-          </span>
-        <% end %>
-      <% end %>
-  </div>
-
-        </div>
-        <div class="stars-rank p-1">
-          <% sum = 0 %>
-          <% dish.reviews.to_a.each {|review| sum += review.rating} %>
-          <% avg_rating = sum/dish.reviews.length rescue 3%>
-          <% (1..avg_rating).step(1).each do %>
-                <%= fa_icon("star solid",style:"color:gold") %>
+          <div style="list-style-type: none" class="mx-auto d-flex gap-3">
+            <%# flavours %>
+            <% dish.top_3_reviewed_flavors.each do |flavor, score| %>
+              <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
+                <span class="pink-badge">
+                  <%= flavor %>
+                    <span class="number-badge">
+                      <%= score %>
+                      <span class="visually-hidden">reviews</span>
+                    </span>
+                </span>
               <% end %>
+            <% end %>
+          </div>
+        </div>
+        <%# stars + score %>
+        <div class='d-flex align-items-center'>
+          <div class="stars-rank p-1">
+            <% sum = 0 %>
+            <% dish.reviews.to_a.each {|review| sum += review.rating} %>
+            <% avg_rating = sum/dish.reviews.length rescue 3%>
+            <% (1..avg_rating).step(1).each do %>
+                  <%= fa_icon("star solid",style:"color:gold") %>
+                <% end %>
+          </div>
+          <p class='m-0'>(<%= dish.score.round(2) %>)</p>
+
         </div>
       </div>
 
