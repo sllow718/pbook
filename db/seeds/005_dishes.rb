@@ -207,9 +207,9 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
   @dish.name = row["dishname"]
   @dish.price = rand(3..5)
   if Dish.all.length <= 24
-    @dish.score = rand(4.01..4.99)
+    @dish.score = rand(4.1..4.9)
   else
-    @dish.score = rand(1.00..4.00)
+    @dish.score = rand(1.2..3.9)
   end
 
   @dish.description = "loremsss"

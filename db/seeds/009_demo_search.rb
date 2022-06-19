@@ -144,6 +144,9 @@ carrot_cake_10.photo.attach(
   )
 carrot_cake_10.save!
 
+puts "-------------------------------------------------------------------------"
+puts "seeding for carrot cake search"
+puts "-------------------------------------------------------------------------"
 User.first(10).each do |user|
   Dish.where(dish_type: "Carrot Cake").each do |dish|
     review = Review.new
@@ -159,3 +162,28 @@ User.first(10).each do |user|
     end
   end
 end
+puts "-------------------------------------------------------------------------"
+puts "Done with the carrot cake search"
+puts "-------------------------------------------------------------------------"
+
+puts "-------------------------------------------------------------------------"
+puts "seeding for home pages scores and flavours"
+puts "-------------------------------------------------------------------------"
+User.first(10).each do |user|
+  Dish.all[0..25].each do |dish|
+    review = Review.new
+    review.comment = "I like the dish"
+    review.rating = rand(3.9..4.9)
+    review.user = user
+    review.dish = dish
+    review.save!
+    puts "#{dish.name}-#{review.rating}-#{user.username}"
+
+    Flavor.all.sample(3).each do |flavour|
+      ReviewFlavor.create!(review: review, flavor: flavour)
+    end
+  end
+end
+puts "-------------------------------------------------------------------------"
+puts "DONE seeding for home pages scores and flavours"
+puts "-------------------------------------------------------------------------"
