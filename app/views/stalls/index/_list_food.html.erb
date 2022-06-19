@@ -43,7 +43,16 @@
               </div>
         </div>
         <div class="list-food-image mx-auto">
-          <img src="<%= dish.image %>" alt="" class="img-fluid py-2" style="border-radius:20px">
+          <% if dish.photo.attached? %>
+            <%= cl_image_tag dish.photo.key, class:"img-fluid py-2", style:"border-radius:20px"%>
+          <% elsif dish.image.present? %>
+            <img src="<%= dish.image %>" class="img-fluid py-2" style="border-radius:20px">
+          <% else %>
+            <img src="<%= "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" class="img-fluid py-2" style="border-radius:20px">
+          <% end %>
+          <%# <img src="<%= dish.image %>
+          <%# " alt="" class="img-fluid py-2" style="border-radius:20px"> %>
+
           <div class="bookmark">
             <%= render 'shared/bookmark_review_icons', dish: dish %>
           </div>
