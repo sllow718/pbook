@@ -1,5 +1,5 @@
 <div data-controller="search-food">
-  <%= render 'shared/main_banner' %>
+  <%= render 'shared/dish_banner' %>
 
   <div class="container">
     <div class="row">
@@ -14,15 +14,11 @@
             <%# dishes ranked 2 - 4 %>
             <div class="div2">
               <%= render 'shared/review_card_long', dish: @dish %>
-              <div data-reviewmodal-target="form" class="d-none ">
-              <div class="sidefoodcards d-flex my-4 flex-grow" >
-              <%= render "reviewform" %>
-              </div>
-              </div>
             </div>
 
-      </div>
+          </div>
 
+      </div>
     </div>
   </div>
 </div>
