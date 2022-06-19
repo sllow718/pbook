@@ -19,6 +19,11 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
   case row_number
   when 0
     @dish.dish_type = "Chili Crab"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/chilli_crab.jpg'),
+      filename: "chilli_crab.jpg",
+      content_type: "photo/jpg"
+    )
   when 1
     @dish.dish_type = "Chicken Rice"
   when 2
@@ -32,11 +37,11 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
   when 6
     @dish.dish_type = "Roast Meat"
   when 7
-    @dish.dish_type = "Indian Curry"
+    @dish.dish_type = "Wanton Noodles"
   when 8
     @dish.dish_type = "Nasi Biryani"
   when 9
-    @dish.dish_type = "Seafood Curry"
+    @dish.dish_type = "Orh Nee"
   when 10
     @dish.dish_type = "Prawn Noodles"
   when 11
@@ -54,7 +59,7 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
   when 17
     @dish.dish_type = "Bak Chor Mee"
   when 18
-    @dish.dish_type = "Hokkien Mee"
+    @dish.dish_type = "Thosai"
   when 19
     @dish.dish_type = "Kway Chap"
   when 20
@@ -64,7 +69,7 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
   when 22
     @dish.dish_type = "Roti Prata"
   when 23
-    @dish.dish_type = "Ice Kachang",
+    @dish.dish_type = "Ice Kachang"
   when 24
     @dish.dish_type = "Carrot Cake"
   when 25
