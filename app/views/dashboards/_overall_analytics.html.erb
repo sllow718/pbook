@@ -1,7 +1,11 @@
 <div class='overall'>
-  <p><%= @stall.name %> is</p>
-  <h2> <%= @stall.rank %> </h2>
-  <p>out of <strong><%= Stall.count %></strong> stalls</p>
-  <p>in Singapore</p>
-  <p>(top <%= ((1 - (@stall.rank.to_f / Stall.count.to_f))* 100).round %>%) </p>
+  <div class="ordinalize-parent">
+    <h1> <%= stall.rank%></h1>
+    <h3 class="ordinalize"><%= stall.rank.ordinalize.last(2) %></h3>
+  </div>
+  <div class="overall-details">
+    <p>out of <strong><%= Stall.count %></strong> stalls</p>
+    <p>in Singapore</p>
+    <p>(top <%= ((1 - (@stall.rank.to_f / Stall.count.to_f))* 100).round %>%) </p>
+  </div>
 </div>

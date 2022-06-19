@@ -1,38 +1,46 @@
 <%# Overall div holding the sidebar + Analytics content %>
-<%= render 'dashboards/stall_banner'%>
 <div
 class='d-flex'
 data-controller="dashboard">
-  <%# sidebar %>
-  <div class='sidebar'>
-    <div class='sidebar-box sidebar-first'>
-      <p>Select Dish</p>
-    </div>
-    <% @stall.dishes.each do |dish| %>
-      <div
-      class="sidebar-box sidebar-other"
+  <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <h4 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      Select Dish
+    </h4>
+
+    <% @stall.dishes[0..4].each do |dish| %>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li
+      class="nav-item nav-dish"
       data-action="click->dashboard#display"
       data-dashboard-id-value=<%= dish.id %>
+      data-dashboard-target="highlight"
       data-dashboard-target="dish">
-        <p><%= dish.name %></p>
-      </div>
-    <% end %>
-    <div class="sidebar-last">
-    </div>
+        <p class="nav-link">
+          <%= dish.name %>
+        </p>
+      </li>
+      <% end %>
+    <hr>
   </div>
 
   <%# div for overall analytics + Item Spefific %>
   <div class='analytics-wrapper'>
-    <%# div for overall analytics %>
-    <div class='d-flex justify-content-around overall-box'>
+    <h2 style="text-align: center"><%= @dish.stall.name %></h2>
 
-      <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
-      <%= render partial: 'overall_hawkercenter_analytics', locals: {
-        stall: @stall, hawkercenter: @hawkercenter
-      } %>
+    <div class="analytics-wrapper-no-title">
+      <h4>Overall Stall Performance</h4>
+      <%# div for overall analytics %>
+      <div class='d-flex justify-content-between overall-box'>
+
+        <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
+        <%= render partial: 'overall_hawkercenter_analytics', locals: {
+          stall: @stall, hawkercenter: @hawkercenter
+        } %>
+      </div>
     </div>
 
-    <%# div for item specific analytics %>
+    <%# div for item specific analytics STIMULUS%>
     <div data-dashboard-target="analytics">
       <%# analytics for dish vs all dishes + dish vs others in the same dish category %>
       <%= render partial: 'dashboards/dish_analytics_holder.html.erb', locals: { dish: @dish } %>

@@ -53,8 +53,8 @@
 .analytics-wrapper {
   padding-top: 36px;
   padding-bottom: 36px;
-  padding-left: 72px;
-  padding-right: 72px;
+  padding-left: 140px;
+  padding-right: 140px;
 }
 
 .icon-box {
@@ -90,4 +90,18 @@
   left: 25;
   font-size: 12px;
   color: #A9A9A9;
+}
+
+.dish-specific-holder {
+  margin-top: 38px;
+  h4 {
+    margin-bottom: 6px;
+  }
+}
+
+.analytics-wrapper-no-title {
+  margin-top: 38px;
+  h4 {
+    margin-bottom: 6px;
+  }
 }

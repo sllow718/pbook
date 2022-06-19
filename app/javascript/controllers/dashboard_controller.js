@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "dish", "analytics" ]
+  static targets = [ "dish", "analytics", "highlight" ]
 
 
   connect() {
@@ -15,6 +15,9 @@ export default class extends Controller {
     console.log(event.currentTarget)
     console.log(event.currentTarget.dataset.dashboardIdValue)
     console.log(this.analyticsTarget)
+    console.log(this.highlightTarget)
+
+    this.highlightTarget.classList.toggle("active")
 
     const dishId = event.currentTarget.dataset.dashboardIdValue
     const url = `/dashboard/${dishId}`
