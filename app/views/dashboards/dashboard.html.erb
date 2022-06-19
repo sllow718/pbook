@@ -23,14 +23,17 @@ data-controller="dashboard">
   <%# div for overall analytics + Item Spefific %>
   <div class='analytics-wrapper'>
     <h2 style="text-align: center"><%= @dish.stall.name %></h2>
-    <h4>Overall Stall Performance</h4>
-    <%# div for overall analytics %>
-    <div class='d-flex justify-content-between overall-box'>
 
-      <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
-      <%= render partial: 'overall_hawkercenter_analytics', locals: {
-        stall: @stall, hawkercenter: @hawkercenter
-      } %>
+    <div class="analytics-wrapper-no-title">
+      <h4>Overall Stall Performance</h4>
+      <%# div for overall analytics %>
+      <div class='d-flex justify-content-between overall-box'>
+
+        <%= render partial: 'overall_analytics', locals: { stall: @stall }  %>
+        <%= render partial: 'overall_hawkercenter_analytics', locals: {
+          stall: @stall, hawkercenter: @hawkercenter
+        } %>
+      </div>
     </div>
 
     <%# div for item specific analytics %>
