@@ -11,7 +11,7 @@ class Dish < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :name ],
+  against: [ :dish_type ],
   :associated_against => {
     :stall => [:name],
     :hawker_center => [:name]
