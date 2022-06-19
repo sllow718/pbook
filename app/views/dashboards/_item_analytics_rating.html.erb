@@ -3,15 +3,14 @@
   <div>
     <div class='analytic-display-summary'>
       <p>
-        Your dish is the <strong><span class="dark-red">
-        <%= @dish.rank_per_type(@dish.dish_type) %> </span></strong>
+        <strong><span class="dark-red"><%= @dish.rank_per_type(@dish.dish_type) %> </span></strong>
         highest rated <%= @dish.dish_type %> dish out of <%= Dish.count_in_dish_type(@dish.dish_type) %> dishes
       </p>
     </div>
     <%# rating and stars %>
-    <div class='d-flex justify-content-between'>
+    <div class='d-flex justify-content-between align-items-center stat-holder'>
       <p>Your rating:</p>
-      <div class='d-flex justify-content-between'>
+      <div class='d-flex justify-content-between align-items-center'>
         <%= render 'dashboards/stars.html.erb', display: @dish.score.round %>
         <p>(<%= @dish.score.round(2) %>)</p>
       </div>
@@ -19,12 +18,10 @@
   </div>
   <%# hawker dish rating %>
   <%# rating and stars %>
-  <div class='d-flex justify-content-between'>
-    <p>Avg. Hawker Rating:</p>
-    <div class='d-flex justify-content-between'>
-     <%= render 'dashboards/stars.html.erb', display: Dish.score_average.round %>
-
-
+  <div class='d-flex justify-content-between align-items-center stat-holder'>
+    <p>Hawker Avg.</p>
+    <div class='d-flex justify-content-between align-items-center'>
+      <%= render 'dashboards/stars.html.erb', display: Dish.type_average(@dish.dish_type).round %>
       <p> (<%= Dish.type_average(@dish.dish_type).round(2) %>) </p>
     </div>
   </div>

@@ -2,9 +2,9 @@
   <%# Your dish flavours %>
   <div>
     <div>
-      <p class='analytic-display-summary'>Your dish flavours (per reviewers)</p>
+      <p class='analytic-display-summary'>Reviewers find your dish:</p>
     </div>
-    <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
+    <div style="list-style-type: none" class="d-flex flex-row justify-content-around stat-holder">
       <%# <%= render 'shared/top_dish_flavour.html.erb', dish: @dish  %>
       <% @dish.top_3_reviewed_flavors.each do |flavor, score| %>
         <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
@@ -23,9 +23,9 @@
   <%# hawker dish flavours %>
   <div>
     <div>
-      <p class='analytic-display-summary mt-3'>Flavours of top-ranked <%= "#{@dish.dish_type}" %></p>
+      <p class='analytic-display-summary mt-3'>Top <%= "#{@dish.dish_type}"%> flavors</p>
     </div>
-    <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
+    <div style="list-style-type: none" class="d-flex flex-row justify-content-around stat-holder">
 
       <% @dish.top_3_flavors_of_dish_type.each do |flavor, score| %>
         <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>

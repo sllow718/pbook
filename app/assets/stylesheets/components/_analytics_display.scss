@@ -38,9 +38,13 @@
 
 .analytic-display {
   box-shadow: rgba(82, 0, 14, 0.35) 0px 5px 15px;
-  padding: 12px;
+  padding: 12px 25px;
   margin: 12px;
   width: 40%;
+  p {
+    font-size: 20px;
+    margin: 0;
+  }
   .analytic-display-summary {
     text-align: center;
   }
@@ -51,4 +55,9 @@
     margin-bottom: 6px;
     // margin-top: 12px;
   }
+}
+
+.stat-holder {
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
