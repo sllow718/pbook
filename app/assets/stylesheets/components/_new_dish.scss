@@ -32,11 +32,15 @@
   color: white;
   text-align: center;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Grandstander", sans-serif;
 
   p {
     margin-bottom: 0px;
     padding-top: 10px;
     height: 30px;
+    font-family: "Grandstander", sans-serif;
   }
 }
 
@@ -52,12 +56,15 @@
   // height: 286px;
   margin-top: 40px;
   background-color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .stall-description {
   background-color: white;
   // height: 140px;
   width: 30vw;
+  height: 10vw;
   // border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -65,6 +72,9 @@
   // margin-right: 10px;
   align-items: center;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
 }
 
 .stall-dish-pictures {
@@ -89,6 +99,10 @@
   display: flex;
   flex-direction: column;
   margin: 20px;
+}
+
+.stall-dish-picture-name {
+  font-size: 16px;
 }
 
 .stall-dish-picture-header {
