@@ -148,7 +148,7 @@ User.first(10).each do |user|
   Dish.where(dish_type: "Carrot Cake").each do |dish|
     review = Review.new
     review.comment = "I like the dish"
-    review.rating = rand(1.2..4.9)
+    review.rating = rand(3.2..4.9)
     review.user = user
     review.dish = dish
     review.save!
