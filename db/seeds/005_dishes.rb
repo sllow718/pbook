@@ -68,42 +68,137 @@ CSV.foreach(dishes_filepath, headers: :first_row, encoding: "UTF-8").with_index 
     )
   when 7
     @dish.dish_type = "Wanton Noodles"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/wanton_noodles.jpg'),
+      filename: "wanton_noodles.jpg",
+      content_type: "photo/jpg"
+    )
   when 8
     @dish.dish_type = "Nasi Biryani"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/nasi_biryani.jpg'),
+      filename: "nasi_biryani.jpg",
+      content_type: "photo/jpg"
+    )
   when 9
     @dish.dish_type = "Orh Nee"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/orh_nee.jpg'),
+      filename: "orh_nee.jpg",
+      content_type: "photo/jpg"
+    )
   when 10
     @dish.dish_type = "Prawn Noodles"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/prawn_noodles.jpg'),
+      filename: "prawn_noodles.jpg",
+      content_type: "photo/jpg"
+    )
   when 11
     @dish.dish_type = "Rojak"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/rojak.jpg'),
+      filename: "rojak.jpg",
+      content_type: "photo/jpg"
+    )
   when 12
     @dish.dish_type = "Char Kway Teow"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/char_kuay_teow.jpg'),
+      filename: "char_kuay_teow.jpg",
+      content_type: "photo/jpg"
+    )
   when 13
     @dish.dish_type = "Hokkien Noodles"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/hokkien_noodles.jpg'),
+      filename: "hokkien_noodles.jpg",
+      content_type: "photo/jpg"
+    )
   when 14
     @dish.dish_type = "Mee Siam"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/mee_siam.jpg'),
+      filename: "mee_siam.jpg",
+      content_type: "photo/jpg"
+    )
   when 15
     @dish.dish_type = "Oyster Omelette"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/oyster_omelette.jpg'),
+      filename: "oyster_omelette.jpg",
+      content_type: "photo/jpg"
+    )
   when 16
     @dish.dish_type = "Bak Kut Teh"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/bak_kut_teh.jpg'),
+      filename: "bak_kut_teh.jpg",
+      content_type: "photo/jpg"
+    )
   when 17
     @dish.dish_type = "Bak Chor Mee"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/bak_chor_mee.jpg'),
+      filename: "bak_chor_mee.jpg",
+      content_type: "photo/jpg"
+    )
   when 18
     @dish.dish_type = "Thosai"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/thosai.jpg'),
+      filename: "thosai.jpg",
+      content_type: "photo/jpg"
+    )
   when 19
     @dish.dish_type = "Kway Chap"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/kway_chap.jpg'),
+      filename: "kway_chap.jpg",
+      content_type: "photo/jpg"
+    )
   when 20
     @dish.dish_type = "Kaya Toast"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/kaya_toast.jpg'),
+      filename: "kaya_toast.jpg",
+      content_type: "photo/jpg"
+    )
   when 21
     @dish.dish_type = "BBQ Stingray"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/bbq_stingray.jpg'),
+      filename: "bbq_stingray.jpg",
+      content_type: "photo/jpg"
+    )
   when 22
     @dish.dish_type = "Roti Prata"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/roti_prata.jpg'),
+      filename: "roti_prata.jpg",
+      content_type: "photo/jpg"
+    )
   when 23
     @dish.dish_type = "Ice Kachang"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/ice_kachang.jpg'),
+      filename: "ice_kachang.jpg",
+      content_type: "photo/jpg"
+    )
   when 24
     @dish.dish_type = "Carrot Cake"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/carrot_cake.jpg'),
+      filename: "carrot_cake.jpg",
+      content_type: "photo/jpg"
+    )
   when 25
     @dish.dish_type = "Mee Rebus"
+    @dish.photo.attach(
+      io: File.open('app/assets/images/seeds/mee_rebus.jpg'),
+      filename: "mee_rebus.jpg",
+      content_type: "photo/jpg"
+    )
   else
     @dish.dish_type = dish_type
     @dish.image = row["description"]
