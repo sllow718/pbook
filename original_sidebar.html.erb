@@ -1,0 +1,17 @@
+<%# sidebar %>
+  <div class='sidebar'>
+    <div class='sidebar-box sidebar-first'>
+      <p>Select Dish</p>
+    </div>
+    <% @stall.dishes.each do |dish| %>
+      <div
+      class="sidebar-box sidebar-other"
+      data-action="click->dashboard#display"
+      data-dashboard-id-value=<%= dish.id %>
+      data-dashboard-target="dish">
+        <p><%= dish.name %></p>
+      </div>
+    <% end %>
+    <div class="sidebar-last">
+    </div>
+  </div>

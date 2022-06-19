@@ -3,23 +3,25 @@
 class='d-flex'
 data-controller="dashboard">
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-      <span class="fs-4">Select Dish</span>
-    </a>
+    <h4 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      Select Dish
+    </h4>
 
     <% @stall.dishes.each do |dish| %>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li
-      class="nav-item"
+      class="nav-item nav-dish"
       data-action="click->dashboard#display"
       data-dashboard-id-value=<%= dish.id %>
       data-dashboard-target="dish">
-        <a href="#" class="nav-link active" aria-current="page">
-          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-            <%= dish.name %>
-        </a>
+        <p
+        class="nav-link"
+        data-dashboard-target="highlight"
+        >
+        <%# aria-current="page" %>
+          <%= dish.name %>
+        </p>
       </li>
       <% end %>
     <hr>
@@ -41,7 +43,7 @@ data-controller="dashboard">
       </div>
     </div>
 
-    <%# div for item specific analytics %>
+    <%# div for item specific analytics STIMULUS%>
     <div data-dashboard-target="analytics">
       <%# analytics for dish vs all dishes + dish vs others in the same dish category %>
       <%= render partial: 'dashboards/dish_analytics_holder.html.erb', locals: { dish: @dish } %>

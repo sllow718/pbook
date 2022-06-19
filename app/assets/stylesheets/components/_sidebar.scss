@@ -45,3 +45,24 @@
     margin: 0;
   }
 }
+
+.active-highlight {
+  background-color: #C06D7A;
+  font-weight: 800;
+}
+
+.nav-dish {
+  p {
+    font-family: $headers-font;
+  }
+}
+
+.nav-dish:hover {
+  cursor: pointer;
+  p {
+    font-weight: 800;
+    color: white;
+    background-color: #C06D7A;
+  }
+
+}
