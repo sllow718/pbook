@@ -5,7 +5,19 @@
       <p class='analytic-display-summary'>Your dish flavours (per reviewers)</p>
     </div>
     <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
-      <%= render 'shared/top_dish_flavour.html.erb', dish: @dish  %>
+      <%# <%= render 'shared/top_dish_flavour.html.erb', dish: @dish  %>
+      <% @dish.top_3_reviewed_flavors.each do |flavor, score| %>
+        <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
+          <span class="pink-badge">
+            <%= flavor %>
+              <span class="number-badge">
+                <%= score %>
+                <span class="visually-hidden">reviews</span>
+              </span>
+          </span>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
   <%# hawker dish flavours %>
@@ -14,6 +26,18 @@
       <p class='analytic-display-summary mt-3'>Flavours of top-ranked <%= "#{@dish.dish_type}" %></p>
     </div>
     <div style="list-style-type: none" class="d-flex flex-row justify-content-around">
-      <%= render 'shared/top_dish_flavour.html.erb', dish: @dish.type_flavors %>
+
+      <% @dish.top_3_flavors_of_dish_type.each do |flavor, score| %>
+        <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
+          <span class="pink-badge">
+            <%= flavor %>
+              <span class="number-badge">
+                <%= score %>
+              <span class="visually-hidden">reviews</span>
+            </span>
+          </span>
+        <% end %>
+      <% end %>
+      <%# <%= render 'shared/top_dish_flavour.html.erb', dish: @dish.type_flavors %>
   </div>
 </div>

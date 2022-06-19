@@ -74,4 +74,10 @@ class Dish < ApplicationRecord
   def top_3_reviewed_flavors
     Flavor.joins(review_flavors: :review).where(reviews: { dish_id: id }).group(:name).order('count_id desc').limit(3).count('id')
   end
+
+  def top_3_flavors_of_dish_type
+    Flavor.joins(review_flavors: { review: :dish })
+          .where(reviews: { dishes: { dish_type: dish_type } })
+          .group(:name).order('count_id desc').limit(3).count('id')
+  end
 end
