@@ -56,11 +56,19 @@
     </p>
   </div>
     <% if current_user.nil? %>
-    <%= link_to "Sign in to leave a review!", new_user_session_path, class:"red-nav-button",style:"font-size:0.55rem"  %>
+      <%= link_to "Sign in to leave a review!", new_user_session_path, class:"red-nav-button",style:"font-size:0.55rem"  %>
     <% else %>
-              <button class="red-nav-button" data-action="click->reviewmodal#open" style="font-size:0.55rem">
-                Leave a Review
-              </button>
+      <div class='d-flex gap-2'>
+        <button class="red-nav-button" data-action="click->reviewmodal#open" style="font-size:0.55rem">
+          Leave a Review
+        </button>
+        <div id="map" data-controller="map-modal">
+          <button class="red-nav-button" data-action="click->map-modal#launchMap" style="font-size:0.55rem">Directions</button>
+          <%= render 'stalls/show/map_modal' %>
+        </div>
+      </div>
     <% end %>
+  </div>
+
 
 </div>
