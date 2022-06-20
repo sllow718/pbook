@@ -51,7 +51,8 @@
 
     <%# description %>
     <p id="foodwriteuptext" class="text-justify" style="font-size:12px">
-      <%= @dish.reviews.first.comment %>
+    <%# for production we need @dish.description not @dish.reviews.first.comment %>
+      <%= @dish.description%>
     </p>
   </div>
     <% if current_user.nil? %>
