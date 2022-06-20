@@ -25,6 +25,12 @@ class DishesController < ApplicationController
     @last_flavor = @flavor_array[-1][0] if @flavor_array.count > 0
     @second_last_flavor = @flavor_array[-2][0] if @flavor_array.count > 1
     @third_last_flavor = @flavor_array[-3][0] if @flavor_array.count > 2
+
+    @stallmap = {
+      lat: @stall.hawker_center.latitude,
+      lng: @stall.hawker_center.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { hawker: @dish.stall.hawker_center })
+    }
   end
 
   def new

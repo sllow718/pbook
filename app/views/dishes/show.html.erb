@@ -4,11 +4,15 @@
   <div class="container">
     <div class="row">
       <div class="col-12 mx-auto">
-         <div class="stall-show-grid-container <%= params[:query].present? ? "d-none" : "" %>" data-search-food-target="topgrid" data-controller="reviewmodal">
+          <div
+          class="stall-show-grid-container <%= params[:query].present? ? "d-none" : "" %>"
+          data-search-food-target="topgrid" data-controller="reviewmodal"
+          >
             <%# individual dish %>
             <div class="div1">
               <%= render 'shared/card_individual_dish', dish: @dish %>
             </div>
+
 
 
             <%# dishes ranked 2 - 4 %>
@@ -18,7 +22,6 @@
             </div>
 
           </div>
-
       </div>
     </div>
   </div>

@@ -1,20 +1,23 @@
-    <div class="modal" tabindex="-1" data-map-modal-target="modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">How to get there?</h5>
-            <button type="button" class="close" data-action="click->map-modal#closeMap" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div style="width: 100%; height: 40vh;"
-                data-controller="mapbox"
-                data-mapbox-markers-value="<%= [@stallmap.to_json] %>"
-                data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-            </div>
-          </div>
+<div class="modal" tabindex="-1" data-map-modal-target="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">How to get there?</h5>
+        <%# <a href=""></a> %>
+        <span class="red-nav-button" style="font-size:12px"><%= link_to "Launch Google",
+          "https://www.google.com/maps/dir/?api=1&#{@stallmap.first.last}, #{@stallmap.to_a[1][1]}" %>
+        </span>
+        <button type="button" class="close" data-action="click->map-modal#closeMap" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="width: 100%; height: 40vh;"
+            data-controller="mapbox"
+            data-mapbox-markers-value="<%= [@stallmap.to_json] %>"
+            data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>
     </div>
+  </div>
+</div>
