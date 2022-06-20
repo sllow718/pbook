@@ -15,9 +15,12 @@ export default class extends Controller {
     console.log(event.currentTarget)
     console.log(event.currentTarget.dataset.dashboardIdValue)
     console.log(this.analyticsTarget)
-    console.log(this.highlightTarget)
+    console.log(this.highlightTargets)
 
-    this.highlightTarget.classList.toggle("active")
+    this.highlightTargets.forEach((sidebarItem) => {
+      sidebarItem.classList.remove("active")
+    })
+    event.currentTarget.classList.add("active")
 
     const dishId = event.currentTarget.dataset.dashboardIdValue
     const url = `/dashboard/${dishId}`
