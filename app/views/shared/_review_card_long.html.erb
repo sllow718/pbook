@@ -19,13 +19,14 @@
                 <% if review.review_flavors != {} %>
                   <%review.review_flavors.each do |review_flavor|%>
                     <%flavors<<review_flavor.flavor.name%>
-                 <%end%>
-                <%flavor_count = Hash.new(0)%>
-                <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
-                <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
-                <% flavors.each do |foodflavor| %>
+                  <%end%>
+                  <%flavor_count = Hash.new(0)%>
+                  <%flavors.each {|flavor| flavor_count[flavor] += 1}%>
+                  <% flavors = flavor_count.sort_by { |flavor,number| number}.reverse.map{|flavor| flavor[0]}[0..2] %>
+                  <% flavors.each do |foodflavor| %>
                     <span class="pink-badge"><%=foodflavor%></span>
                   <%end%>
+                <% end %>
               </div>
             </div>
             <div class="stars-rank p-1">
@@ -38,19 +39,14 @@
               <%end%>
             </div>
           </div>
-      <div class="text-justify">
-        <p class="my-0" style="margin-left:5px;font-size:12px;">
-          <%=review.comment[0..200] %>
-        </p>
+          <div class="text-justify">
+            <p class="my-0" style="margin-left:5px;font-size:12px;">
+              <%=review.comment[0..200] %>
+            </p>
+          </div>
+        <% end %>
       </div>
-       <% end %>
-    </div>
-    <div>
-      <% end %>
-      <% end %>
-
-      </div>
-
+    <% end %>
   </div>
 </div>
 
