@@ -11,9 +11,7 @@
 
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active" style="align-self:center">
-            <%= link_to "Home", root_path, class: "nav-link",style: "color:white;"%>
-          </li>
+
           <%= link_to "Hawkers Here!", new_stall_path, class: "red-nav-button my-auto align-self-center" %>
           <li class="nav-item dropdown align-self-center">
             <%= image_tag "user_logo.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

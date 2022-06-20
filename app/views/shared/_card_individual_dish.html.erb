@@ -40,12 +40,12 @@
         <% end %>
       <% end %>
       <div class="d-flex align-items-center">
-        <div class="stars-rank p-1">
+        <div class="stars-rank p-2">
           <% (1..@dish.score).step(1).each do %>
             <%= fa_icon("star solid",style:"color:gold") %>
           <% end %>
         </div>
-        <p>(<%= @dish.score.round(2) %>)</p>
+        <span>(<%= @dish.score.round(2) %>)</span>
       </div>
     </div>
 
