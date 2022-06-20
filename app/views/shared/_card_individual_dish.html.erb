@@ -16,19 +16,16 @@
   <div class="d-flex flex-column justify-content-center">
     <div class="featured-dish-image">
        <% if @dish.photo.attached? %>
-                  <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"crop: :fill") %>
-                <% else %>
-                  <img src="<%= @dish.image.present? ? dish.image : "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
-                <%end%>
-      <div class="featured-bookmark mt-2">
-        <%#= render 'shared/bookmark_review_icons', dish: dish %>
-      </div>
+          <%= cl_image_tag(@dish.photo.key, class:'img-fluid', style:"crop: :fill") %>
+       <% else %>
+          <img src="<%= @dish.image.present? ? dish.image : "https://asianinspirations.com.au/wp-content/uploads/2019/11/R1018-PisangGoreng-new-619x412.jpg" %>" alt="" class="mx-auto" id="homepagetop1">
+        <%end%>
     </div>
 
     <%# flavours + stars %>
     <div style="list-style-type: none" class="d-flex flex-row justify-content-between align-items-center flex-wrap mt-2">
       <%#= render 'shared/dish_flavour_calc.html.erb', dish: dish %>
-           <% @dish.top_3_reviewed_flavors.each do |flavor, score| %>
+      <% @dish.top_3_reviewed_flavors.each do |flavor, score| %>
         <%= link_to "/?query=#{flavor}",style:"text-decoration:none" do  %>
           <span class="pink-badge">
             <%= flavor %>
@@ -54,21 +51,19 @@
     <%# for production we need @dish.description not @dish.reviews.first.comment %>
       <%= @dish.description%>
     </p>
-  </div>
-    <% if current_user.nil? %>
-      <%= link_to "Sign in to leave a review!", new_user_session_path, class:"red-nav-button",style:"font-size:0.55rem"  %>
-    <% else %>
-      <div class='d-flex gap-2'>
-        <button class="red-nav-button" data-action="click->reviewmodal#open" style="font-size:0.55rem">
-          Leave a Review
-        </button>
-        <div id="map" data-controller="map-modal">
-          <button class="red-nav-button" data-action="click->map-modal#launchMap" style="font-size:0.55rem">Directions</button>
-          <%= render 'stalls/show/map_modal' %>
+    <%# </div> %>
+      <% if current_user.nil? %>
+        <%= link_to "Sign in to leave a review!", new_user_session_path, class:"red-nav-button",style:"font-size:0.55rem"  %>
+      <% else %>
+        <div class='d-flex gap-2'>
+          <button class="red-nav-button" data-action="click->reviewmodal#open" style="font-size:0.55rem">
+            Leave a Review
+          </button>
+          <div id="map" data-controller="map-modal">
+            <button class="red-nav-button" data-action="click->map-modal#launchMap" style="font-size:0.55rem">Directions</button>
+            <%= render 'stalls/show/map_modal' %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
   </div>
-
-
 </div>
