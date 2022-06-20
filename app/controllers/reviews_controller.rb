@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     @review.dish = @dish
     if @review.save
 
-      flavors =  review_params["review_flavor"]["flavor_id"]
+      flavors =  review_params["review_flavor"]["flavor"]
       flavors[1..].each do |flavor|
         new_review_flavor=ReviewFlavor.new(review: @review, flavor_id: flavor)
         new_review_flavor.save!
